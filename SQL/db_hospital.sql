@@ -28,3 +28,22 @@ CREATE TABLE db_hospital.attendance (
   COMMENT '日志'
 )
   COMMENT '员工考勤表';
+
+DROP TABLE IF EXISTS db_hospital.department;
+CREATE TABLE db_hospital.department (
+  id                INT(10)      AUTO_INCREMENT PRIMARY KEY
+  COMMENT '',
+  department_number INT(10)      DEFAULT NULL
+  COMMENT '',
+  name              VARCHAR(20)  DEFAULT NULL
+  COMMENT '',
+  manager           VARCHAR(10)  DEFAULT NULL
+  COMMENT '',
+  telphone          VARCHAR(20)  DEFAULT NULL
+  COMMENT '',
+  address           VARCHAR(50)  DEFAULT NULL
+  COMMENT '',
+  notes             VARCHAR(255) DEFAULT NULL
+  COMMENT ''
+)
+  COMMENT '';
