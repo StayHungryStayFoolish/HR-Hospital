@@ -42,7 +42,7 @@ CREATE TABLE db_hospital.department (
   telphone          VARCHAR(20)  DEFAULT NULL
   COMMENT '电话',
   address           VARCHAR(50)  DEFAULT NULL
-  COMMENT '地址',
+  COMMENT '部门地址',
   notes             VARCHAR(255) DEFAULT NULL
   COMMENT '日志'
 )
@@ -51,33 +51,34 @@ CREATE TABLE db_hospital.department (
 DROP TABLE IF EXISTS db_hospital.employee;
 CREATE TABLE db_hospital.employee (
   id                INT(10)         AUTO_INCREMENT PRIMARY KEY
-  COMMENT '',
+  COMMENT 'PK ID',
   employee_number   INT(10)         DEFAULT NULL
-  COMMENT '',
+  COMMENT '员工编号',
   name              VARCHAR(10)     DEFAULT NULL
-  COMMENT '',
+  COMMENT '姓名',
   gender            ENUM ('男', '女') DEFAULT NULL
-  COMMENT '',
+  COMMENT '性别',
   birthday          DATE            DEFAULT NULL
-  COMMENT '',
+  COMMENT '出生日期',
   telphone          VARCHAR(20)     DEFAULT ''
-  COMMENT '',
+  COMMENT '电话',
   email             VARCHAR(30)     DEFAULT ''
-  COMMENT '',
+  COMMENT '邮箱',
   address           VARCHAR(50)     DEFAULT NULL
-  COMMENT '',
+  COMMENT '家庭地址',
   photo             VARCHAR(50)     DEFAULT ''
-  COMMENT '',
+  COMMENT '照片',
   education         VARCHAR(20)     DEFAULT ''
-  COMMENT '',
+  COMMENT '教育背景',
   department_number INT(10)         DEFAULT NULL
-  COMMENT '',
+  COMMENT '部门编号',
   position_number   INT(10)         DEFAULT NULL
-  COMMENT '',
+  COMMENT '科室门号',
   in_time           DATE            DEFAULT NULL
-  COMMENT '',
+  COMMENT '入职时间',
   password          VARCHAR(20)     DEFAULT NULL
-  COMMENT '',
+  COMMENT '密码',
   notes             VARCHAR(255)    DEFAULT NULL
-  COMMENT ''
-);
+  COMMENT '日志'
+)
+  COMMENT '员工表';
