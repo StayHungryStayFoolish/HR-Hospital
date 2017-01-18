@@ -32,18 +32,18 @@ CREATE TABLE db_hospital.attendance (
 DROP TABLE IF EXISTS db_hospital.department;
 CREATE TABLE db_hospital.department (
   id                INT(10)      AUTO_INCREMENT PRIMARY KEY
-  COMMENT '',
+  COMMENT 'PK ID',
   department_number INT(10)      DEFAULT NULL
-  COMMENT '',
+  COMMENT '部门编号',
   name              VARCHAR(20)  DEFAULT NULL
-  COMMENT '',
+  COMMENT '部门名字',
   manager           VARCHAR(10)  DEFAULT NULL
-  COMMENT '',
+  COMMENT '经理',
   telphone          VARCHAR(20)  DEFAULT NULL
-  COMMENT '',
+  COMMENT '电话',
   address           VARCHAR(50)  DEFAULT NULL
-  COMMENT '',
+  COMMENT '地址',
   notes             VARCHAR(255) DEFAULT NULL
-  COMMENT ''
+  COMMENT '日志'
 )
-  COMMENT '';
+  COMMENT '部门';
