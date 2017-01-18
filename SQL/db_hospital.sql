@@ -47,3 +47,37 @@ CREATE TABLE db_hospital.department (
   COMMENT '日志'
 )
   COMMENT '部门';
+
+DROP TABLE IF EXISTS db_hospital.employee;
+CREATE TABLE db_hospital.employee (
+  id                INT(10)         AUTO_INCREMENT PRIMARY KEY
+  COMMENT '',
+  employee_number   INT(10)         DEFAULT NULL
+  COMMENT '',
+  name              VARCHAR(10)     DEFAULT NULL
+  COMMENT '',
+  gender            ENUM ('男', '女') DEFAULT NULL
+  COMMENT '',
+  birthday          DATE            DEFAULT NULL
+  COMMENT '',
+  telphone          VARCHAR(20)     DEFAULT ''
+  COMMENT '',
+  email             VARCHAR(30)     DEFAULT ''
+  COMMENT '',
+  address           VARCHAR(50)     DEFAULT NULL
+  COMMENT '',
+  photo             VARCHAR(50)     DEFAULT ''
+  COMMENT '',
+  education         VARCHAR(20)     DEFAULT ''
+  COMMENT '',
+  department_number INT(10)         DEFAULT NULL
+  COMMENT '',
+  position_number   INT(10)         DEFAULT NULL
+  COMMENT '',
+  in_time           DATE            DEFAULT NULL
+  COMMENT '',
+  password          VARCHAR(20)     DEFAULT NULL
+  COMMENT '',
+  notes             VARCHAR(255)    DEFAULT NULL
+  COMMENT ''
+);
