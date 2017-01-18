@@ -27,4 +27,4 @@ CREATE TABLE db_hospital.attendance (
   notes           VARCHAR(255)             DEFAULT NULL
   COMMENT '日志'
 )
-  COMMENT '';
+  COMMENT '员工考勤表';
