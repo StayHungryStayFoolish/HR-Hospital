@@ -79,6 +79,9 @@ CREATE TABLE db_hospital.employee (
   password          VARCHAR(20)     DEFAULT NULL
   COMMENT '密码',
   notes             VARCHAR(255)    DEFAULT NULL
-  COMMENT '日志'
+  COMMENT '日志',
+  KEY department_number(department_number),
+  KEY title_number(position_number),
+  KEY employee_number(employee_number)
 )
   COMMENT '员工表';
