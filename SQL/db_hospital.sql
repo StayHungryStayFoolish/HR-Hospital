@@ -122,3 +122,30 @@ CREATE TABLE db_hospital.history (
   COMMENT '现居地址'
 )
   COMMENT '档案表';
+
+DROP TABLE IF EXISTS db_hospital.leave;
+CREATE TABLE db_hospital.leave (
+  id                INT(10)             AUTO_INCREMENT PRIMARY KEY
+  COMMENT 'PK ID',
+  employee_number   INT(10)             DEFAULT NULL
+  COMMENT '员工编号',
+  department_number INT(10)             DEFAULT NULL
+  COMMENT '部门编号',
+  start_time        DATE                DEFAULT NULL
+  COMMENT '起始日期',
+  end_time          DATE                DEFAULT NULL
+  COMMENT '结束日期',
+  days              VARCHAR(10)         DEFAULT NULL
+  COMMENT '天数',
+  reson             VARCHAR(100)        DEFAULT NULL
+  COMMENT '请假理由',
+  type              ENUM ('事假', '病假')   DEFAULT NULL
+  COMMENT '请假类型',
+  manger            VARCHAR(10)         DEFAULT NULL
+  COMMENT '经理',
+  status            ENUM ('已批准', '未批准') DEFAULT '未批准'
+  COMMENT '批准状态',
+  notes             VARCHAR(255)        DEFAULT NULL
+  COMMENT '日志'
+)
+  COMMENT '请假表';
