@@ -149,3 +149,22 @@ CREATE TABLE db_hospital.leave (
   COMMENT '日志'
 )
   COMMENT '请假表';
+
+DROP TABLE IF EXISTS db_hospital.move;
+CREATE TABLE db_hospital.move (
+  id              INT(10)      AUTO_INCREMENT PRIMARY KEY
+  COMMENT '',
+  employee_number INT(10)      DEFAULT NULL
+  COMMENT '',
+  before          INT(10)      DEFAULT NULL
+  COMMENT '',
+  after           INT(10)      DEFAULT NULL
+  COMMENT '',
+  time            DATETIME     DEFAULT NULL
+  COMMENT '',
+  manager         VARCHAR(10)  DEFAULT NULL
+  COMMENT '',
+  notes           VARCHAR(255) DEFAULT NULL
+  COMMENT ''
+)
+  COMMENT '';
