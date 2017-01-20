@@ -172,18 +172,18 @@ CREATE TABLE db_hospital.move (
 DROP TABLE IF EXISTS db_hospital.overtime;
 CREATE TABLE db_hospital.overtime (
   id                INT(10)      AUTO_INCREMENT PRIMARY KEY
-  COMMENT '',
+  COMMENT 'PK ID',
   department_number INT(10)      DEFAULT NULL
-  COMMENT '',
+  COMMENT '部门编号',
   employee_number   INT(10)      DEFAULT NULL
-  COMMENT '',
+  COMMENT '员工编号',
   day               DATE         DEFAULT NULL
-  COMMENT '',
+  COMMENT '日期',
   start_time        TIME         DEFAULT NULL
-  COMMENT '',
+  COMMENT '开始时间',
   end_time          TIME         DEFAULT NULL
-  COMMENT '',
+  COMMENT '结束时间',
   notes             VARCHAR(255) DEFAULT NULL
-  COMMENT ''
+  COMMENT '日志'
 )
-  COMMENT '';
+  COMMENT '加班表';
