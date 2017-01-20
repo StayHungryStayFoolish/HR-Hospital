@@ -153,18 +153,18 @@ CREATE TABLE db_hospital.leave (
 DROP TABLE IF EXISTS db_hospital.move;
 CREATE TABLE db_hospital.move (
   id              INT(10)      AUTO_INCREMENT PRIMARY KEY
-  COMMENT '',
+  COMMENT 'PK ID',
   employee_number INT(10)      DEFAULT NULL
-  COMMENT '',
+  COMMENT '员工编号',
   before          INT(10)      DEFAULT NULL
-  COMMENT '',
+  COMMENT '调动前部门',
   after           INT(10)      DEFAULT NULL
-  COMMENT '',
+  COMMENT '调动后',
   time            DATETIME     DEFAULT NULL
-  COMMENT '',
+  COMMENT '调动时间',
   manager         VARCHAR(10)  DEFAULT NULL
-  COMMENT '',
+  COMMENT '经理',
   notes           VARCHAR(255) DEFAULT NULL
-  COMMENT ''
+  COMMENT '日志'
 )
-  COMMENT '';
+  COMMENT '员工调动记录表';
