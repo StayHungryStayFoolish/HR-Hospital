@@ -89,35 +89,36 @@ CREATE TABLE db_hospital.employee (
 DROP TABLE IF EXISTS db_hospital.histoy;
 CREATE TABLE db_hospital.history (
   id                INT(10)                 AUTO_INCREMENT PRIMARY KEY
-  COMMENT '',
+  COMMENT 'PK ID',
   employee_number   INT(10)                 DEFAULT NULL
-  COMMENT '',
+  COMMENT '员工编号',
   name              VARCHAR(10)             DEFAULT NULL
-  COMMENT '',
+  COMMENT '姓名',
   gender            ENUM ('男', '女')         DEFAULT NULL
-  COMMENT '',
+  COMMENT '性别',
   brithday          DATE                    DEFAULT NULL
-  COMMENT '',
+  COMMENT '出生日期',
   telephone         VARCHAR(20)             DEFAULT ''
-  COMMENT '',
+  COMMENT '电话',
   email             VARCHAR(30)             DEFAULT ''
-  COMMENT '',
+  COMMENT '邮箱',
   address           VARCHAR(50)             DEFAULT ''
-  COMMENT '',
+  COMMENT '家庭住址',
   photo             VARCHAR(50)             DEFAULT ''
-  COMMENT '',
+  COMMENT '照片',
   education         VARCHAR(20)             DEFAULT ''
-  COMMENT '',
+  COMMENT '教育背景',
   in_time           DATE                    DEFAULT NULL
-  COMMENT '',
+  COMMENT '入职时间',
   out_time          DATE                    DEFAULT NULL
-  COMMENT '',
+  COMMENT '离职时间',
   department_number INT(10)                 DEFAULT NULL
-  COMMENT '',
+  COMMENT '部门编号',
   postion_number    INT(10)                 DEFAULT NULL
-  COMMENT '',
+  COMMENT '科室门号',
   status            ENUM ('离职', '在职', '退休') DEFAULT NULL
-  COMMENT '',
+  COMMENT '状态',
   home              VARCHAR(100)            DEFAULT ''
-  COMMENT ''
-);
+  COMMENT '现居地址'
+)
+  COMMENT '档案表';
