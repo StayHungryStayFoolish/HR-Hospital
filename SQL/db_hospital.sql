@@ -156,7 +156,7 @@ CREATE TABLE db_hospital.move (
   COMMENT 'PK ID',
   employee_number INT(10)      DEFAULT NULL
   COMMENT '员工编号',
-  'before'          INT(10)      DEFAULT NULL
+  ago          INT(10)      DEFAULT NULL
   COMMENT '调动前部门',
   after           INT(10)      DEFAULT NULL
   COMMENT '调动后',
@@ -168,8 +168,6 @@ CREATE TABLE db_hospital.move (
   COMMENT '日志'
 )
   COMMENT '员工调动记录表';
-
-
 
 DROP TABLE IF EXISTS db_hospital.overtime;
 CREATE TABLE db_hospital.overtime (
