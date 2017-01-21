@@ -156,7 +156,7 @@ CREATE TABLE db_hospital.move (
   COMMENT 'PK ID',
   employee_number INT(10)      DEFAULT NULL
   COMMENT '员工编号',
-  before          INT(10)      DEFAULT NULL
+  'before'          INT(10)      DEFAULT NULL
   COMMENT '调动前部门',
   after           INT(10)      DEFAULT NULL
   COMMENT '调动后',
@@ -168,6 +168,8 @@ CREATE TABLE db_hospital.move (
   COMMENT '日志'
 )
   COMMENT '员工调动记录表';
+
+
 
 DROP TABLE IF EXISTS db_hospital.overtime;
 CREATE TABLE db_hospital.overtime (
@@ -197,9 +199,25 @@ CREATE TABLE db_hospital.position (
   name            VARCHAR(20)                             DEFAULT NULL
   COMMENT '职称名称',
   level           ENUM ('部门主任', '部门员工', '人事部主任', '人事部员工') DEFAULT NULL
-  COMMENT '权限',
+  COMMENT '级别',
   notes           VARCHAR(255)                            DEFAULT NULL
   COMMENT '日志',
   KEY position_number(position_number)
 )
   COMMENT '职称表';
+
+DROP TABLE IF EXISTS db_hospital.rewards_punishment;
+CREATE TABLE db_hospital.rewards_punishment (
+  id              INT(10)      AUTO_INCREMENT PRIMARY KEY
+  COMMENT '',
+  employee_number INT(10)      DEFAULT NULL,
+  type            VARCHAR(10)  DEFAULT NULL,
+  reason          VARCHAR(100) DEFAULT NULL,
+  money           FLOAT(8, 0)  DEFAULT NULL,
+  time            DATETIME(6)  DEFAULT NULL,
+  manager         VARCHAR(10)  DEFAULT NULL,
+  notes           VARCHAR(200) DEFAULT NULL,
+  KEY employee_number (employee_number),
+  CONSTRAINT rewards_punishment_ibfk_1 FOREIGN KEY (employee_number) REFERENCES employee (employee_number)
+)
+  COMMENT '';
