@@ -191,15 +191,15 @@ CREATE TABLE db_hospital.overtime (
 DROP TABLE IF EXISTS db_hospital.positon;
 CREATE TABLE db_hospital.position (
   id              INT(10)                                 AUTO_INCREMENT PRIMARY KEY
-  COMMENT '',
+  COMMENT 'PK ID',
   position_number INT(10)                                 DEFAULT NULL
-  COMMENT '',
+  COMMENT '职称编号',
   name            VARCHAR(20)                             DEFAULT NULL
-  COMMENT '',
+  COMMENT '职称名称',
   level           ENUM ('部门主任', '部门员工', '人事部主任', '人事部员工') DEFAULT NULL
-  COMMENT '',
+  COMMENT '权限',
   notes           VARCHAR(255)                            DEFAULT NULL
-  COMMENT '',
+  COMMENT '日志',
   KEY position_number(position_number)
 )
-  COMMENT '';
+  COMMENT '职称表';
