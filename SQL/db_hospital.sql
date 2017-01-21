@@ -187,3 +187,19 @@ CREATE TABLE db_hospital.overtime (
   COMMENT '日志'
 )
   COMMENT '加班表';
+
+DROP TABLE IF EXISTS db_hospital.positon;
+CREATE TABLE db_hospital.position (
+  id              INT(10)                                 AUTO_INCREMENT PRIMARY KEY
+  COMMENT '',
+  position_number INT(10)                                 DEFAULT NULL
+  COMMENT '',
+  name            VARCHAR(20)                             DEFAULT NULL
+  COMMENT '',
+  level           ENUM ('部门主任', '部门员工', '人事部主任', '人事部员工') DEFAULT NULL
+  COMMENT '',
+  notes           VARCHAR(255)                            DEFAULT NULL
+  COMMENT '',
+  KEY position_number(position_number)
+)
+  COMMENT '';
