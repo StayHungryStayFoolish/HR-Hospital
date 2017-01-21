@@ -156,7 +156,7 @@ CREATE TABLE db_hospital.move (
   COMMENT 'PK ID',
   employee_number INT(10)      DEFAULT NULL
   COMMENT '员工编号',
-  ago          INT(10)      DEFAULT NULL
+  ago             INT(10)      DEFAULT NULL
   COMMENT '调动前部门',
   after           INT(10)      DEFAULT NULL
   COMMENT '调动后',
@@ -218,4 +218,8 @@ CREATE TABLE db_hospital.rewards_punishment (
   KEY employee_number (employee_number),
   CONSTRAINT rewards_punishment_ibfk_1 FOREIGN KEY (employee_number) REFERENCES employee (employee_number)
 )
-  COMMENT '';
+  COMMENT '奖罚记录表';
+
+# 注:
+# before 是 MySQL 保留字. 换成 ago .
+# 或者使用 ``
