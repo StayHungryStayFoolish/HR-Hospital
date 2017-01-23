@@ -36,9 +36,9 @@ CREATE TABLE db_hospital.department (
   department_number INT(10)      DEFAULT NULL
   COMMENT '部门编号',
   name              VARCHAR(20)  DEFAULT NULL
-  COMMENT '部门名字',
+  COMMENT '部门名称',
   manager           VARCHAR(10)  DEFAULT NULL
-  COMMENT '经理',
+  COMMENT '部门经理',
   telphone          VARCHAR(20)  DEFAULT NULL
   COMMENT '电话',
   address           VARCHAR(50)  DEFAULT NULL
