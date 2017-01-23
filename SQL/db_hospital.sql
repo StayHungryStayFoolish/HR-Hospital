@@ -73,7 +73,7 @@ CREATE TABLE db_hospital.employee (
   department_number INT(10)         DEFAULT NULL
   COMMENT '部门编号',
   position_number   INT(10)         DEFAULT NULL
-  COMMENT '科室门号',
+  COMMENT '职称编号',
   in_time           DATE            DEFAULT NULL
   COMMENT '入职时间',
   password          VARCHAR(20)     DEFAULT NULL
@@ -207,7 +207,7 @@ CREATE TABLE db_hospital.position (
 DROP TABLE IF EXISTS db_hospital.rewards_punishment;
 CREATE TABLE db_hospital.rewards_punishment (
   id              INT(10)      AUTO_INCREMENT PRIMARY KEY
-  COMMENT '',
+  COMMENT 'PK ID',
   employee_number INT(10)      DEFAULT NULL,
   type            VARCHAR(10)  DEFAULT NULL,
   reason          VARCHAR(100) DEFAULT NULL,
