@@ -56,7 +56,7 @@ public class Employee extends Model<Employee> implements Serializable {
 
     @Override
     protected Serializable pkVal() {
-        return null;
+        return this.id;
     }
 
     public Integer getId() {
