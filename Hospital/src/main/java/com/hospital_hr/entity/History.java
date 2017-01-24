@@ -18,14 +18,21 @@ public class History extends Model<History> implements Serializable {
 
     @TableId
     private Integer id;
-    private Integer id;
+    // 部门编号
     private Integer employeeNumber;
+    // 姓名
     private String name;
+    // 性别
     private String gender;
+    // 出生日期
     private Date birthday;
+    // 电话
     private String telephone;
+    // 邮箱
     private String email;
+    // 籍贯
     private String address;
+    // 照片
     private String photo;
     private String education;
     private Date inTime;

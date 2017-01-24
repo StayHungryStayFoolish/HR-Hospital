@@ -103,7 +103,7 @@ CREATE TABLE db_hospital.history (
   email             VARCHAR(30)             DEFAULT ''
   COMMENT '邮箱',
   address           VARCHAR(50)             DEFAULT ''
-  COMMENT '家庭住址',
+  COMMENT '籍贯',
   photo             VARCHAR(50)             DEFAULT ''
   COMMENT '照片',
   education         VARCHAR(20)             DEFAULT ''
@@ -115,7 +115,7 @@ CREATE TABLE db_hospital.history (
   department_number INT(10)                 DEFAULT NULL
   COMMENT '部门编号',
   postion_number    INT(10)                 DEFAULT NULL
-  COMMENT '科室门号',
+  COMMENT '职称编号',
   status            ENUM ('离职', '在职', '退休') DEFAULT NULL
   COMMENT '状态',
   home              VARCHAR(100)            DEFAULT ''
