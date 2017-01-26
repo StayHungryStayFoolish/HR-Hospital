@@ -56,7 +56,7 @@ public class History extends Model<History> implements Serializable {
     private Department department;
 
     @TableField(exist = false)
-    private Posistion posistion;
+    private Position position;
 
     @Override
     protected Serializable pkVal() {
@@ -207,12 +207,12 @@ public class History extends Model<History> implements Serializable {
         this.department = department;
     }
 
-    public Posistion getPosistion() {
-        return posistion;
+    public Position getPosition() {
+        return position;
     }
 
-    public void setPosistion(Posistion posistion) {
-        this.posistion = posistion;
+    public void setPosition(Position position) {
+        this.position = position;
     }
 
     @Override
@@ -236,7 +236,7 @@ public class History extends Model<History> implements Serializable {
                 ", home='" + home + '\'' +
                 ", notes='" + notes + '\'' +
                 ", department=" + department +
-                ", posistion=" + posistion +
+                ", position=" + position +
                 '}';
     }
 }
