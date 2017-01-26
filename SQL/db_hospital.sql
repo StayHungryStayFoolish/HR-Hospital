@@ -188,7 +188,7 @@ CREATE TABLE db_hospital.overtime (
 )
   COMMENT '加班表';
 
-DROP TABLE IF EXISTS db_hospital.positon;
+DROP TABLE IF EXISTS db_hospital.position;
 CREATE TABLE db_hospital.position (
   id              INT(10)                                 AUTO_INCREMENT PRIMARY KEY
   COMMENT 'PK ID',
