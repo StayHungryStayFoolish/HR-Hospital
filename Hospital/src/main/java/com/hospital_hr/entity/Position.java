@@ -30,4 +30,44 @@ public class Position extends Model<Position> implements Serializable {
     protected Serializable pkVal() {
         return this.id;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getPositionNumber() {
+        return positionNumber;
+    }
+
+    public void setPositionNumber(Integer positionNumber) {
+        this.positionNumber = positionNumber;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
 }
