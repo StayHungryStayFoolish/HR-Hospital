@@ -25,7 +25,7 @@ CREATE TABLE db_hospital.attendance (
   work_type       ENUM ('上班', '请假')        DEFAULT NULL
   COMMENT '工作情况',
   notes           VARCHAR(255)             DEFAULT NULL
-  COMMENT '日志'
+  COMMENT '备注'
 )
   COMMENT '员工考勤表';
 
@@ -44,7 +44,7 @@ CREATE TABLE db_hospital.department (
   address           VARCHAR(50)  DEFAULT NULL
   COMMENT '部门地址',
   notes             VARCHAR(255) DEFAULT NULL
-  COMMENT '日志'
+  COMMENT '备注'
 )
   COMMENT '部门';
 
@@ -79,7 +79,7 @@ CREATE TABLE db_hospital.employee (
   password          VARCHAR(20)     DEFAULT NULL
   COMMENT '密码',
   notes             VARCHAR(255)    DEFAULT NULL
-  COMMENT '日志',
+  COMMENT '备注',
   KEY department_number(department_number),
   KEY title_number(position_number),
   KEY employee_number(employee_number)
@@ -146,7 +146,7 @@ CREATE TABLE db_hospital.leave (
   status            ENUM ('已批准', '未批准') DEFAULT '未批准'
   COMMENT '批准状态',
   notes             VARCHAR(255)        DEFAULT NULL
-  COMMENT '日志'
+  COMMENT '备注'
 )
   COMMENT '请假表';
 
@@ -165,7 +165,7 @@ CREATE TABLE db_hospital.move (
   manager         VARCHAR(10)  DEFAULT NULL
   COMMENT '经理',
   notes           VARCHAR(255) DEFAULT NULL
-  COMMENT '日志'
+  COMMENT '备注'
 )
   COMMENT '员工调动记录表';
 
@@ -184,7 +184,7 @@ CREATE TABLE db_hospital.overtime (
   end_time          TIME         DEFAULT NULL
   COMMENT '结束时间',
   notes             VARCHAR(255) DEFAULT NULL
-  COMMENT '日志'
+  COMMENT '备注'
 )
   COMMENT '加班表';
 
@@ -199,7 +199,7 @@ CREATE TABLE db_hospital.position (
   level           ENUM ('部门主任', '部门员工', '人事部主任', '人事部员工') DEFAULT NULL
   COMMENT '级别',
   notes           VARCHAR(255)                            DEFAULT NULL
-  COMMENT '日志',
+  COMMENT '备注',
   KEY position_number(position_number)
 )
   COMMENT '职称表';
@@ -208,13 +208,20 @@ DROP TABLE IF EXISTS db_hospital.rewards_punishment;
 CREATE TABLE db_hospital.rewards_punishment (
   id              INT(10)      AUTO_INCREMENT PRIMARY KEY
   COMMENT 'PK ID',
-  employee_number INT(10)      DEFAULT NULL,
-  type            VARCHAR(10)  DEFAULT NULL,
-  reason          VARCHAR(100) DEFAULT NULL,
-  money           FLOAT(8, 0)  DEFAULT NULL,
-  time            DATETIME(6)  DEFAULT NULL,
-  manager         VARCHAR(10)  DEFAULT NULL,
-  notes           VARCHAR(200) DEFAULT NULL,
+  employee_number INT(10)      DEFAULT NULL
+  COMMENT '员工编号',
+  type            VARCHAR(10)  DEFAULT NULL
+  COMMENT '类型',
+  reason          VARCHAR(100) DEFAULT NULL
+  COMMENT '原因',
+  money           FLOAT(8, 0)  DEFAULT NULL
+  COMMENT '金额',
+  time            DATETIME(6)  DEFAULT NULL
+  COMMENT '时间',
+  manager         VARCHAR(10)  DEFAULT NULL
+  COMMENT '经理',
+  notes           VARCHAR(200) DEFAULT NULL
+  COMMENT '备注',
   KEY employee_number (employee_number),
   CONSTRAINT rewards_punishment_ibfk_1 FOREIGN KEY (employee_number) REFERENCES employee (employee_number)
 )
