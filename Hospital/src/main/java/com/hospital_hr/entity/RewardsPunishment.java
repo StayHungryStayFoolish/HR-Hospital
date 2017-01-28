@@ -10,6 +10,8 @@ import java.util.Date;
 /**
  * Created by bonismo@hotmail.com
  * 下午4:42 on 17/1/28.
+ * <p>
+ * 奖罚记录表
  */
 @TableName("rewards_punishment")
 public class RewardsPunishment extends Model<RewardsPunishment> implements Serializable {
