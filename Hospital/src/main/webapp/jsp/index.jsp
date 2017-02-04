@@ -4,6 +4,6 @@
     <title>Index</title>
 </head>
 <body>
-<h1>JSP - Hospital-HR Page</h1>
+<%response.sendRedirect("employee/login.do");%>
 </body>
 </html>
