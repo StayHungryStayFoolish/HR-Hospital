@@ -2,6 +2,10 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1" metadata-complete="false">
+    <!-- 监听器 启动ServletContext时，加载ApplicationContext.xml初始化Spring容器 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
     <!-- Spring  -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -23,10 +27,6 @@
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
 
-    <!-- 监听器 启动ServletContext时，加载ApplicationContext.xml初始化Spring容器 -->
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
 
     <!-- Druid 监控平台 -->
     <servlet>
