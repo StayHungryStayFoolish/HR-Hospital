@@ -10,7 +10,7 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link rel="shortcut icon" href="favicon.ico">
-    <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="../css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
     <link href="<%=path %>/css/font-awesome.css?v=4.4.0" rel="stylesheet">
     <link href="<%=path %>/css/bootstrap.min.css" rel="stylesheet">
     <link href="<%=path %>/css/animate.css" rel="stylesheet">
@@ -59,7 +59,7 @@
 <script src="<%=path%>/js/content.js?v=1.0.0"></script>
 
 <!-- layer javascript -->
-<script src="js/plugins/layer/layer.min.js"></script>
+<script src="../js/plugins/layer/layer.min.js"></script>
 <script>
     $("a").click(function () {
         parent.layer.alert('签到成功！')
