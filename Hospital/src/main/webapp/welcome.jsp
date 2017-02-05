@@ -26,7 +26,44 @@
         }
     </script>
 </head>
-<body>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="jumbotron">
+                <div style="margin-left: 250px">
+                    <p>&nbsp;</p>
+                    <%Employee employee = (Employee) session.getAttribute("loged"); %>
+                    <h1><%=employee.getName() %></h1>
+                    <p>&nbsp;</p>
+                    <p>欢迎登录HR医院人事管理系统</p>
+                    <p id="time">&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p><a href="<%=path %>/attendance/addStart.do?employeeNumber=<%=employee.getEmployeeNumber() %>"
+                          class="btn btn-info btn-lg">&nbsp;上班签到&nbsp;</a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        <a href="<%=path %>/attendance/addEnd.do?employeeNumber=<%=employee.getEmployeeNumber() %>"
+                           class="btn btn-info btn-lg">&nbsp;下班签到&nbsp;</a>
+                    </p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 全局js -->
+<script src="<%=path%>/js/jquery.min.js?v=2.1.4"></script>
+<script src="<%=path%>/js/bootstrap.min.js?v=3.3.6"></script>
 
+<!-- 自定义js -->
+<script src="<%=path%>/js/content.js?v=1.0.0"></script>
+
+<!-- layer javascript -->
+<script src="js/plugins/layer/layer.min.js"></script>
+<script>
+    $("a").click(function () {
+        parent.layer.alert('签到成功！')
+    });
+</script>
 </body>
 </html>
