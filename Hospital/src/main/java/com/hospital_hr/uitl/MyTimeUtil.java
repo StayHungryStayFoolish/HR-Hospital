@@ -1,5 +1,6 @@
 package com.hospital_hr.uitl;
 
+import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -11,9 +12,31 @@ import java.util.Date;
  */
 public class MyTimeUtil {
 
+    /**
+     * 日期格式化
+     *
+     * @param date
+     * @return
+     */
     public static String dateFormat(Date date) {
         if (null != date && !"".equals(date)) {
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            String string = format.format(date);
+            return string;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * 时间格式化
+     *
+     * @param date
+     * @return
+     */
+    public static String timeFormat(Date date) {
+        if (null != date && !"".equals(date)) {
+            SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
             String string = format.format(date);
             return string;
         } else {
