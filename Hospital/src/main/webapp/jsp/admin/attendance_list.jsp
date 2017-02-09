@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.*"%>
 <%@ page import="com.hospital_hr.entity.*" %>
-<%@ page import="com.hospital_hr.MyTimeUtil"%>
+<%@ page import="com.hospital_hr.uitl.MyTimeUtil"%>
 <% String path = request.getContextPath(); %>
 <html>
 <head>
