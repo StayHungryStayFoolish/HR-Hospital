@@ -39,6 +39,21 @@ public class MyTimeUtil {
         return stringTimeParse(stringTime);
     }
 
+    /**
+     * 根据日期转换为 年月日 时分秒 字符串
+     *
+     * @param date
+     * @return
+     */
+    public static String format(Date date) {
+        if (null != date && "".equals(date)) {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String stringDate = format.format(date);
+            return stringDate;
+        } else {
+            return null;
+        }
+    }
 
     /**
      * 日期格式化
