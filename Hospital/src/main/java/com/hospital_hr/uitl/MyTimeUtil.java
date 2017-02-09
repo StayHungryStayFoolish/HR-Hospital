@@ -9,6 +9,13 @@ import java.util.Date;
  * 下午10:04 on 17/2/9.
  * <p>
  * 日期工具
+ *
+ * HH 是24小时制
+ * hh 是12小时制
+ * M  是月份
+ * m  是小时分钟
+ * D  是一年中的天数
+ * d  是一个月的天数
  */
 public class MyTimeUtil {
 
@@ -47,15 +54,36 @@ public class MyTimeUtil {
     /**
      * 日期字符串转日期
      *
-     * @param string
+     * @param stringDate
      * @return
      */
-    public static Date stringDateParse(String string) {
-        if (null != string && !"".equals(string)) {
+    public static Date stringDateParse(String stringDate) {
+        if (null != stringDate && !"".equals(stringDate)) {
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             Date date = null;
             try {
-                date = format.parse(string);
+                date = format.parse(stringDate);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            return date;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * 时间字符串转换为时间
+     *
+     * @param stringTime
+     * @return
+     */
+    public static Date stringTimeParse(String stringTime) {
+        if (null != stringTime && "".equals(stringTime)) {
+            SimpleDateFormat format = new SimpleDateFormat("HH-mm-ss");
+            Date date = null;
+            try {
+                date = format.parse(stringTime);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
