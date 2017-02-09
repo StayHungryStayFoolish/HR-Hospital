@@ -9,7 +9,7 @@ import java.util.Date;
  * 下午10:04 on 17/2/9.
  * <p>
  * 日期工具
- *
+ * <p>
  * HH 是24小时制
  * hh 是12小时制
  * M  是月份
@@ -18,6 +18,27 @@ import java.util.Date;
  * d  是一个月的天数
  */
 public class MyTimeUtil {
+
+    /**
+     * 获取当前日期的字符串形式
+     *
+     * @return
+     */
+    public static Date nowData() {
+        String stringDate = dateFormat(new Date());
+        return stringDateParse(stringDate);
+    }
+
+    /**
+     * 获取当前时间的字符串形式
+     *
+     * @return
+     */
+    public static Date nowTime() {
+        String stringTime = timeFormat(new Date());
+        return stringTimeParse(stringTime);
+    }
+
 
     /**
      * 日期格式化
