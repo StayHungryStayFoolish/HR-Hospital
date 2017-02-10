@@ -11,11 +11,32 @@ import java.util.List;
  */
 public interface AttendanceService extends IService<Attendance> {
 
+    /**
+     * 根据员工号,加入上班记录
+     *
+     * @param employeeNumber
+     */
     void addStart(Integer employeeNumber);
 
+    /**
+     * 根据员工号,更新下班记录
+     *
+     * @param employeeNumber
+     */
     void addEnd(Integer employeeNumber);
 
+    /**
+     * 查询所有考勤记录
+     *
+     * @return
+     */
     List<Attendance> selectList();
 
+    /**
+     * 根据员工号,查询考勤记录
+     *
+     * @param employeeNumber
+     * @return
+     */
     List<Attendance> selectByEmployee(Integer employeeNumber);
 }
