@@ -27,7 +27,7 @@ public class AttendanceServiceImpl extends ServiceImpl<AttendanceMapper, Attenda
     Date amStartTime = MyTimeUtil.stringTimeParse(MyConstant.AMStartTime);
     Date amEndTime = MyTimeUtil.stringTimeParse(MyConstant.AMEndTime);
     Date pmTime = MyTimeUtil.stringTimeParse(MyConstant.PMTime);
-    Date pmStartTime = MyTimeUtil.stringTimeParse(MyConstant.AMStartTime);
+    Date pmStartTime = MyTimeUtil.stringTimeParse(MyConstant.PMStartTime);
     Date pmEndTime = MyTimeUtil.stringTimeParse(MyConstant.PMEndTime);
     Date ovTime = MyTimeUtil.stringTimeParse(MyConstant.OVTime);
     Date ovStartTime = MyTimeUtil.stringTimeParse(MyConstant.OVStartTime);
