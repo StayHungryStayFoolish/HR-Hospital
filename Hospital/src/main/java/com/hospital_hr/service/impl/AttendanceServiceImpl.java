@@ -1,9 +1,9 @@
-package com.hospital_hr.service;
+package com.hospital_hr.service.impl;
 
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.hospital_hr.entity.Attendance;
 import com.hospital_hr.mapper.AttendanceMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.hospital_hr.service.AttendanceService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
