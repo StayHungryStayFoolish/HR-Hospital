@@ -74,7 +74,9 @@ public class AttendanceServiceImpl extends ServiceImpl<AttendanceMapper, Attenda
             if (null == attInfo) {
                 attendance.setTimeType("加班");
                 if (nowTime.before(ovStartTime)) {
-
+                    attendance.setStartType("正常");
+                } else {
+                    attendance.setStartType("迟到");
                 }
             }
         }
