@@ -35,33 +35,50 @@ public class AttendanceServiceImpl extends ServiceImpl<AttendanceMapper, Attenda
     Date ovEndTime = MyTimeUtil.stringTimeParse(MyConstant.OVEndTime);
 
 
+    /**
+     * 添加上班考勤记录
+     * 1.判断时间节点
+     * 2.根据时间节点,判断上班状态
+     * 3.添加状态
+     *
+     * @param employeeNumber
+     */
     @Override
     public void addStart(Integer employeeNumber) {
         // 获取当前时间
         Date nowTime = MyTimeUtil.nowTime();
         // 获取当前日期
         Date nowDate = MyTimeUtil.nowData();
-
+        // 创建考勤对象
         Attendance attendance = new Attendance();
         attendance.setEmployeeNumber(employeeNumber);
         attendance.setDay(nowDate);
         attendance.setStartTime(nowTime);
 
+        // 判断当前时间在哪个节点
+
+        // 判断当前时间是不是上午
         if (nowTime.after(amTime) && nowDate.before(amEndTime)) {
             Attendance attInfo = baseMapper.selectByNumber(employeeNumber, nowDate, "上午");
+            // 如果当前未签到
             if (null == attInfo) {
                 attendance.setTimeType("上午");
+                // 判断时间点,是否符合规定时间
                 if (nowTime.before(amStartTime)) {
                     attendance.setTimeType("正常");
                 } else {
                     attendance.setStartType("迟到");
                 }
+                // 插入考勤记录
                 baseMapper.insert(attendance);
             }
+            // 判断当前时间是不是下午
         } else if (nowTime.after(pmTime) && nowTime.before(pmEndTime)) {
             Attendance attInfo = baseMapper.selectByNumber(employeeNumber, nowDate, "下午");
+            // 如果当前未签到
             if (null == attInfo) {
                 attendance.setTimeType("下午");
+                // 判断当前时间,是否符合规定时间
                 if (nowTime.before(pmStartTime)) {
                     attendance.setStartType("正常");
                 } else {
@@ -69,7 +86,8 @@ public class AttendanceServiceImpl extends ServiceImpl<AttendanceMapper, Attenda
                 }
                 baseMapper.insert(attendance);
             }
-        }else if (nowTime.after(ovTime) && nowTime.before(ovEndTime)) {
+            // 判断当前时间是不是加班时间
+        } else if (nowTime.after(ovTime) && nowTime.before(ovEndTime)) {
             Attendance attInfo = baseMapper.selectByNumber(employeeNumber, nowDate, "加班");
             if (null == attInfo) {
                 attendance.setTimeType("加班");
@@ -78,6 +96,7 @@ public class AttendanceServiceImpl extends ServiceImpl<AttendanceMapper, Attenda
                 } else {
                     attendance.setStartType("迟到");
                 }
+                baseMapper.insert(attendance);
             }
         }
     }
