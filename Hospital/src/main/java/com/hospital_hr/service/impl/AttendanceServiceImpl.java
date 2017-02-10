@@ -60,6 +60,23 @@ public class AttendanceServiceImpl extends ServiceImpl<AttendanceMapper, Attenda
             }
         } else if (nowTime.after(pmTime) && nowTime.before(pmEndTime)) {
             Attendance attInfo = baseMapper.selectByNumber(employeeNumber, nowDate, "下午");
+            if (null == attInfo) {
+                attendance.setTimeType("下午");
+                if (nowTime.before(pmStartTime)) {
+                    attendance.setStartType("正常");
+                } else {
+                    attendance.setStartType("迟到");
+                }
+                baseMapper.insert(attendance);
+            }
+        }else if (nowTime.after(ovTime) && nowTime.before(ovEndTime)) {
+            Attendance attInfo = baseMapper.selectByNumber(employeeNumber, nowDate, "加班");
+            if (null == attInfo) {
+                attendance.setTimeType("加班");
+                if (nowTime.before(ovStartTime)) {
+
+                }
+            }
         }
     }
 
