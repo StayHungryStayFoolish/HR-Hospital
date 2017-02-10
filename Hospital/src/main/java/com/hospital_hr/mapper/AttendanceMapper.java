@@ -13,7 +13,8 @@ import java.util.Date;
 public interface AttendanceMapper extends BaseMapper<Attendance> {
 
     /**
-     * 根据员工编号/时间查询考勤
+     * 根据员工编号/时间查询考勤状态
+     *
      *
      * @param employeeNumber
      * @param day

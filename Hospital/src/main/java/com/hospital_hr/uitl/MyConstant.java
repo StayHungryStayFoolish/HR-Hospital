@@ -10,10 +10,6 @@ import org.springframework.beans.factory.annotation.Value;
  */
 public class MyConstant {
 
-//    可以使用直接读取配置文件的方式, 配置文件 Constant.properties , 此处省略
-//    @Value("${AMStartTime}")
-//    private static String AMStartTime;
-
     // 上下班时间
     public static String AMStartTime = "9:00:00";
     public static String AMEndTime = "11:59:59";

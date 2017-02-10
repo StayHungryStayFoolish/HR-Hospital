@@ -8,6 +8,7 @@ import com.hospital_hr.service.AttendanceService;
 import com.hospital_hr.uitl.MyConstant;
 import com.hospital_hr.uitl.MyTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -31,12 +32,35 @@ public class AttendanceServiceImpl extends ServiceImpl<AttendanceMapper, Attenda
     Date pmEndTime = MyTimeUtil.stringTimeParse(MyConstant.PMEndTime);
     Date ovTime = MyTimeUtil.stringTimeParse(MyConstant.OVTime);
     Date ovStartTime = MyTimeUtil.stringTimeParse(MyConstant.OVStartTime);
-    Date ovEndTime= MyTimeUtil.stringTimeParse(MyConstant.OVEndTime);
+    Date ovEndTime = MyTimeUtil.stringTimeParse(MyConstant.OVEndTime);
 
 
     @Override
     public void addStart(Integer employeeNumber) {
+        // 获取当前时间
+        Date nowTime = MyTimeUtil.nowTime();
+        // 获取当前日期
+        Date nowDate = MyTimeUtil.nowData();
 
+        Attendance attendance = new Attendance();
+        attendance.setEmployeeNumber(employeeNumber);
+        attendance.setDay(nowDate);
+        attendance.setStartTime(nowTime);
+
+        if (nowTime.after(amTime) && nowDate.before(amEndTime)) {
+            Attendance attInfo = baseMapper.selectByNumber(employeeNumber, nowDate, "上午");
+            if (null == attInfo) {
+                attendance.setTimeType("上午");
+                if (nowTime.before(amStartTime)) {
+                    attendance.setTimeType("正常");
+                } else {
+                    attendance.setStartType("迟到");
+                }
+                baseMapper.insert(attendance);
+            }
+        } else if (nowTime.after(pmTime) && nowTime.before(pmEndTime)) {
+            Attendance attInfo = baseMapper.selectByNumber(employeeNumber, nowDate, "下午");
+        }
     }
 
     @Override
