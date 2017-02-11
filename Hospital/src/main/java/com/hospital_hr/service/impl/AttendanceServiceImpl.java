@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import javax.xml.crypto.Data;
 import java.util.Date;
 import java.util.List;
 
@@ -49,7 +50,7 @@ public class AttendanceServiceImpl extends ServiceImpl<AttendanceMapper, Attenda
         Date nowTime = MyTimeUtil.nowTime();
         // 获取当前日期
         Date nowDate = MyTimeUtil.nowData();
-        // 创建考勤对象
+        // 创建考勤对象,记录签到员工号,日期,时间
         Attendance attendance = new Attendance();
         attendance.setEmployeeNumber(employeeNumber);
         attendance.setDay(nowDate);
@@ -103,7 +104,28 @@ public class AttendanceServiceImpl extends ServiceImpl<AttendanceMapper, Attenda
 
     @Override
     public void addEnd(Integer employeeNumber) {
+        // 获取当前时间
+        Date nowTime = MyTimeUtil.nowTime();
+        // 获取当前日期
+        Date nowDate = MyTimeUtil.nowData();
+        if (nowTime.after(amStartTime) && nowTime.before(pmEndTime)) {
+            Attendance attInfo = baseMapper.selectByNumber(employeeNumber, nowDate, "上午");
+            if (null == attInfo.getEndTime()) {
+                attInfo.setDay(nowTime);
+                if (nowTime.after(amEndTime)) {
+                    attInfo.setEndType("正常");
+                } else {
+                    attInfo.setEndType("早退");
+                }
+                baseMapper.insert(attInfo);
+            }
+        } else if (nowTime.after(pmStartTime) && nowTime.before(ovStartTime)) {
+            Attendance attInfo = baseMapper.selectByNumber(employeeNumber, nowDate, "下午");
+            if (null == attInfo.getEndTime()) {
+                attInfo.setEndTime(nowTime);
 
+            }
+        }
     }
 
     @Override
