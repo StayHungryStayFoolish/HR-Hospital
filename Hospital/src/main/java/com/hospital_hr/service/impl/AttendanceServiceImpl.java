@@ -1,17 +1,17 @@
 package com.hospital_hr.service.impl;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.hospital_hr.entity.Attendance;
+import com.hospital_hr.entity.Employee;
 import com.hospital_hr.mapper.AttendanceMapper;
 import com.hospital_hr.mapper.EmployeeMapper;
 import com.hospital_hr.service.AttendanceService;
 import com.hospital_hr.uitl.MyConstant;
 import com.hospital_hr.uitl.MyTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import javax.xml.crypto.Data;
 import java.util.Date;
 import java.util.List;
 
@@ -37,9 +37,9 @@ public class AttendanceServiceImpl extends ServiceImpl<AttendanceMapper, Attenda
 
 
     /**
-     * 添加上班考勤记录
-     * 1.判断时间节点
-     * 2.根据时间节点,判断上班状态
+     * 添加上班签到记录
+     * 1.判断当前时间节点 上午/下午/加班
+     * 2.判断当前签到时间,并设置状态 正常/迟到
      * 3.添加状态
      *
      * @param employeeNumber
@@ -102,6 +102,14 @@ public class AttendanceServiceImpl extends ServiceImpl<AttendanceMapper, Attenda
         }
     }
 
+    /**
+     * 添加下班签退记录
+     * 1.判断当前时间节点  上午/下午/加班
+     * 2.判断签退时间节点  正常/早退
+     * 3.添加数据
+     *
+     * @param employeeNumber
+     */
     @Override
     public void addEnd(Integer employeeNumber) {
         // 获取当前时间
@@ -123,14 +131,36 @@ public class AttendanceServiceImpl extends ServiceImpl<AttendanceMapper, Attenda
             Attendance attInfo = baseMapper.selectByNumber(employeeNumber, nowDate, "下午");
             if (null == attInfo.getEndTime()) {
                 attInfo.setEndTime(nowTime);
-
+                if (nowTime.after(pmEndTime)) {
+                    attInfo.setEndType("正常");
+                } else {
+                    attInfo.setEndType("早退");
+                }
+                baseMapper.updateById(attInfo);
+            }
+        } else if (nowTime.after(ovStartTime)) {
+            Attendance attInfo = baseMapper.selectByNumber(employeeNumber, nowDate, "加班");
+            if (null == attInfo.getEndTime()) {
+                attInfo.setEndTime(nowTime);
+                if (nowTime.after(ovEndTime)) {
+                    attInfo.setEndType("正常");
+                } else {
+                    attInfo.setEndType("早退");
+                }
+                baseMapper.updateById(attInfo);
             }
         }
     }
 
     @Override
     public List<Attendance> selectList() {
-        return null;
+        List<Attendance> list = baseMapper.selectList(
+                new EntityWrapper<Attendance>().orderBy("id", false));
+        for (Attendance attendance : list) {
+            Employee employee = employeeMapper.selectByNumber(attendance.getEmployeeNumber());
+            attendance.setEmployee(employee);
+        }
+        return list;
     }
 
     @Override
