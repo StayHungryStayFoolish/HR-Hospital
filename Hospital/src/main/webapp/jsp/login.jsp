@@ -22,7 +22,18 @@
         }
     </script>
 </head>
-<body>
+<body class="signin">
+<div class="signinpanel">
+    <div class="row">
+        <div class="col-sm-12">
+            <form method="post" action="<%=path %>/employee/checkLogin.do">
 
+            </form>
+        </div>
+    </div>
+    <div class="signup-footer">
+        <div class="pull-left">&copy; CDIO</div>
+    </div>
+</div>
 </body>
 </html>
