@@ -34,9 +34,10 @@
                 <div style="margin-left: 250px">
                     <p>&nbsp;</p>
                     <%Employee employee = (Employee) session.getAttribute("loged"); %>
-                    <h1><%=employee.getName() %></h1>
+                    <h1><%=employee.getName() %>
+                    </h1>
                     <p>&nbsp;</p>
-                    <p>欢迎登录HR医院人事管理系统</p>
+                    <p>欢迎登录医院人事管理系统</p>
                     <p id="time">&nbsp;</p>
                     <p>&nbsp;</p>
                     <p><a href="<%=path %>/attendance/addStart.do?employeeNumber=<%=employee.getEmployeeNumber() %>"
