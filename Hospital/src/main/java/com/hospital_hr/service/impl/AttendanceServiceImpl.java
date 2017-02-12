@@ -159,11 +159,11 @@ public class AttendanceServiceImpl extends ServiceImpl<AttendanceMapper, Attenda
      */
     @Override
     public List<Attendance> selectList() {
-        // 根据实体类 ID ,查询所有数据, false 为倒叙排序状态 , true 是正序
+        // 根据 考勤实体类 ,查询所有数据, false 为倒叙排序状态 , true 是正序
         List<Attendance> list = baseMapper.selectList(
                 new EntityWrapper<Attendance>().orderBy("id", false));
 
-        // 遍历考勤表,将员工 放入考勤表中,获取员工信息
+        // 遍历考勤表,获取员工信息,将员工 放入考勤表中
         for (Attendance attendance : list) {
             Employee employee = employeeMapper.selectByNumber(attendance.getEmployeeNumber());
             attendance.setEmployee(employee);
@@ -173,6 +173,16 @@ public class AttendanceServiceImpl extends ServiceImpl<AttendanceMapper, Attenda
 
     @Override
     public List<Attendance> selectByEmployee(Integer employeeNumber) {
-        return null;
+        // 根据 ID 查询员工的考勤记录,并倒序排列
+        List<Attendance> list = baseMapper.selectList(
+                new EntityWrapper<Attendance>()
+                        .eq("employeeNumber", employeeNumber)
+                        .orderBy("id", false));
+        // 遍历考勤表,获取员工信息,将员工 放入考勤表中
+        for (Attendance attendance : list) {
+            Employee employee = employeeMapper.selectByNumber(attendance.getEmployeeNumber());
+            attendance.setEmployee(employee);
+        }
+        return list;
     }
 }
