@@ -8,10 +8,10 @@
     </sql>
 
     <select id="selectByNumber" resultType="Attendance">
-        select
+        SELECT
         <include refid="Base_Column_List" />
-        from attendance
-        where employee_number = #{employeeNumber}
-        and day = #{day} and time_type = #{timeType}
+        FROM attendance
+        WHERE employee_number = #{employeeNumber}
+        AND DAY = #{day} AND time_type = #{timeType}
     </select>
 </mapper>

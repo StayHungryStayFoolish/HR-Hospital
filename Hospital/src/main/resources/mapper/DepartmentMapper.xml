@@ -1,2 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hospital_hr.mapper.DepartmentMapper">
+    <sql id="Base_Column_List">
+        id, department_number, name, manager, telephone, address, notes
+    </sql>
+
+    <select id="selectNumber" parameterType="java.lang.Integer" resultType="Deparment">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM department
+        WHERE department_number = #{departmentNumber}
+    </select>
+</mapper>
