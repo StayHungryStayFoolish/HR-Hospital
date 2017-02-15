@@ -13,7 +13,7 @@ import java.util.List;
 public interface HistoryMapper extends BaseMapper<History> {
 
     /**
-     * 分页查询离职员工信息
+     * 分页查询 离职/退休 员工信息
      *
      * @param page
      * @return

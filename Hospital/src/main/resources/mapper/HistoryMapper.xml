@@ -11,8 +11,14 @@
     </sql>
     <select id="selectRetireByPage" resultType="History">
         SELECT
-            <include refid="Base_Column_List"/>
+        <include refid="Base_Column_List"/>
         FROM history
         WHERE status = "离职" or status = "退休"
+    </select>
+    <select id="selectByNumber" parameterType="java.lang.Integer" resultType="History">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM history
+        WHERE employee_number=#{employeeNumber}
     </select>
 </mapper>
