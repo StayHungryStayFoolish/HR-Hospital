@@ -8,16 +8,16 @@
     </sql>
 
     <select id="checkLogin" resultType="Employee">
-        select
+        SELECT
         <include refid="Base_Column_List"/>
-        from employee
-        where employee_number = #{employeeNumber} and password = #{password}
+        FROM employee
+        WHERE employee_number = #{employeeNumber} and password = #{password}
     </select>
 
     <select id="selectByNumber" parameterType="java.lang.Integer" resultType="Employee">
-        select
+        SELECT
         <include refid="Base_Column_List"/>
-        from employee
-        where employee_number = #{employeeNumber}
+        FROM employee
+        WHERE employee_number = #{employeeNumber}
     </select>
 </mapper>
