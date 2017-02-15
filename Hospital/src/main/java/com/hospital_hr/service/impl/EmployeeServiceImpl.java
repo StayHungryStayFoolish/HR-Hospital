@@ -3,8 +3,9 @@ package com.hospital_hr.service.impl;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.hospital_hr.entity.Employee;
-import com.hospital_hr.mapper.EmployeeMapper;
+import com.hospital_hr.mapper.*;
 import com.hospital_hr.service.EmployeeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,18 @@ import java.util.List;
  */
 @Service
 public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> implements EmployeeService {
+
+    @Autowired
+    private DepartmentMapper departmentMapper;
+
+    @Autowired
+    private HistoryMapper historyMapper;
+
+    @Autowired
+    private MoveMapper moveMapper;
+
+    @Autowired
+    private PositionMapper positionMapper;
 
     @Override
     public Employee checkLogin(Integer employeeNumber, String password) {
