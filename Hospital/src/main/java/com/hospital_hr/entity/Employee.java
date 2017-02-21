@@ -19,7 +19,7 @@ public class Employee extends Model<Employee> implements Serializable {
 
     @TableId
     private Integer id;
-    // 员工表
+    // 员工编号
     private Integer employeeNumber;
     // 姓名
     private String name;

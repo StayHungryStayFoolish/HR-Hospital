@@ -3,10 +3,7 @@ package com.hospital_hr.service.impl;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.hospital_hr.entity.Department;
-import com.hospital_hr.entity.Employee;
-import com.hospital_hr.entity.History;
-import com.hospital_hr.entity.Position;
+import com.hospital_hr.entity.*;
 import com.hospital_hr.mapper.*;
 import com.hospital_hr.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,6 +68,15 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
         return pageInfo;
     }
 
+    /**
+     * 添加员工信息
+     * 1.补全员工信息(入职时间)
+     * 2.同时添加到档案表
+     * 注:因为是 DML 语句, 需要开启事务.
+     * 使用 @Transactional 注解
+     *
+     * @param employee
+     */
     @Transactional
     @Override
     public void addEmployee(Employee employee) {
@@ -99,14 +105,30 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
         historyMapper.insert(history);
     }
 
+    /**
+     * 根据 ID 查询员工信息
+     *
+     * @param id
+     * @return
+     */
     @Override
     public Employee selectEmployee(Integer id) {
-        return null;
+        Employee employee = baseMapper.selectById(id);
+        setObject(employee);
+        return employee;
     }
 
+    @Transactional
     @Override
     public void updateEmployee(Employee employee, String status, String manager) {
+        if (status.equals("在职")) {
+            Employee empInfo = baseMapper.selectById(employee.getId());
+            Move move = new Move();
+            move.setEmployeeNumber(employee.getEmployeeNumber());
+            move.setTime(new Date());
+            move.setManager(manager);
 
+        }
     }
 
     @Override
