@@ -118,16 +118,30 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
         return employee;
     }
 
+    /**
+     * 更新员工信息
+     * 1.判断员工是否在职
+     * 2.在职补全当前信息,并判断是否有部门调动
+     * 3.不在职,删除员工表信息,转存档案表,并更新信息
+     * 注:注解方式开启事务
+     *
+     * @param employee
+     * @param status
+     * @param manager
+     */
     @Transactional
     @Override
     public void updateEmployee(Employee employee, String status, String manager) {
-        if (status.equals("在职")) {
+
+        // 判断是否在职
+        // 如果在职,当前状态未改变,补全信息
+        if ("在职".equals(status)) {
             Employee empInfo = baseMapper.selectById(employee.getId());
             Move move = new Move();
             move.setEmployeeNumber(employee.getEmployeeNumber());
             move.setTime(new Date());
             move.setManager(manager);
-
+            // 判断部门编号是否改变,如果改变,将更改前后的部门编号分别补全到员工调用表
             if (!employee.getDepartmentNumber().equals(empInfo.getDepartmentNumber())) {
                 move.setAgo(empInfo.getDepartmentNumber());
                 move.setAfter(employee.getDepartmentNumber());
@@ -135,7 +149,10 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
             }
             baseMapper.updateById(employee);
         } else {
+            // 如果不在职,进入 else
+            // 删除员工记录,将信息转存到档案表中
             baseMapper.deleteById(employee.getId());
+            // 根据员工编号获取档案信息,并更新
             History history = historyMapper.selectByNumber(employee.getEmployeeNumber());
             history.setStatus(status);
             history.setOutTime(new Date());
