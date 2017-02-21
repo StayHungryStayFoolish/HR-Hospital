@@ -5,12 +5,15 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.hospital_hr.entity.Department;
 import com.hospital_hr.entity.Employee;
+import com.hospital_hr.entity.History;
 import com.hospital_hr.entity.Position;
 import com.hospital_hr.mapper.*;
 import com.hospital_hr.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -68,9 +71,32 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
         return pageInfo;
     }
 
+    @Transactional
     @Override
     public void addEmployee(Employee employee) {
+        // 设置入职时间
+        employee.setInTime(new Date());
+        // 将员工信息加入数据库
+        baseMapper.insert(employee);
 
+        // 向档案库 History 加入记录
+        History history = new History();
+        history.setEmployeeNumber(employee.getEmployeeNumber());
+        history.setName(employee.getName());
+        history.setGender(employee.getGender());
+        history.setBirthday(employee.getBirthday());
+        history.setTelephone(employee.getTelephone());
+        history.setEmail(employee.getEmail());
+        history.setAddress(employee.getAddress());
+        history.setPhoto(employee.getPhoto());
+        history.setEducation(employee.getEducation());
+        history.setInTime(employee.getInTime());
+        history.setDepartmentNumber(employee.getDepartmentNumber());
+        history.setPositionNumber(employee.getPositionNumber());
+        history.setStatus("在职");
+        history.setNotes(employee.getNotes());
+
+        historyMapper.insert(history);
     }
 
     @Override

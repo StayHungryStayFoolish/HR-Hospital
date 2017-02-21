@@ -65,7 +65,7 @@ CREATE TABLE db_hospital.employee (
   email             VARCHAR(30)     DEFAULT ''
   COMMENT '邮箱',
   address           VARCHAR(50)     DEFAULT NULL
-  COMMENT '家庭地址',
+  COMMENT '籍贯',
   photo             VARCHAR(50)     DEFAULT ''
   COMMENT '照片',
   education         VARCHAR(20)     DEFAULT ''

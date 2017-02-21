@@ -31,7 +31,7 @@ public class Employee extends Model<Employee> implements Serializable {
     private String telephone;
     // 邮箱
     private String email;
-    // 地址
+    // 籍贯
     private String address;
     // 照片
     private String photo;
