@@ -2,7 +2,9 @@ package com.hospital_hr.service.impl;
 
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.hospital_hr.entity.Department;
 import com.hospital_hr.entity.Employee;
+import com.hospital_hr.entity.Position;
 import com.hospital_hr.mapper.*;
 import com.hospital_hr.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,5 +74,27 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
     @Override
     public List<Employee> select(Integer employeeNumber, String password) {
         return null;
+    }
+
+    /**
+     * 将 Department/Position 信息补全到 Employee 中
+     *
+     * @param employee
+     * @return
+     */
+    private Employee setObject(Employee employee) {
+        // 从 Employee 中获取部们编号
+        Integer departmentNumber = employee.getDepartmentNumber();
+        // 根据部门编号查询获得部门信息
+        Department department = departmentMapper.selectByNumber(departmentNumber);
+        employee.setDepartment(department);
+
+        // 从 Employee 中获取职称编号
+        Integer positionNumber = employee.getPositionNumber();
+        // 根据职称编号查询获得职称信息
+        Position position = positionMapper.selectByNumber(positionNumber);
+        employee.setPosition(position);
+
+        return employee;
     }
 }
