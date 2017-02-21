@@ -128,6 +128,18 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
             move.setTime(new Date());
             move.setManager(manager);
 
+            if (!employee.getDepartmentNumber().equals(empInfo.getDepartmentNumber())) {
+                move.setAgo(empInfo.getDepartmentNumber());
+                move.setAfter(employee.getDepartmentNumber());
+                moveMapper.insert(move);
+            }
+            baseMapper.updateById(employee);
+        } else {
+            baseMapper.deleteById(employee.getId());
+            History history = historyMapper.selectByNumber(employee.getEmployeeNumber());
+            history.setStatus(status);
+            history.setOutTime(new Date());
+            historyMapper.updateById(history);
         }
     }
 
