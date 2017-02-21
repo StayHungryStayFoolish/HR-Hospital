@@ -216,9 +216,21 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
         return pageInfo;
     }
 
+    /**
+     * 根据员工编号/密码查询
+     * 注: MyBatis-Plus 的 eq 比较方法 eq("columnName",fieldName)
+     *
+     * @param employeeNumber
+     * @param password
+     * @return
+     */
     @Override
     public List<Employee> select(Integer employeeNumber, String password) {
-        return null;
+        List<Employee> employeeList = baseMapper.selectList(
+                new EntityWrapper<Employee>()
+                        .eq("employee_number", employeeNumber)
+                        .eq("password", password));
+        return employeeList;
     }
 
     /**
