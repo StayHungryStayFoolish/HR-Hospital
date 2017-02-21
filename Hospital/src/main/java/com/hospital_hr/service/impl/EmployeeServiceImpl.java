@@ -190,14 +190,25 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
         return baseMapper.selectByNumber(employeeNumber);
     }
 
+    /**
+     * 根据输入条件(员工姓名),分页查询
+     * 注:使用了 MyBatis-Plus 的模糊查询功能, like(columnName,stringInput)
+     *
+     * @param input
+     * @param page
+     * @return
+     */
     @Override
     public Page<Employee> search(String input, int page) {
+        // 使用 MyBatis-Plus 插件的分页功能,设置页数,每页显示信息,和分页所需数据库字段
         Page<Employee> pageInfo = new Page<>(page, 5, "id");
         // 是否升序,默认 true
         pageInfo.setAsc(false);
+        // like 模糊传
         List<Employee> employeeList = baseMapper.selectPage(
                 pageInfo,
                 new EntityWrapper<Employee>().like("name", input));
+        // 遍历员工表 List ,并补全相关信息
         for (Employee employee : employeeList) {
             setObject(employee);
         }
