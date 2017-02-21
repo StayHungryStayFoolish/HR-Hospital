@@ -178,14 +178,31 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
         historyMapper.updateById(history);
     }
 
+
+    /**
+     * 根据员工编号查询信息
+     *
+     * @param employeeNumber
+     * @return
+     */
     @Override
     public Employee selectByNumber(Integer employeeNumber) {
-        return null;
+        return baseMapper.selectByNumber(employeeNumber);
     }
 
     @Override
     public Page<Employee> search(String input, int page) {
-        return null;
+        Page<Employee> pageInfo = new Page<>(page, 5, "id");
+        // 是否升序,默认 true
+        pageInfo.setAsc(false);
+        List<Employee> employeeList = baseMapper.selectPage(
+                pageInfo,
+                new EntityWrapper<Employee>().like("name", input));
+        for (Employee employee : employeeList) {
+            setObject(employee);
+        }
+        pageInfo.setRecords(employeeList);
+        return pageInfo;
     }
 
     @Override
