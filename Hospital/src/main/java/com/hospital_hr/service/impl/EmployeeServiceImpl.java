@@ -160,12 +160,21 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
         }
     }
 
+    /**
+     * 根据 ID 删除员工信息
+     * 1.根据 ID 查询员工信息,并删除员工表记录
+     * 2.更改档案表信息,将状态改为离职,更改离职时间
+     * 注: (如不查询员工信息,会包 NPE 错误)
+     *
+     * @param id
+     */
     @Override
     public void deleteEmployee(Integer id) {
         Employee employee = baseMapper.selectById(id);
         baseMapper.deleteById(id);
         History history = historyMapper.selectByNumber(employee.getEmployeeNumber());
         history.setStatus("离职");
+        history.setOutTime(new Date());
         historyMapper.updateById(history);
     }
 
