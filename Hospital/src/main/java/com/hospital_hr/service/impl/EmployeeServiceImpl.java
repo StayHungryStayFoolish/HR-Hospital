@@ -1,5 +1,6 @@
 package com.hospital_hr.service.impl;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.hospital_hr.entity.Department;
@@ -31,14 +32,40 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
     @Autowired
     private PositionMapper positionMapper;
 
+    /**
+     * 登录校验
+     *
+     * @param employeeNumber
+     * @param password
+     * @return
+     */
     @Override
     public Employee checkLogin(Integer employeeNumber, String password) {
-        return null;
+        Employee employee = baseMapper.checkLogin(employeeNumber, password);
+        if (null != employee) {
+            setObject(employee);
+        }
+        return employee;
     }
 
+    /**
+     * 分页查询信息
+     *
+     * @param page
+     * @return
+     */
     @Override
     public Page<Employee> selectListByPage(int page) {
-        return null;
+        Page<Employee> pageInfo = new Page<>(page, 5, "id");
+        // 是否为升序排列,默认 true
+        pageInfo.setAsc(false);
+        List<Employee> employeeList = baseMapper.selectPage(pageInfo, null);
+        for (Employee employee : employeeList) {
+            setObject(employee);
+        }
+        // 将查询到的分页信息存储到记录里
+        pageInfo.setRecords(employeeList);
+        return pageInfo;
     }
 
     @Override
