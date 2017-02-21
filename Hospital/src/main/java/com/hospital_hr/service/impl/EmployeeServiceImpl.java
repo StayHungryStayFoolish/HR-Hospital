@@ -162,7 +162,11 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
 
     @Override
     public void deleteEmployee(Integer id) {
-
+        Employee employee = baseMapper.selectById(id);
+        baseMapper.deleteById(id);
+        History history = historyMapper.selectByNumber(employee.getEmployeeNumber());
+        history.setStatus("离职");
+        historyMapper.updateById(history);
     }
 
     @Override
