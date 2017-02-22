@@ -178,6 +178,14 @@
         </div>
     </div>
     <!--右侧部分结束-->
+
+    <!-- 全局js -->
+    <script src="<%=path %>/js/jquery.min.js?v=2.1.4"></script>
+    <script src="<%=path %>/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="<%=path %>/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="<%=path %>/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="<%=path %>/js/plugins/layer/layer.min.js"></script>
+
 </div>
 </body>
 </html>
