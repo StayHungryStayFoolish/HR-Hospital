@@ -96,6 +96,18 @@
                         </li>
                     </ul>
                 </li>
+                <li><a href="mailbox.html">
+                    <i class="fa fa-calendar"></i>
+                    <span class="nav-label">考勤管理</span>
+                    <span class="fa arrow"></span>
+                </a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="<%=path %>/attendance/list.do">考勤管理</a>
+                        </li>
+                        <li><a class="J_menuItem" href="<%=path %>/overtime/listPage.do?pageNo=1">加班管理</a>
+                        </li>
+                    </ul>
+                </li>
 
 
 
