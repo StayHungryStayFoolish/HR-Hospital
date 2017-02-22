@@ -99,7 +99,12 @@
                         </li>
                     </ul>
                 </li>
+                <li><a href="mailbox.html">
+                    <i class="fa fa-calendar"></i>
+                    <span class="nav-label">考勤管理 </span>
+                    <span class="fa arrow"></span>
 
+                </li>
 
             </ul>
         </div>
