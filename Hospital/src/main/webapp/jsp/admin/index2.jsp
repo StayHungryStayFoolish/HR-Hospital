@@ -88,6 +88,16 @@
                     <span class="nav-label">员工管理</span>
                     <span class="fa arrow"></span>
                 </a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="<%=path %>/employee/listPage.do?page=1">在职员工管理</a>
+                        </li>
+                        <li><a class="J_menuItem" href="<%=path %>/history/retireListPage.do?page=1">离休员工管理</a>
+                        </li>
+                        <li><a class="J_menuItem" href="<%=path %>/history/list.do">员工档案管理</a>
+                        </li>
+                        <li><a class="J_menuItem" href="<%=path %>/move/list.do">员工调动记录</a>
+                        </li>
+                    </ul>
                 </li>
 
 
