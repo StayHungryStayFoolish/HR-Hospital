@@ -31,7 +31,7 @@
                     <font color="#6C6C6C">登录：</font>
                 </h4>
                 <p class="m-t-md">
-                    <font color="#6C6C6C">欢迎登录HR医院人事管理系统</font>
+                    <font color="#6C6C6C">欢迎登录医院人事管理系统</font>
                 </p>
                 <input type="text" class="form-control uname" placeholder="用户名" name="employeeNumber"/>
                 <input type="password" class="form-control pword m-b" placeholder="密码" name="password"/>
