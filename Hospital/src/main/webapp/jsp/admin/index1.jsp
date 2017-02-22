@@ -14,8 +14,15 @@
         #line-chart {
             height: 300px;
             width: 800px;
+            margin: 0px auto;
+            margin-top: 1em;
         }
     </style>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="<%=path%>/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="<%=path%>/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="<%=path%>/css/animate.css" rel="stylesheet">
+    <link href="<%=path%>/css/style.css?v=4.1.0" rel="stylesheet">
 </head>
 <body>
 
