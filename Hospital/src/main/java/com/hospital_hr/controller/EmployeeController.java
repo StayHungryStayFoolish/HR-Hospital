@@ -21,6 +21,7 @@ public class EmployeeController {
 
     /**
      * 跳转登录界面
+     *
      * @return
      */
     @RequestMapping("/login.do")
@@ -29,12 +30,18 @@ public class EmployeeController {
     }
 
     /**
+     * 登录校验
+     * 1.获取员工信息,并存储到 session 中
+     * 2.根据权限级别,分别跳转不同页面
+     *
      * @return
      */
     public String checkLogin(HttpSession session, Employee employee) {
         Employee empInfo = employeeService.checkLogin(employee.getEmployeeNumber(), employee.getPassword());
+        // 如果员工信息不为空,通过员工信息获取职称表信息,然后获得职称级别,进而做权限判定
         if (null != empInfo) {
             session.setAttribute("logged", empInfo);
+            // 获取权限级别
             String level = empInfo.getPosition().getLevel();
             if ("人事部主任".equals(level)) {
                 return "admin/index1";
