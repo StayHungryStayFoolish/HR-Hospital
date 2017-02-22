@@ -10,6 +10,12 @@
     <title>医院人事管理系统 - 主页</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
+    <style>
+        #line-chart {
+            height: 300px;
+            width: 800px;
+        }
+    </style>
 </head>
 <body>
 
