@@ -69,11 +69,11 @@
                                href="<%=path %>/attendance/<%=employee.getEmployeeNumber() %>/oneself.do">查看考勤记录</a>
                         </li>
                         <li><a class="J_menuItem"
-                               href="<%=path %>/overtime/<%=employee.getEmployeeNumber() %>/oneself.do?pageNo=1">查看加班信息</a>
+                               href="<%=path %>/overtime/<%=employee.getEmployeeNumber() %>/oneself.do?page=1">查看加班信息</a>
                         </li>
                         <li><a class="J_menuItem" href="<%=path %>/leave/toAdd.do">申请请假</a>
                         </li>
-                        <li><a class="J_menuItem" href="<%=path %>/leave/oneself.do?pageNo=1">查看请假记录</a>
+                        <li><a class="J_menuItem" href="<%=path %>/leave/oneself.do?page=1">查看请假记录</a>
                         </li>
                     </ul>
                 </li>
@@ -86,9 +86,9 @@
                     <span class="fa arrow"></span>
                 </a>
                     <ul class="nav nav-second-level">
-                        <li><a class="J_menuItem" href="<%=path %>/employee/listPage.do?pageNo=1">在职员工管理</a>
+                        <li><a class="J_menuItem" href="<%=path %>/employee/listPage.do?page=1">在职员工管理</a>
                         </li>
-                        <li><a class="J_menuItem" href="<%=path %>/history/retireListPage.do?pageNo=1">离休员工管理</a>
+                        <li><a class="J_menuItem" href="<%=path %>/history/retireListPage.do?page=1">离休员工管理</a>
                         </li>
                         <li><a class="J_menuItem" href="<%=path %>/history/list.do">员工档案管理</a>
                         </li>
@@ -104,7 +104,7 @@
                     <ul class="nav nav-second-level">
                         <li><a class="J_menuItem" href="<%=path %>/attendance/list.do">考勤管理</a>
                         </li>
-                        <li><a class="J_menuItem" href="<%=path %>/overtime/listPage.do?pageNo=1">加班管理</a>
+                        <li><a class="J_menuItem" href="<%=path %>/overtime/listPage.do?page=1">加班管理</a>
                         </li>
                     </ul>
                 </li>
