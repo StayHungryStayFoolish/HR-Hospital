@@ -153,7 +153,24 @@
                         </div>
                     </form>
                 </div>
-
+                <ul class="nav navbar-top-links navbar-right">
+                    <li>欢迎：<%=employee.getName() %>&nbsp;</li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                            <i class="fa fa-user"></i> <!-- <span class="label label-primary">8</span> -->
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="<%=path %>/employee/oneself/<%=employee.getId() %>/detial.do" target="J_iframe">我的账户</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="<%=path %>/employee/login.do">退出登录</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="<%=path %>/employee/logout.do">注销登录</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </nav>
         </div>
         <div class="row J_mainContent" id="content-main">
