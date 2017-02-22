@@ -123,7 +123,20 @@
                         </li>
                     </ul>
                 </li>
-
+                <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                    <span class="ng-scope">部门</span>
+                </li>
+                <li><a href="#">
+                    <i class="fa fa-sitemap"></i>
+                    <span class="nav-label">部门管理</span><span class="fa arrow"></span>
+                </a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="<%=path %>/department/listPage.do?page=1">部门管理</a>
+                        </li>
+                        <li><a class="J_menuItem" href="<%=path %>/position/listPage.do?page=1">职称管理</a>
+                        </li>
+                    </ul>
+                </li>
 
             </ul>
         </div>
