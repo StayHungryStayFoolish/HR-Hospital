@@ -56,4 +56,14 @@ public class EmployeeController {
             return "login";
         }
     }
+
+    /**
+     * 跳转到签到页面
+     *
+     * @return
+     */
+    @RequestMapping("/welcome.do")
+    public String welcome() {
+        return "welcome";
+    }
 }
