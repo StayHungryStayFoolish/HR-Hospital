@@ -103,7 +103,15 @@
                     <i class="fa fa-calendar"></i>
                     <span class="nav-label">考勤管理 </span>
                     <span class="fa arrow"></span>
-
+                    <!-- <span class="label label-warning pull-right">16</span> --></a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="<%=path %>/attendance/list.do">考勤管理</a>
+                        </li>
+                        <li><a class="J_menuItem" href="<%=path %>/overtime/listPage.do?page=1">加班管理</a>
+                        </li>
+                        <li><a class="J_menuItem" href="<%=path %>/leave/list.do">请假记录</a>
+                        </li>
+                    </ul>
                 </li>
 
             </ul>
