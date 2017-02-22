@@ -48,6 +48,14 @@
                     </div>
                     <div class="logo-element">HR</div>
                 </li>
+                <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                    <span class="ng-scope">个人</span>
+                </li>
+                <li><a class="J_menuItem" href="<%=path %>/employee/welcome.do">
+                    <i class="fa fa-home"></i>
+                    <span class="nav-label">主页</span>
+                </a>
+                </li>
 
 
             </ul>
