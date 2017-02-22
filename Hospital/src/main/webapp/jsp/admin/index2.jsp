@@ -80,6 +80,15 @@
                     </ul>
                 </li>
 
+                <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                    <span class="ng-scope">员工</span>
+                </li>
+                <li><a href="graph_metrics.html">
+                    <i class="fa fa fa-user-md"></i>
+                    <span class="nav-label">员工管理</span>
+                    <span class="fa arrow"></span>
+                </a>
+                </li>
 
 
             </ul>
