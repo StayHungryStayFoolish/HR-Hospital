@@ -33,7 +33,25 @@
         <div class="nav-close">
             <i class="fa fa-times-circle"></i>
         </div>
+        <div class="sidebar-collapse">
+            <ul class="nav" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+								<span class="clear">
+									<span class="block m-t-xs" style="font-size: 20px;">
+										<i class="fa fa-heartbeat"></i>
+										<strong class="font-bold">&nbsp;医院</strong>
+									</span>
+								</span>
+                        </a>
+                    </div>
+                    <div class="logo-element">HR</div>
+                </li>
 
+
+            </ul>
+        </div>
     </nav>
 
 </div>
