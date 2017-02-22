@@ -33,7 +33,7 @@
             <div class="jumbotron">
                 <div style="margin-left: 250px">
                     <p>&nbsp;</p>
-                    <%Employee employee = (Employee) session.getAttribute("loged"); %>
+                    <%Employee employee = (Employee) session.getAttribute("logged"); %>
                     <h1><%=employee.getName() %>
                     </h1>
                     <p>&nbsp;</p>
