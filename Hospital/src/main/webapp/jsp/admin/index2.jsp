@@ -113,11 +113,29 @@
                         </li>
                     </ul>
                 </li>
-
             </ul>
         </div>
     </nav>
+    <!--左侧导航结束-->
 
+    <!--右侧部分开始-->
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-info " href="#"><i class="fa fa-bars"></i> </a>
+                    <form role="search" class="navbar-form-custom" method="post" action="<%=path %>/employee/search.do?page=1" target="J_iframe">
+                        <div class="form-group">
+                            <input type="text" placeholder="输入查找的员工的姓名 …" class="form-control" name="input" id="top-search">
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </div>
+        <div class="row J_mainContent" id="content-main">
+            <iframe id="J_iframe" name="J_iframe" width="100%" height="100%" src="<%=path %>/employee/welcome.do" frameborder="0" seamless></iframe>
+        </div>
+    </div>
+    <!--右侧部分结束-->
 </div>
 </body>
 </html>
