@@ -24,7 +24,38 @@
     <link href="<%=path %>/css/animate.css" rel="stylesheet">
     <link href="<%=path %>/css/style.css?v=4.1.0" rel="stylesheet">
 </head>
-<body>
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow: hidden">
+<div id="wrapper">
+    <!--左侧导航开始-->
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="nav-close">
+            <i class="fa fa-times-circle"></i>
+        </div>
+        <div class="sidebar-collapse">
+            <ul class="nav" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+								<span class="clear">
+									<span class="block m-t-xs" style="font-size: 20px;">
+										<i class="fa fa-heartbeat"></i>
+										<strong class="font-bold">&nbsp;医院</strong>
+									</span>
+								</span>
+                        </a>
+                    </div>
+                    <div class="logo-element">HR</div>
+                </li>
+
+
+
+            </ul>
+        </div>
+    </nav>
+    <!--左侧导航结束-->
+
+
+</div>
 
 <!-- 全局js -->
 <script src="<%=path %>/js/jquery.min.js?v=2.1.4"></script>
