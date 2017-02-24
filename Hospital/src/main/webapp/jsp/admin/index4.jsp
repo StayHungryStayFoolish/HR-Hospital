@@ -47,6 +47,28 @@
                     <div class="logo-element">HR</div>
                 </li>
 
+                <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                    <span class="ng-scope">个人</span>
+                </li>
+                <li><a class="J_menuItem" href="<%=path %>/employee/welcome.do">
+                    <i class="fa fa-home"></i>
+                    <span class="nav-label">主页</span>
+                </a>
+                </li>
+                <% Employee employee = (Employee) session.getAttribute("logged"); %>
+                <li>
+                    <a href="graph_metrics.html">
+                        <i class="fa fa fa-newspaper-o"></i>
+                        <span class="nav-label">个人信息</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="<%=path %>/employee/oneself/<%=employee.getId() %>/detail.do">查看个人信息</a>
+                        </li>
+                        <li><a class="J_menuItem" href="<%=path %>/employee/oneself/<%=employee.getId() %>/toUpdate.do">修改个人信息</a>
+                        </li>
+                    </ul>
+                </li>
 
 
             </ul>
