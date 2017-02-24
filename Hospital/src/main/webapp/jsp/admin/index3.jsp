@@ -95,6 +95,21 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-bookmark"></i>
+                        <span class="nav-label">&nbsp;请假管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="<%=path %>/leave/notlist.do">未批准列表</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="<%=path %>/leave/yeslist.do">已批准列表</a>
+                        </li>
+                    </ul>
+                </li>
 
             </ul>
         </div>
