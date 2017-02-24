@@ -115,6 +115,28 @@
     </nav>
     <!--左侧导航结束-->
 
+    <!--右侧部分开始-->
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-info " href="#"><i class="fa fa-bars"></i> </a>
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li>欢迎：<%=employee.getName() %>&nbsp;</li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                            <i class="fa fa-user"></i> <!-- <span class="label label-primary">8</span> -->
+                        </a>
+
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="row J_mainContent" id="content-main">
+            <iframe id="J_iframe" name="J_iframe" width="100%" height="100%" src="<%=path %>/employee/welcome.do" frameborder="0" seamless></iframe>
+        </div>
+    </div>
+    <!--右侧部分结束-->
 
 </div>
 
