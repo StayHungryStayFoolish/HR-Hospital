@@ -54,7 +54,7 @@
                     <span class="nav-label">主页</span>
                 </a>
                 </li>
-                <% Employee employee = (Employee) session.getAttribute("loged"); %>
+                <% Employee employee = (Employee) session.getAttribute("logged"); %>
                 <li>
                     <a href="graph_metrics.html">
                         <i class="fa fa fa-newspaper-o"></i>
@@ -68,7 +68,33 @@
                         </li>
                     </ul>
                 </li>
-
+                <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                    <span class="ng-scope">考勤</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-calendar"></i>
+                        <span class="nav-label">考勤信息</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem"
+                               href="<%=path %>/attendance/<%=employee.getEmployeeNumber() %>/oneself.do">考勤记录</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-edit"></i>
+                        <span class="nav-label">加班信息</span><span class="fa arrow">
+                        	</span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem"
+                               href="<%=path %>/overtime/<%=employee.getEmployeeNumber() %>/oneself.do?pageNo=1">查看加班信息</a>
+                        </li>
+                    </ul>
+                </li>
 
             </ul>
         </div>
