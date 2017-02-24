@@ -62,7 +62,7 @@
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
-                        <li><a class="J_menuItem" href="<%=path %>/employee/oneself/<%=employee.getId() %>/detial.do">查看个人信息</a>
+                        <li><a class="J_menuItem" href="<%=path %>/employee/oneself/<%=employee.getId() %>/detail.do">查看个人信息</a>
                         </li>
                         <li><a class="J_menuItem" href="<%=path %>/employee/oneself/<%=employee.getId() %>/toUpdate.do">修改个人信息</a>
                         </li>
@@ -91,7 +91,7 @@
                     </a>
                     <ul class="nav nav-second-level">
                         <li><a class="J_menuItem"
-                               href="<%=path %>/overtime/<%=employee.getEmployeeNumber() %>/oneself.do?pageNo=1">查看加班信息</a>
+                               href="<%=path %>/overtime/<%=employee.getEmployeeNumber() %>/oneself.do?page=1">查看加班信息</a>
                         </li>
                     </ul>
                 </li>
@@ -110,11 +110,23 @@
                         </li>
                     </ul>
                 </li>
-
             </ul>
         </div>
     </nav>
+    <!--左侧导航结束-->
 
+    <!--右侧部分开始-->
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+
+            </nav>
+        </div>
+        <div class="row J_mainContent" id="content-main">
+            <iframe id="J_iframe" name="J_iframe" width="100%" height="100%" src="<%=path %>/employee/welcome.do" frameborder="0" seamless></iframe>
+        </div>
+    </div>
+    <!--右侧部分结束-->
 </div>
 
 
