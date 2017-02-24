@@ -84,7 +84,31 @@
                         </li>
                     </ul>
                 </li>
-
+                <li>
+                    <a href="#">
+                        <i class="fa fa-edit"></i>
+                        <span class="nav-label">加班信息</span><span class="fa arrow">
+                        	</span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem"
+                               href="<%=path %>/overtime/<%=employee.getEmployeeNumber() %>/oneself.do?page=1">查看加班信息</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-bookmark"></i>
+                        <span class="nav-label">&nbsp;请假信息</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="<%=path %>/leave/toAdd.do">申请请假</a>
+                        </li>
+                        <li><a class="J_menuItem" href="<%=path %>/leave/oneself.do?page=1">请假记录</a>
+                        </li>
+                    </ul>
+                </li>
 
             </ul>
         </div>
