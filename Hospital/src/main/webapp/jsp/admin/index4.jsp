@@ -119,7 +119,8 @@
     <div id="page-wrapper" class="gray-bg dashbard-1">
         <div class="row border-bottom">
             <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
-                <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-info " href="#"><i class="fa fa-bars"></i> </a>
+                <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-info " href="#"><i
+                        class="fa fa-bars"></i> </a>
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
                     <li>欢迎：<%=employee.getName() %>&nbsp;</li>
@@ -127,13 +128,24 @@
                         <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                             <i class="fa fa-user"></i> <!-- <span class="label label-primary">8</span> -->
                         </a>
-
+                        <ul class="dropdown-menu">
+                            <li><a href="<%=path %>/employee/oneself/<%=employee.getId() %>/detail.do"
+                                   target="J_iframe">我的账户</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="<%=path %>/employee/login.do">退出登录</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="<%=path %>/employee/logout.do">注销登录</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </nav>
         </div>
         <div class="row J_mainContent" id="content-main">
-            <iframe id="J_iframe" name="J_iframe" width="100%" height="100%" src="<%=path %>/employee/welcome.do" frameborder="0" seamless></iframe>
+            <iframe id="J_iframe" name="J_iframe" width="100%" height="100%" src="<%=path %>/employee/welcome.do"
+                    frameborder="0" seamless></iframe>
         </div>
     </div>
     <!--右侧部分结束-->
