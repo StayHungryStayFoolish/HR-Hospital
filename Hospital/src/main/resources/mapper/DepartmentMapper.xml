@@ -6,7 +6,7 @@
         id, department_number, name, manager, telephone, address, notes
     </sql>
 
-    <select id="selectNumber" parameterType="java.lang.Integer" resultType="Deparment">
+    <select id="selectNumber" parameterType="java.lang.Integer" resultType="Department">
         SELECT
         <include refid="Base_Column_List"/>
         FROM department
