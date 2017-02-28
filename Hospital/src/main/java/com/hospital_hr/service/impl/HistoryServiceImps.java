@@ -1,5 +1,6 @@
 package com.hospital_hr.service.impl;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.hospital_hr.entity.Department;
@@ -13,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.jar.JarEntry;
 
 /**
  * Created by bonismo@hotmail.com
@@ -77,14 +77,29 @@ public class HistoryServiceImps extends ServiceImpl<HistoryMapper, History> impl
         return pageInfo;
     }
 
+    /**
+     * 根据员工编号查询档案
+     *
+     * @param employeeNumber
+     * @return
+     */
     @Override
     public History selectByNumber(Integer employeeNumber) {
-        return null;
+        return baseMapper.selectByNumber(employeeNumber);
     }
 
+    /**
+     * 查询所有员工档案
+     *
+     * @return
+     */
     @Override
     public List<History> selectList() {
-        return null;
+        List<History> historyList = baseMapper.selectList(new EntityWrapper<History>());
+        for (History history : historyList) {
+            setObject(history);
+        }
+        return historyList;
     }
 
     /**
