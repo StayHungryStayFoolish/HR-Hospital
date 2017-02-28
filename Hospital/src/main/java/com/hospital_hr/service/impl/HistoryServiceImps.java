@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.jar.JarEntry;
 
 /**
  * Created by bonismo@hotmail.com
@@ -29,6 +30,7 @@ public class HistoryServiceImps extends ServiceImpl<HistoryMapper, History> impl
 
     /**
      * 分页查询离退休员工档案
+     *
      * @param page
      * @return
      */
@@ -44,14 +46,35 @@ public class HistoryServiceImps extends ServiceImpl<HistoryMapper, History> impl
         return pageInfo;
     }
 
+    /**
+     * 根据 ID 查询员工档案
+     *
+     * @param id
+     * @return
+     */
     @Override
     public History selectHistory(Integer id) {
-        return null;
+        History history = baseMapper.selectById(id);
+        setObject(history);
+        return history;
     }
 
+    /**
+     * 分页查询员工档案信息
+     *
+     * @param page
+     * @return
+     */
     @Override
     public Page<History> selectListByPage(int page) {
-        return null;
+        Page<History> pageInfo = new Page<>(page, 5);
+        pageInfo.setAsc(false);
+        List<History> historyList = baseMapper.selectPage(pageInfo, null);
+        for (History history : historyList) {
+            setObject(history);
+        }
+        pageInfo.setRecords(historyList);
+        return pageInfo;
     }
 
     @Override
