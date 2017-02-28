@@ -27,9 +27,21 @@ public class HistoryServiceImps extends ServiceImpl<HistoryMapper, History> impl
     @Autowired
     private PositionMapper positionMapper;
 
+    /**
+     * 分页查询离退休员工档案
+     * @param page
+     * @return
+     */
     @Override
     public Page<History> selectRetireByPage(int page) {
-        return null;
+        Page<History> pageInfo = new Page<>(page, 5, "id");
+        pageInfo.setAsc(false);
+        List<History> historyList = baseMapper.selectRetireByPage(pageInfo);
+        for (History history : historyList) {
+            setObject(history);
+        }
+        pageInfo.setRecords(historyList);
+        return pageInfo;
     }
 
     @Override
