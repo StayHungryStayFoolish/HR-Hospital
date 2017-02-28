@@ -1,5 +1,6 @@
 package com.hospital_hr.service;
 
+import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.IService;
 import com.hospital_hr.entity.Leave;
 
@@ -32,5 +33,23 @@ public interface LeaveService extends IService<Leave> {
      * @param id
      */
     void updateStatus(Integer id);
+
+    /**
+     * 根据 员工编号,查询一个人的所有请假记录
+     *
+     * @param employeeNumber
+     * @param page
+     * @return
+     */
+    Page<Leave> selectByEmployee(Integer employeeNumber, int page);
+
+    /**
+     * 根据批准状态查询所有请假记录
+     *
+     * @param departmentNumber
+     * @param status
+     * @return
+     */
+    List<Leave> selectListByStatus(Integer departmentNumber, String status);
 
 }
