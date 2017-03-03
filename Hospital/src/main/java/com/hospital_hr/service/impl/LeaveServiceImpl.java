@@ -65,14 +65,42 @@ public class LeaveServiceImpl extends ServiceImpl<LeaveMapper, Leave> implements
         baseMapper.updateById(leave);
     }
 
+    /**
+     * 根据员工编号,查询所有请假记录
+     *
+     * @param employeeNumber
+     * @param page
+     * @return
+     */
     @Override
     public Page<Leave> selectByEmployee(Integer employeeNumber, int page) {
-        return null;
+        Page<Leave> pageInfo = new Page<>(page, 2, "status");
+        pageInfo.setAsc(false);
+        List<Leave> leaveList = baseMapper.selectPage(pageInfo, new EntityWrapper<Leave>().eq("employee_number", employeeNumber));
+        for (Leave leave : leaveList) {
+            setObject(leave);
+        }
+        pageInfo.setRecords(leaveList);
+        return pageInfo;
     }
 
+    /**
+     * 根据部门编号,请假状态查询所有记录
+     *
+     * @param departmentNumber
+     * @param status
+     * @return
+     */
     @Override
     public List<Leave> selectListByStatus(Integer departmentNumber, String status) {
-        return null;
+        List<Leave> leaveList = baseMapper.selectList(new EntityWrapper<Leave>().
+                eq("employee_number", employeeMapper)
+                .eq("status", status)
+                .orderBy("id", false));
+        for (Leave leave : leaveList) {
+            setObject(leave);
+        }
+        return leaveList;
     }
 
     private Leave setObject(Leave leave) {
