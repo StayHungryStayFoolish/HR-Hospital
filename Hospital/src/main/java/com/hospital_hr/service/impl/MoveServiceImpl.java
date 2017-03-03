@@ -19,7 +19,7 @@ import java.util.List;
  * 下午10:21 on 17/3/3.
  */
 @Service
-public class MoveServiceImpl extends ServiceImpl<MoveMapper,Move> implements MoveService {
+public class MoveServiceImpl extends ServiceImpl<MoveMapper, Move> implements MoveService {
 
     @Autowired
     private EmployeeMapper employeeMapper;
@@ -27,6 +27,16 @@ public class MoveServiceImpl extends ServiceImpl<MoveMapper,Move> implements Mov
     @Autowired
     private DepartmentMapper departmentMapper;
 
+    /**
+     * 获取所有员工的调动记录
+     * 1.根据 ID 获取调动记录表
+     * 2.遍历记录表集合
+     * 3.获取员工信息
+     * 4.将员工的调动前记录设置进去
+     * 5.将员工调动后的记录设置进去
+     *
+     * @return
+     */
     @Override
     public List<Move> selectList() {
         List<Move> moveList = baseMapper.selectList(new EntityWrapper<Move>().orderBy("id", false));
