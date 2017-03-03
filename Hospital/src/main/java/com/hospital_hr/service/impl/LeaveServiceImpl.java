@@ -11,6 +11,7 @@ import com.hospital_hr.mapper.EmployeeMapper;
 import com.hospital_hr.mapper.LeaveMapper;
 import com.hospital_hr.service.LeaveService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -18,6 +19,7 @@ import java.util.List;
  * Created by bonismo@hotmail.com
  * 下午6:59 on 17/3/3.
  */
+@Service
 public class LeaveServiceImpl extends ServiceImpl<LeaveMapper, Leave> implements LeaveService {
 
     @Autowired
