@@ -1,5 +1,6 @@
 package com.hospital_hr.service.impl;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.hospital_hr.entity.Department;
@@ -11,7 +12,6 @@ import com.hospital_hr.mapper.LeaveMapper;
 import com.hospital_hr.service.LeaveService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
 import java.util.List;
 
 /**
@@ -26,19 +26,43 @@ public class LeaveServiceImpl extends ServiceImpl<LeaveMapper, Leave> implements
     @Autowired
     private DepartmentMapper departmentMapper;
 
+    /**
+     * 查询所有请假记录
+     *
+     * @return
+     */
     @Override
     public List<Leave> selectList() {
-        return null;
+        List<Leave> leaveList = baseMapper.selectList(new EntityWrapper<Leave>().orderBy("start_time", false));
+        for (Leave leave : leaveList) {
+            setObject(leave);
+        }
+        return leaveList;
     }
 
+    /**
+     * 根据 ID 查询请假信息
+     *
+     * @param id
+     * @return
+     */
     @Override
     public Leave selectLeave(Integer id) {
-        return null;
+        Leave leave = baseMapper.selectById(id);
+        setObject(leave);
+        return leave;
     }
 
+    /**
+     * 更改请假人的批准状态
+     *
+     * @param id
+     */
     @Override
     public void updateStatus(Integer id) {
-
+        Leave leave = baseMapper.selectById(id);
+        leave.setStatus("已批准");
+        baseMapper.updateById(leave);
     }
 
     @Override
