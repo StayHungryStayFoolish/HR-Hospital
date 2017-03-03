@@ -11,13 +11,14 @@ import com.hospital_hr.mapper.LeaveMapper;
 import com.hospital_hr.service.LeaveService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
 import java.util.List;
 
 /**
  * Created by bonismo@hotmail.com
  * 下午6:59 on 17/3/3.
  */
-public class LeaveServiceImpl extends ServiceImpl<LeaveMapper,Leave> implements LeaveService{
+public class LeaveServiceImpl extends ServiceImpl<LeaveMapper, Leave> implements LeaveService {
 
     @Autowired
     private EmployeeMapper employeeMapper;
@@ -51,13 +52,22 @@ public class LeaveServiceImpl extends ServiceImpl<LeaveMapper,Leave> implements 
     }
 
     private Leave setObject(Leave leave) {
+
         Integer employeeNumber = leave.getEmployeeNumber();
-        Employee employee = employeeMapper.selectByNumber(employeeNumber);
-        leave.setEmployee(employee);
+        if (null != employeeNumber) {
+            Employee employee = employeeMapper.selectByNumber(employeeNumber);
+            leave.setEmployee(employee);
+        } else {
+            leave.setEmployee(null);
+        }
 
         Integer departmentNumber = leave.getDepartmentNumber();
-        Department department = departmentMapper.selectByNumber(departmentNumber);
-        leave.setDepartment(department);
+        if (null != departmentNumber) {
+            Department department = departmentMapper.selectByNumber(departmentNumber);
+            leave.setDepartment(department);
+        } else {
+            leave.setDepartment(null);
+        }
         return leave;
     }
 }
