@@ -2,6 +2,8 @@ package com.hospital_hr.service.impl;
 
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.hospital_hr.entity.Department;
+import com.hospital_hr.entity.Employee;
 import com.hospital_hr.entity.Overtime;
 import com.hospital_hr.mapper.DepartmentMapper;
 import com.hospital_hr.mapper.EmployeeMapper;
@@ -30,5 +32,30 @@ public class OvertimeServiceImpl extends ServiceImpl<OvertimeMapper, Overtime> i
     @Override
     public Page<Overtime> selectByEmployee(int page, Integer employeeNumber) {
         return null;
+    }
+
+    /**
+     * 加班表补全 部门信息/员工信息
+     *
+     * @param overtime
+     * @return
+     */
+    private Overtime setObject(Overtime overtime) {
+        Integer departmentNumber = overtime.getDepartmentNumber();
+        if (null != departmentNumber) {
+            Department department = departmentMapper.selectByNumber(departmentNumber);
+            overtime.setDepartment(department);
+        } else {
+            overtime.setDepartment(null);
+        }
+
+        Integer employeeNumber = overtime.getEmployeeNumber();
+        if (null != employeeNumber) {
+            Employee employee = employeeMapper.selectByNumber(employeeNumber);
+            overtime.setEmployee(employee);
+        } else {
+            overtime.setEmployee(null);
+        }
+        return overtime;
     }
 }
