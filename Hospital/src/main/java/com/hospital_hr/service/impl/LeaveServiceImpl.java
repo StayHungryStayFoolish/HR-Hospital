@@ -105,6 +105,11 @@ public class LeaveServiceImpl extends ServiceImpl<LeaveMapper, Leave> implements
         return leaveList;
     }
 
+    /**
+     * 请假表补全 员工信息/部门信息
+     * @param leave
+     * @return
+     */
     private Leave setObject(Leave leave) {
 
         Integer employeeNumber = leave.getEmployeeNumber();

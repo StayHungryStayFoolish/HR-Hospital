@@ -11,6 +11,8 @@ import com.hospital_hr.mapper.OvertimeMapper;
 import com.hospital_hr.service.OvertimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 /**
  * Created by bonismo@hotmail.com
  * 下午10:35 on 17/3/4.
@@ -24,9 +26,22 @@ public class OvertimeServiceImpl extends ServiceImpl<OvertimeMapper, Overtime> i
     private EmployeeMapper employeeMapper;
 
 
+    /**
+     * 分页查询所有加班记录
+     *
+     * @param page
+     * @return
+     */
     @Override
     public Page<Overtime> selectListByPage(int page) {
-        return null;
+        Page<Overtime> pageInfo = new Page<>(page, 5, "id");
+        pageInfo.setAsc(false);
+        List<Overtime> overtimeList = baseMapper.selectPage(pageInfo, null);
+        for (Overtime overtime : overtimeList) {
+            setObject(overtime);
+        }
+        pageInfo.setRecords(overtimeList);
+        return pageInfo;
     }
 
     @Override
