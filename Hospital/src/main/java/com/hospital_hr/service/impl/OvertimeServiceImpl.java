@@ -1,5 +1,6 @@
 package com.hospital_hr.service.impl;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.hospital_hr.entity.Department;
@@ -11,6 +12,7 @@ import com.hospital_hr.mapper.OvertimeMapper;
 import com.hospital_hr.service.OvertimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.persistence.Id;
 import java.util.List;
 
 /**
@@ -44,9 +46,25 @@ public class OvertimeServiceImpl extends ServiceImpl<OvertimeMapper, Overtime> i
         return pageInfo;
     }
 
+    /**
+     * 根据员工编号,查询所有加班记录,并分页显示
+     *
+     * @param page
+     * @param employeeNumber
+     * @return
+     */
     @Override
     public Page<Overtime> selectByEmployee(int page, Integer employeeNumber) {
-        return null;
+        Page<Overtime> pageInfo = new Page<>(page, 5, "id");
+        pageInfo.setAsc(false);
+        List<Overtime> overtimeList = baseMapper.selectPage(pageInfo, new EntityWrapper<Overtime>()
+                .eq("employee_number", employeeNumber)
+                .orderBy("id", false));
+        for (Overtime overtime : overtimeList) {
+            setObject(overtime);
+        }
+        pageInfo.setRecords(overtimeList);
+        return pageInfo;
     }
 
     /**
