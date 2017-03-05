@@ -12,7 +12,6 @@ import com.hospital_hr.mapper.OvertimeMapper;
 import com.hospital_hr.service.OvertimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.Id;
 import java.util.List;
 
 /**
