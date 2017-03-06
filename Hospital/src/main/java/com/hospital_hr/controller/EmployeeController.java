@@ -83,6 +83,9 @@ public class EmployeeController {
 
     /**
      * 分页查询所有员工
+     * 跳转链接:人事页面功能
+     * index1.jsp
+     * index2.jso
      *
      * @param page
      * @param model
