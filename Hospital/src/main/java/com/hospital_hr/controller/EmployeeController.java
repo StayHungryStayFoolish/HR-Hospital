@@ -1,9 +1,14 @@
 package com.hospital_hr.controller;
 
+import com.baomidou.mybatisplus.plugins.Page;
 import com.hospital_hr.entity.Employee;
+import com.hospital_hr.service.DepartmentService;
 import com.hospital_hr.service.EmployeeService;
+import com.hospital_hr.service.HistoryService;
+import com.hospital_hr.service.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
@@ -18,6 +23,25 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
+
+    @Autowired
+    private DepartmentService departmentService;
+
+    @Autowired
+    private PositionService positionService;
+
+    @Autowired
+    private HistoryService historyService;
+
+    /**
+     * 跳转到签到页面
+     *
+     * @return
+     */
+    @RequestMapping("/welcome.do")
+    public String welcome() {
+        return "welcome";
+    }
 
     /**
      * 跳转登录界面
@@ -58,12 +82,17 @@ public class EmployeeController {
     }
 
     /**
-     * 跳转到签到页面
+     * 分页查询所有员工
      *
+     * @param page
+     * @param model
      * @return
      */
-    @RequestMapping("/welcome.do")
-    public String welcome() {
-        return "welcome";
+    @RequestMapping("/listPage.do")
+    private String selectList(int page, Model model) {
+        Page<Employee> pageInfo = employeeService.selectListByPage(page);
+        model.addAttribute("page", pageInfo);
+        return "admin/employee_list";
     }
+
 }
