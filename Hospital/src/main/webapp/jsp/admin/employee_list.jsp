@@ -92,8 +92,8 @@
                     <div>
                         <span style="float: left; padding: 5px">
 								当前&nbsp;<span style="color: red;"><%=pageInfo %>.getCurrent() %>
-                        </span>&nbsp;/&nbsp;<b><%=pe.getPages() %></b>&nbsp;页&nbsp;&nbsp;
-								总共&nbsp;<b><%=pe.getTotal() %></b>&nbsp;条</span>
+                        </span>&nbsp;/&nbsp;<b><%=pageInfo.getPages() %></b>&nbsp;页&nbsp;&nbsp;
+								总共&nbsp;<b><%=pageInfo.getTotal() %></b>&nbsp;条</span>
                         <nav aria-label="Page navigation" style="margin: 0 auto; width: 240px">
                             <ul class="pagination" style="margin: 0;">
                                 <li>
@@ -138,13 +138,13 @@
 
 <script type="text/javascript">
 
-    function del(id){
+    function del(id) {
         parent.layer.confirm('确认删除？', {
-            btn: ['确认','取消'], //按钮
+            btn: ['确认', '取消'], //按钮
             shade: false //不显示遮罩
-        }, function(){
+        }, function () {
             parent.layer.msg('删除成功！', {icon: 1});
-            location.href="./"+ id +"/delete.do";
+            location.href = "./" + id + "/delete.do";
         });
     }
 </script>
