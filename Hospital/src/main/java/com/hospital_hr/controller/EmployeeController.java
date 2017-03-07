@@ -1,7 +1,11 @@
 package com.hospital_hr.controller;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
+import com.hospital_hr.entity.Department;
 import com.hospital_hr.entity.Employee;
+import com.hospital_hr.entity.History;
+import com.hospital_hr.entity.Position;
 import com.hospital_hr.service.DepartmentService;
 import com.hospital_hr.service.EmployeeService;
 import com.hospital_hr.service.HistoryService;
@@ -12,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * Created by bonismo@hotmail.com
@@ -98,4 +103,28 @@ public class EmployeeController {
         return "admin/employee_list";
     }
 
+    /**
+     * 添加员工
+     * employee_list.jsp 页面跳转过来
+     * 1.添加员工需要先查询到现在的员工编号(需要查询档案表记录),获取集合内的最后一个员工的编号,然后+1
+     * 2.查询部门信息
+     * 3.查询职称信息
+     * 4.加入 model,携带属性跳转添加页面
+     *
+     * @param model
+     * @return
+     */
+    @RequestMapping("/toAdd.do")
+    public String toAdd(Model model) {
+        // 从档案表中,查询所有员工信息,并倒序排列
+        List<History> historyList = historyService.selectList(new EntityWrapper<History>().orderBy("employee_number", false));
+        // 获取最后一个员工信息(get(0),因为是倒序)的员工编号 +1 ,即添加的员工编号
+        model.addAttribute("employeeNumber", historyList.get(0).getEmployeeNumber() + 1);
+        // 获取所有部门信息
+        List<Department> departmentList = departmentService.selectList(new EntityWrapper<Department>());
+        model.addAttribute("dList", departmentList);
+        // 获取所有职称信息
+        List<Position> positionList = positionService.selectList(new EntityWrapper<Position>());
+        return "admin/employee_add";
+    }
 }
