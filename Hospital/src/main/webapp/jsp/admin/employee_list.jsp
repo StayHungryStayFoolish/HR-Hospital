@@ -36,7 +36,32 @@
                         <a href="<%=path %>/employee/toAdd.do" class="btn btn-success">添加员工</a>
                     </div>
                     <table class="table table-striped table-bordered table-hover dataTable-example">
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>工号</th>
+                            <th>姓名</th>
+                            <th>性别</th>
+                            <th>电话</th>
+                            <th>部门名称</th>
+                            <th>职称</th>
+                            <th>入职时间</th>
+                            <th>管理</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <%
+                            Page<Employee> pageInfo = (Page<Employee>) request.getAttribute("page");
+                            if (null != pageInfo && null != pageInfo.getRecords() && pageInfo.getRecords().size() > 0) {
+                                List<Employee> list = pageInfo.getRecords();
+                                int index = 1;
+                                for (Employee employee : list) {
+                        %>
+                        <tr class="gradeA">
+                            <td><%=index++ %></td>
 
+                        </tr>
+                        </tbody>
                     </table>
                     <div>
 
