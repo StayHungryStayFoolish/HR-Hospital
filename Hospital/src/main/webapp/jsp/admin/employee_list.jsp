@@ -58,9 +58,35 @@
                                 for (Employee employee : list) {
                         %>
                         <tr class="gradeA">
-                            <td><%=index++ %></td>
-
+                            <td><%=index++ %>
+                            </td>
+                            <td><%=employee.getEmployeeNumber() %>
+                            </td>
+                            <td><%=employee.getName() %>
+                            </td>
+                            <td><%=employee.getGender() %>
+                            </td>
+                            <td><%=employee.getTelephone() %>
+                            </td>
+                            <td><%=employee.getDepartment().getName() %>
+                            </td>
+                            <td><%=employee.getPosition().getName() %>
+                            </td>
+                            <%
+                                String intime = MyTimeUtil.dateFormat(employee.getInTime());
+                            %>
+                            <td><%=intime %>
+                            </td>
+                            <td><a href="<%=path %>/employee/<%=employee.getId() %>/detail.do"
+                                   class="btn btn-info">查看</a>&nbsp;&nbsp;
+                                <a href="<%=path %>/employee/<%=employee.getId() %>/toUpdate.do"
+                                   class="btn btn-primary">修改</a>&nbsp;&nbsp;
+                                <a onclick="del(<%=employee.getId() %>)" class="btn btn-danger delete">删除</a></td>
                         </tr>
+                        <%
+                                }
+                            }
+                        %>
                         </tbody>
                     </table>
                     <div>
