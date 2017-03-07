@@ -32,7 +32,15 @@
                     <h5>在职员工列表</h5>
                 </div>
                 <div class="ibox-heading">
+                    <div style="margin-bottom: 8px">
+                        <a href="<%=path %>/employee/toAdd.do" class="btn btn-success">添加员工</a>
+                    </div>
+                    <table class="table table-striped table-bordered table-hover dataTable-example">
 
+                    </table>
+                    <div>
+
+                    </div>
                 </div>
             </div>
         </div>
