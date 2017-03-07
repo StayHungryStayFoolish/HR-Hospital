@@ -13,6 +13,7 @@ import com.hospital_hr.service.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
@@ -126,5 +127,20 @@ public class EmployeeController {
         // 获取所有职称信息
         List<Position> positionList = positionService.selectList(new EntityWrapper<Position>());
         return "admin/employee_add";
+    }
+
+    /**
+     * 根据 ID 查看员工信息
+     * employee_list.jsp [查看]按钮跳转过来
+     *
+     * @param id
+     * @param model
+     * @return
+     */
+    @RequestMapping("/{id}/detail.do")
+    public String selectEmployee(@PathVariable Integer id, Model model) {
+        Employee employee = employeeService.selectEmployee(id);
+        model.addAttribute("employee", employee);
+        return "admin/employee_detail";
     }
 }
