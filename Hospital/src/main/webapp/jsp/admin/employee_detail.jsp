@@ -32,7 +32,23 @@
                     <h5>查看员工信息</h5>
                 </div>
                 <div class="ibox-content">
+                    <% Employee employee = (Employee) request.getAttribute("employee");%>
+                    <form method="post" class="form-horizontal" action="">
+                        <div class="form-group">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4">
+                                <lable class="col-sm-8 control-label">工号：</lable>
+                                <p class="form-control-static"><%=employee.getEmployeeNumber() %>
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <lable class="col-sm-5 control-label">姓名：</lable>
+                                <p class="form-control-static"><%=employee.getName()%>
+                                </p>
+                            </div>
+                        </div>
 
+                    </form>
                 </div>
             </div>
         </div>
