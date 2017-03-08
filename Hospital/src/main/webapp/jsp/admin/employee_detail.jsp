@@ -114,7 +114,14 @@
                                 </p>
                             </div>
                         </div>
-
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-8">
+                                <a href="<%=path %>/employee/<%=employee.getId() %>/toUpdate.do"
+                                   class="btn btn-primary">修&nbsp;&nbsp;改</a>&nbsp;&nbsp;
+                                <a href="<%=path %>/employee/listPage.do?page=1" class="btn btn-info">返&nbsp;&nbsp;回</a>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
