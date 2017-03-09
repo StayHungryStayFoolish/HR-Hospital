@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.zip.Adler32;
 
 /**
  * Created by bonismo@hotmail.com
@@ -142,5 +143,22 @@ public class EmployeeController {
         Employee employee = employeeService.selectEmployee(id);
         model.addAttribute("employee", employee);
         return "admin/employee_detail";
+    }
+
+    /**
+     * 更新员工信息
+     * @param id
+     * @param model
+     * @return
+     */
+    @RequestMapping("/{id}/toUpdate.do")
+    public String toUpdate(@PathVariable Integer id, Model model) {
+        Employee employee = employeeService.selectById(id);
+        model.addAttribute("employee", employee);
+        List<Department> departmentList = departmentService.selectList(new EntityWrapper<Department>());
+        model.addAttribute("dList", departmentList);
+        List<Position> positionList = positionService.selectList(new EntityWrapper<Position>());
+        model.addAttribute("pList", positionList);
+        return "admin/employee_update";
     }
 }
