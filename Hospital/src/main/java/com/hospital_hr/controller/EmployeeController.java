@@ -147,6 +147,8 @@ public class EmployeeController {
 
     /**
      * 更新员工信息
+     * employee_list.jsp [修改]按钮跳转
+     *
      * @param id
      * @param model
      * @return
@@ -160,5 +162,18 @@ public class EmployeeController {
         List<Position> positionList = positionService.selectList(new EntityWrapper<Position>());
         model.addAttribute("pList", positionList);
         return "admin/employee_update";
+    }
+
+    /**
+     * 根据 ID 删除员工信息
+     * 注：需要转发 forward
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("/{id}/delete.do")
+    public String deleteById(@PathVariable Integer id) {
+        employeeService.deleteEmployee(id);
+        return "forward:/employee/listPage.do?page=1";
     }
 }
