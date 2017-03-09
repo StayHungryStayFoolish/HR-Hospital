@@ -93,6 +93,7 @@ public class EmployeeController {
      * 跳转链接:人事页面功能
      * index1.jsp
      * index2.jso
+     * 删除按妞，也需要重新查询，返回
      *
      * @param page
      * @param model
@@ -107,7 +108,7 @@ public class EmployeeController {
 
     /**
      * 添加员工
-     * employee_list.jsp 页面跳转过来
+     * employee_list.jsp [添加]页面跳转过来
      * 1.添加员工需要先查询到现在的员工编号(需要查询档案表记录),获取集合内的最后一个员工的编号,然后+1
      * 2.查询部门信息
      * 3.查询职称信息
@@ -148,6 +149,7 @@ public class EmployeeController {
     /**
      * 更新员工信息
      * employee_list.jsp [修改]按钮跳转
+     * employee_detail.jsp [修改]按钮跳转
      *
      * @param id
      * @param model
@@ -157,9 +159,9 @@ public class EmployeeController {
     public String toUpdate(@PathVariable Integer id, Model model) {
         Employee employee = employeeService.selectById(id);
         model.addAttribute("employee", employee);
-        List<Department> departmentList = departmentService.selectList(new EntityWrapper<Department>());
+        List<Department> departmentList = departmentService.selectList(new EntityWrapper<>());
         model.addAttribute("dList", departmentList);
-        List<Position> positionList = positionService.selectList(new EntityWrapper<Position>());
+        List<Position> positionList = positionService.selectList(new EntityWrapper<>());
         model.addAttribute("pList", positionList);
         return "admin/employee_update";
     }
