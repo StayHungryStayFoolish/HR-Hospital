@@ -22,28 +22,91 @@
     <link href="<%=path %>/css/style.css?v=4.1.0" rel="stylesheet">
 </head>
 <body class="gray-bg">
-    <div class="wrapper wrapper-content animated fadeInRight">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>添加员工</h5>
-                    </div>
-                    <div class="ibox-content">
-                        <form class="form-horizontal" id="commentForm" action="<%=path %>/employee/add.do" method="post">
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">工号</label>
-                                <div class="col-sm-7">
-                                    <% Integer employeeNumber = (Integer) request.getAttribute("employeeNumber"); %>
-                                    <input type="text" class="form-control" name="employeeNumber" value="<%=employeeNumber %>" readonly="readonly">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>添加员工</h5>
+                </div>
+                <div class="ibox-content">
+                    <form class="form-horizontal" id="commentForm" action="<%=path %>/employee/add.do" method="post">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">工号</label>
+                            <div class="col-sm-7">
+                                <% Integer employeeNumber = (Integer) request.getAttribute("employeeNumber"); %>
+                                <input type="text" class="form-control" name="employeeNumber"
+                                       value="<%=employeeNumber %>" readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">姓名</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" placeholder="" name="name" minlength="2"
+                                       required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">密码</label>
+                            <div class="col-sm-7">
+                                <input type="password" class="form-control" placeholder="" id="password" name="password"
+                                       minlength="4" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">确认密码</label>
+                            <div class="col-sm-7">
+                                <input type="password" class="form-control" placeholder="" name="password2"
+                                       equalTo="#password" minlength="4" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">性别</label>
+                            <div class="col-sm-7">
+                                <div class="radio i-checks">
+                                    <label>
+                                        <input type="radio" value="男" name="gender" checked="checked"> <i></i>男</label>
+                                    <i style="margin-left: 25px"></i>
+                                    <label>
+                                        <input type="radio" value="女" name="gender"> <i></i>女</label>
                                 </div>
                             </div>
-
-                        </form>
-                    </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">出生日期</label>
+                            <div class="col-sm-7">
+                                <input type="date" class="form-control" size="1" name="date">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">联系方式</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" placeholder="" name="telephone">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">邮箱</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" placeholder="" name="email" email="ture">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">籍贯</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" placeholder="" name="address">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">学历</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" placeholder="" name="education">
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
