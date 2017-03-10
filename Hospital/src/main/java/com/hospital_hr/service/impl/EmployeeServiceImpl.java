@@ -140,6 +140,7 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
             Move move = new Move();
             move.setEmployeeNumber(employee.getEmployeeNumber());
             move.setTime(new Date());
+            // 设置操作人员，以便查询操作记录
             move.setManager(manager);
             // 判断部门编号是否改变,如果改变,将更改前后的部门编号分别补全到员工调用表
             if (!employee.getDepartmentNumber().equals(empInfo.getDepartmentNumber())) {

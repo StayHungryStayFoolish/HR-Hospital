@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
 import java.util.List;
 import java.util.zip.Adler32;
 
@@ -72,6 +73,7 @@ public class EmployeeController {
         Employee empInfo = employeeService.checkLogin(employee.getEmployeeNumber(), employee.getPassword());
         // 如果员工信息不为空,通过员工信息获取职称表信息,然后获得职称级别,进而做权限判定
         if (null != empInfo) {
+            // 将员工信息存入 session
             session.setAttribute("logged", empInfo);
             // 获取权限级别
             String level = empInfo.getPosition().getLevel();
@@ -87,6 +89,18 @@ public class EmployeeController {
         } else {
             return "login";
         }
+    }
+
+    /**
+     * 注销
+     *
+     * @param session
+     * @return
+     */
+    @RequestMapping("/logout.do")
+    public String logout(HttpSession session) {
+        session.removeAttribute("logged");
+        return "login";
     }
 
     /**
@@ -165,7 +179,7 @@ public class EmployeeController {
     }
 
     /**
-     * 更新员工信息
+     * 更新员工信息,此处制作查询，携带出去转到 employee_update.jsp 页面实际操作
      * employee_list.jsp [修改]按钮跳转
      * employee_detail.jsp [修改]按钮跳转
      *
@@ -182,6 +196,27 @@ public class EmployeeController {
         List<Position> positionList = positionService.selectList(new EntityWrapper<>());
         model.addAttribute("pList", positionList);
         return "admin/employee_update";
+    }
+
+    /**
+     * 更新员工信息
+     * 1.需要设置操作人员信息（从 session 中获取当前登录人员信息）
+     * 2.字符串日子转换为 Date 类型
+     *
+     * @param id
+     * @param employee
+     * @param date
+     * @param status
+     * @param session
+     * @return
+     */
+    @RequestMapping("/{id}/update.do")
+    public String updateById(@PathVariable Integer id, Employee employee, String date, String status, HttpSession session) {
+        employee.setId(id);
+        employee.setBirthday(MyTimeUtil.stringDateParse(date));
+        Employee manager = (Employee) session.getAttribute("logged");
+        employeeService.updateEmployee(employee, status, manager.getName());
+        return "forward:/employee/listPage.do?page=1";
     }
 
     /**
