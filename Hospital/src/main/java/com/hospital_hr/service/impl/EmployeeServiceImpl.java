@@ -243,24 +243,15 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
     private Employee setObject(Employee employee) {
         // 从 Employee 中获取部们编号
         Integer departmentNumber = employee.getDepartmentNumber();
-        if (null != departmentNumber) {
-            // 根据部门编号查询获得部门信息
-            Department department = departmentMapper.selectByNumber(departmentNumber);
-            employee.setDepartment(department);
-        } else {
-            employee.setDepartment(null);
-        }
+        // 根据部门编号查询获得部门信息
+        Department department = departmentMapper.selectByNumber(departmentNumber);
+        employee.setDepartment(department);
 
         // 从 Employee 中获取职称编号
         Integer positionNumber = employee.getPositionNumber();
-        if (null != positionNumber) {
-            // 根据职称编号查询获得职称信息
-            Position position = positionMapper.selectByNumber(positionNumber);
-            employee.setPosition(position);
-
-        } else {
-            employee.setPosition(null);
-        }
+        // 根据职称编号查询获得职称信息
+        Position position = positionMapper.selectByNumber(positionNumber);
+        employee.setPosition(position);
         return employee;
     }
 }

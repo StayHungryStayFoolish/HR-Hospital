@@ -14,7 +14,7 @@
     <link href="<%=path %>/css/style.css" rel="stylesheet">
     <link href="<%=path %>/css/login.css" rel="stylesheet">
     <!--[if lt IE 9]>
-    <meta http-equiv="refresh" content="0;ie.html"/>
+    <!--<meta http-equiv="refresh" content="0;ie.html"/>-->
     <![endif]-->
     <script>
         if (window.top !== window.self) {

@@ -10,14 +10,14 @@
     <select id="checkLogin" resultType="Employee">
         SELECT
         <include refid="Base_Column_List"/>
-        FROM employee
+        FROM db_hospital.employee
         WHERE employee_number = #{employeeNumber} and password = #{password}
     </select>
 
     <select id="selectByNumber" parameterType="java.lang.Integer" resultType="Employee">
         SELECT
         <include refid="Base_Column_List"/>
-        FROM employee
+        FROM db_hospital.employee
         WHERE employee_number = #{employeeNumber}
     </select>
 </mapper>

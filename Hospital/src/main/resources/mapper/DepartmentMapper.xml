@@ -6,10 +6,10 @@
         id, department_number, name, manager, telephone, address, notes
     </sql>
 
-    <select id="selectNumber" parameterType="java.lang.Integer" resultType="Department">
+    <select id="selectByNumber" parameterType="java.lang.Integer" resultType="Department">
         SELECT
         <include refid="Base_Column_List"/>
-        FROM department
+        FROM db_hospital.department
         WHERE department_number = #{departmentNumber}
     </select>
 </mapper>

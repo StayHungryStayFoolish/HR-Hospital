@@ -18,9 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
-import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
 import java.util.List;
-import java.util.zip.Adler32;
 
 /**
  * Created by bonismo@hotmail.com
@@ -59,6 +57,7 @@ public class EmployeeController {
      */
     @RequestMapping("/login.do")
     public String login() {
+        System.out.println("进入  login 方法");
         return "login";
     }
 
@@ -69,7 +68,9 @@ public class EmployeeController {
      *
      * @return
      */
+    @RequestMapping("/checkLogin.do")
     public String checkLogin(HttpSession session, Employee employee) {
+        System.out.println("进入方法");
         Employee empInfo = employeeService.checkLogin(employee.getEmployeeNumber(), employee.getPassword());
         // 如果员工信息不为空,通过员工信息获取职称表信息,然后获得职称级别,进而做权限判定
         if (null != empInfo) {
@@ -78,7 +79,9 @@ public class EmployeeController {
             // 获取权限级别
             String level = empInfo.getPosition().getLevel();
             if ("人事部主任".equals(level)) {
-                return "admin/index1";
+//                return "redirect:/jsp/admin/index1.jsp";
+                return "redirect:admin/index1";
+//                return "admin/index1";
             } else if ("人事部员工".equals(level)) {
                 return "admin/index2";
             } else if ("部门主任".equals(level)) {
@@ -221,7 +224,6 @@ public class EmployeeController {
 
     /**
      * 根据 ID 删除员工信息
-     * 注：需要转发 forward
      *
      * @param id
      * @return

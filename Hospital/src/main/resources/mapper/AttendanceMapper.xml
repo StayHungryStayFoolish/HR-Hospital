@@ -10,8 +10,8 @@
     <select id="selectByNumber" resultType="Attendance">
         SELECT
         <include refid="Base_Column_List"/>
-        FROM attendance
-        WHERE employee_number = #{employeeNumber}
+        FROM db_hospital.attendance
+        WHERE attendance.employee_number = #{employeeNumber}
         and day = #{day} and timeType = #{timeType}
     </select>
 </mapper>
