@@ -129,6 +129,7 @@ public class EmployeeController {
         model.addAttribute("dList", departmentList);
         // 获取所有职称信息
         List<Position> positionList = positionService.selectList(new EntityWrapper<Position>());
+        model.addAttribute("pList", positionList);
         return "admin/employee_add";
     }
 
