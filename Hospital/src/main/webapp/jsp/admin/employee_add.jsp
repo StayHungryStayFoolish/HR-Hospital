@@ -179,12 +179,12 @@
 <!-- layer javascript -->
 <script src="js/plugins/layer/layer.min.js"></script>
 <script>
-    $().ready(function() {
+    $().ready(function () {
         $("#commentForm").validate();
     });
     $.validator.setDefaults({
-        submitHandler: function() {
-            parent.layer.alert('添加成功！',{icon: 1}),
+        submitHandler: function () {
+            parent.layer.alert('添加成功！', {icon: 1}),
                 form.submit();
         }
     });
