@@ -128,7 +128,7 @@
                                     <option value="">--请选择职称--</option>
                                     <%
                                         List<Position> pList = (List<Position>) request.getAttribute("pList");
-                                        for(Position position : pList){
+                                        for (Position position : pList) {
 
                                     %>
                                     <option value="<%=position.getPositionNumber() %>">
@@ -138,6 +138,19 @@
                                         }
                                     %>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">备注</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" placeholder="" name="notes">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-8">
+                                <button class="btn btn-success" type="submit">添&nbsp;&nbsp;加</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button class="btn btn-white" type="reset">取&nbsp;&nbsp;消</button>
                             </div>
                         </div>
                     </form>
