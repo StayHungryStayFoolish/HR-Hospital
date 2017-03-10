@@ -10,6 +10,7 @@ import com.hospital_hr.service.DepartmentService;
 import com.hospital_hr.service.EmployeeService;
 import com.hospital_hr.service.HistoryService;
 import com.hospital_hr.service.PositionService;
+import com.hospital_hr.uitl.MyTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -129,6 +130,22 @@ public class EmployeeController {
         // 获取所有职称信息
         List<Position> positionList = positionService.selectList(new EntityWrapper<Position>());
         return "admin/employee_add";
+    }
+
+    /**
+     * 添加员工信息
+     * 注：字符串转换为日期存储
+     * employee_add.jsp 表单跳转
+     *
+     * @param employee
+     * @param date
+     * @return
+     */
+    @RequestMapping("/add.do")
+    public String add(Employee employee, String date) {
+        employee.setBirthday(MyTimeUtil.stringDateParse(date));
+        employeeService.addEmployee(employee);
+        return "forward:/employee/listPage.do?page=1";
     }
 
     /**
