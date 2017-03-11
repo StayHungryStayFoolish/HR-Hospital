@@ -233,4 +233,24 @@ public class EmployeeController {
         employeeService.deleteEmployee(id);
         return "forward:/employee/listPage.do?page=1";
     }
+
+    /**
+     * 查看个人信息
+     * index*.jsp 页面查看个人信息
+     *
+     * @return
+     */
+    @RequestMapping("/oneself/{id}/detail.do")
+    public String selectEmployeeOneself(@PathVariable Integer id, Model model) {
+        Employee employee = employeeService.selectEmployee(id);
+        model.addAttribute("employee", employee);
+        return "admin/oneself_detail";
+    }
+
+    @RequestMapping("/oneself/{id}/toUpdate.do")
+    public String toUpdateOneself(@PathVariable Integer id, Model model) {
+        Employee employee = employeeService.selectById(id);
+        model.addAttribute("employee", employee);
+        return "admin/oneself_update";
+    }
 }
