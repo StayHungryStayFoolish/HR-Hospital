@@ -247,10 +247,23 @@ public class EmployeeController {
         return "admin/oneself_detail";
     }
 
+    /**
+     * 更改个人资料
+     * @param id
+     * @param model
+     * @return
+     */
     @RequestMapping("/oneself/{id}/toUpdate.do")
     public String toUpdateOneself(@PathVariable Integer id, Model model) {
         Employee employee = employeeService.selectById(id);
         model.addAttribute("employee", employee);
         return "admin/oneself_update";
+    }
+
+    @RequestMapping("/search")
+    public String search(String input, int page, Model model) {
+        Page<Employee> pageInfo = employeeService.search(input, page);
+        model.addAttribute("page", pageInfo);
+        return "admin/search_result";
     }
 }
