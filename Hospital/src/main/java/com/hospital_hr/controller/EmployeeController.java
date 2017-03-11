@@ -249,6 +249,8 @@ public class EmployeeController {
 
     /**
      * 更改个人资料
+     * index*.jsp 功能
+     *
      * @param id
      * @param model
      * @return
@@ -260,6 +262,15 @@ public class EmployeeController {
         return "admin/oneself_update";
     }
 
+    /**
+     * 根据输入情况，分页查询信息
+     * 人事页面 index1,index2 功能
+     *
+     * @param input
+     * @param page
+     * @param model
+     * @return
+     */
     @RequestMapping("/search")
     public String search(String input, int page, Model model) {
         Page<Employee> pageInfo = employeeService.search(input, page);
