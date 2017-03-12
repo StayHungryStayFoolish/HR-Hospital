@@ -126,6 +126,26 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">职称</label>
+                            <div class="col-sm-7">
+                                <select class="form-control m-b" name="positionNumber" size="1" required>
+                                    <option value="">--请选择职称--</option>
+                                    <%
+                                        List<Position> pList = (List<Position>) request.getAttribute("pList");
+                                        for(Position position : pList){
+                                    %>
+                                    <option value="<%=position.getPositionNumber() %>"
+                                            <%
+                                                if(employee.getPositionNumber().equals(position.getPositionNumber())){
+                                            %>
+                                            selected="selected"
+                                            <%	}  %>
+                                    ><%=position.getName() %></option>
+                                    <%  }  %>
+                                </select>
+                            </div>
+                        </div>
 
                     </form>
                 </div>
