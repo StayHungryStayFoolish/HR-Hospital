@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.*" %>
 <%@ page import="com.hospital_hr.entity.*" %>
+<%@ page import="com.hospital_hr.uitl.MyTimeUtil" %>
 <% String path = request.getContextPath();%>
 <html>
 <head>
@@ -48,6 +49,30 @@
                             <label class="col-sm-3 control-label">密码</label>
                             <div class="col-sm-7">
                                 <input type="password" class="form-control" name="password" value="<%=employee.getPassword() %>" minlength="4" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">性别</label>
+                            <div class="col-sm-7">
+                                <div class="radio i-checks">
+                                    <label>
+                                        <input type="radio" value="男" name="gender"
+                                            <%
+												if(employee.getGender().equals("男")){
+											%>
+                                               checked="checked"
+                                            <%  } %>
+                                        > <i></i>男</label>
+                                    <i style="margin-left: 25px"></i>
+                                    <label>
+                                        <input type="radio" value="女" name="gender"
+                                            <%
+												if(employee.getGender().equals("女")){
+											%>
+                                               checked="checked"
+                                            <%  } %>
+                                        > <i></i>女</label>
+                                </div>
                             </div>
                         </div>
 
