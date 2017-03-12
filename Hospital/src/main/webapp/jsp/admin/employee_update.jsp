@@ -106,6 +106,26 @@
                                 <input type="text" class="form-control" name="education" value="<%=employee.getEducation() %>">
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">部门</label>
+                            <div class="col-sm-7">
+                                <select class="form-control m-b" name="departmentNumber" size="1" required>
+                                    <option value="">--请选择部门--</option>
+                                    <%
+                                        List<Department> dList = (List<Department>) request.getAttribute("dList");
+                                        for(Department department : dList){
+                                    %>
+                                    <option value="<%=department.getDepartmentNumber() %>"
+                                            <%
+                                                if(employee.getDepartmentNumber().equals(department.getDepartmentNumber())){
+                                            %>
+                                            selected="selected"
+                                            <%  }  %>
+                                    ><%=department.getName() %></option>
+                                    <%  }  %>
+                                </select>
+                            </div>
+                        </div>
 
                     </form>
                 </div>
