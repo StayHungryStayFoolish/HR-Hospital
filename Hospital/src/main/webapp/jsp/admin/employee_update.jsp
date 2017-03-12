@@ -75,6 +75,37 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">出生年月</label>
+                            <div class="col-sm-7">
+                                <% String birthday = MyTimeUtil.dateFormat(employee.getBirthday()); %>
+                                <input type="date" class="form-control" name="date" value="<%=birthday %>" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" >联系方式</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" name="telephone" value="<%=employee.getTelephone() %>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">邮箱</label>
+                            <div class="col-sm-7" >
+                                <input type="text" class="form-control" placeholder="" name="email" value="<%=employee.getEmail() %>" email="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">籍贯</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" name="address" value="<%=employee.getAddress() %>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">学历</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" name="education" value="<%=employee.getEducation() %>">
+                            </div>
+                        </div>
 
                     </form>
                 </div>
