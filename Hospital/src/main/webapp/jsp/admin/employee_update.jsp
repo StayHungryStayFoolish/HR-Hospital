@@ -30,7 +30,28 @@
                     <h5>修改在职员工信息</h5>
                 </div>
                 <div class="ibox-content">
+                    <% Employee employee = (Employee)request.getAttribute("employee"); %>
+                    <form method="post" class="form-horizontal" id="commentForm" action="<%=path %>/employee/<%=employee.getId() %>/update.do">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">工号</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" name="employeeNumber" value="<%=employee.getEmployeeNumber() %>" readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">姓名</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" name="name" value="<%=employee.getName() %>" minlength="2" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">密码</label>
+                            <div class="col-sm-7">
+                                <input type="password" class="form-control" name="password" value="<%=employee.getPassword() %>" minlength="4" required>
+                            </div>
+                        </div>
 
+                    </form>
                 </div>
             </div>
         </div>
