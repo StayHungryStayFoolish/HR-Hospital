@@ -5,6 +5,7 @@ import com.hospital_hr.service.AttendanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -57,4 +58,18 @@ public class AttendanceController {
         return "admin/attendance_lsit";
     }
 
+
+    /**
+     * 查询本人考勤记录
+     *
+     * @param employeeNumber
+     * @param model
+     * @return
+     */
+    @RequestMapping("/{employeeNumber}/oneself.do")
+    public String select(@PathVariable Integer employeeNumber, Model model) {
+        List<Attendance> list = attendanceService.selectByEmployee(employeeNumber);
+        model.addAttribute("aList", list);
+        return "admin/oneself_attendance";
+    }
 }
