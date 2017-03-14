@@ -1,5 +1,6 @@
 package com.hospital_hr.controller;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.hospital_hr.entity.Department;
 import com.hospital_hr.service.DepartmentService;
@@ -7,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 /**
  * Created by bonismo@hotmail.com
@@ -18,6 +21,22 @@ public class DepartmentController {
 
     @Autowired
     private DepartmentService departmentService;
+
+    /**
+     * 添加部门
+     * 1.需要查询到所有的部门信息
+     * 2.orderBy("columnName",boolean isAsc) false 时，倒序，使用 get(0) 获取最后一个部门，获取部门编号 + 1 == 新增部门编号
+     *
+     * @param model
+     * @return
+     */
+    @RequestMapping("/toAdd.do")
+    public String toAdd(Model model) {
+        List<Department> departmentList = departmentService.selectList(
+                new EntityWrapper<Department>().orderBy("department_number", false));
+        model.addAttribute("departmentNumber", departmentList.get(0).getDepartmentNumber() + 1);
+        return "admin/department_add";
+    }
 
     /**
      * 分页查询部门信息
