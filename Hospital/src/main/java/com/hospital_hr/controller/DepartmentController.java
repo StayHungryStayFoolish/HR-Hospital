@@ -23,7 +23,7 @@ public class DepartmentController {
     private DepartmentService departmentService;
 
     /**
-     * 添加部门
+     * 添加部门,先获取部门编号 [只查询，不操作]
      * 1.需要查询到所有的部门信息
      * 2.orderBy("columnName",boolean isAsc) false 时，倒序，使用 get(0) 获取最后一个部门，获取部门编号 + 1 == 新增部门编号
      *
@@ -37,6 +37,19 @@ public class DepartmentController {
         model.addAttribute("departmentNumber", departmentList.get(0).getDepartmentNumber() + 1);
         return "admin/department_add";
     }
+
+    /**
+     * 添加部门 [操作]
+     *
+     * @param department
+     * @return
+     */
+    @RequestMapping("/add.do")
+    public String add(Department department) {
+        departmentService.insert(department);
+        return "forward:/department/listPage.do?page=1";
+    }
+
 
     /**
      * 分页查询部门信息
