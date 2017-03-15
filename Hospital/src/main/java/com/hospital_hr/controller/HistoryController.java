@@ -1,9 +1,11 @@
 package com.hospital_hr.controller;
 
+import com.baomidou.mybatisplus.plugins.Page;
 import com.hospital_hr.entity.Employee;
 import com.hospital_hr.entity.History;
 import com.hospital_hr.service.EmployeeService;
 import com.hospital_hr.service.HistoryService;
+import com.hospital_hr.uitl.MyTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -57,4 +59,33 @@ public class HistoryController {
         }
     }
 
+    /**
+     * 更改离退休档案信息, 并跳转到分页查询页面
+     *
+     * @param id
+     * @param history
+     * @param date
+     * @return
+     */
+    @RequestMapping("/{id}/updateRetire.do")
+    public String updateRetire(@PathVariable Integer id, History history, String date) {
+        history.setId(id);
+        history.setBirthday(MyTimeUtil.stringDateParse(date));
+        historyService.updateById(history);
+        return "forward:/history/retireListPage.do?page=1";
+    }
+
+    /**
+     * 分页显示离退休档案记录
+     *
+     * @param page
+     * @param model
+     * @return
+     */
+    @RequestMapping("/retireListPage.do")
+    public String selectRetireByPage(int page, Model model) {
+        Page<History> pageInfo = historyService.selectRetireByPage(page);
+        model.addAttribute("page", pageInfo);
+        return "admin/retire_list";
+    }
 }
