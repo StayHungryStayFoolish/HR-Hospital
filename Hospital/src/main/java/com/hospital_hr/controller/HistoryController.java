@@ -88,4 +88,18 @@ public class HistoryController {
         model.addAttribute("page", pageInfo);
         return "admin/retire_list";
     }
+
+    /**
+     * 分页查询档案信息
+     *
+     * @param page
+     * @param model
+     * @return
+     */
+    @RequestMapping("/listPage.do")
+    public String selectListByPage(int page, Model model) {
+        Page<History> pageInfo = historyService.selectListByPage(page);
+        model.addAttribute("page", pageInfo);
+        return "admin/history_list";
+    }
 }
