@@ -102,4 +102,20 @@ public class HistoryController {
         model.addAttribute("page", pageInfo);
         return "admin/history_list";
     }
+
+    /**
+     * 根据 ID 更改档案信息
+     *
+     * @param id
+     * @param history
+     * @param date
+     * @return
+     */
+    @RequestMapping("/{id}/update.do")
+    public String updateById(@PathVariable Integer id, History history, String date) {
+        history.setId(id);
+        history.setBirthday(MyTimeUtil.stringDateParse(date));
+        historyService.updateById(history);
+        return "forward:/history/listPage.do?pageNo=1";
+    }
 }
