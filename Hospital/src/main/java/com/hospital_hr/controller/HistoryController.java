@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 /**
  * Created by bonismo@hotmail.com
  * 下午9:55 on 17/3/15.
@@ -117,5 +119,18 @@ public class HistoryController {
         history.setBirthday(MyTimeUtil.stringDateParse(date));
         historyService.updateById(history);
         return "forward:/history/listPage.do?pageNo=1";
+    }
+
+    /**
+     * 显示所有档案信息
+     *
+     * @param model
+     * @return
+     */
+    @RequestMapping("/list.do")
+    public String list(Model model) {
+        List<History> historyList = historyService.selectList();
+        model.addAttribute("hList", historyList);
+        return "admin/history_list";
     }
 }
