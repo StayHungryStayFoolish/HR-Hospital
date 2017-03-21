@@ -90,4 +90,16 @@ public class PositionController {
         positionService.updateById(position);
         return "forward:/position/listPage.do?page=1";
     }
+
+    /**
+     * 删除
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("/{id}/delete.do")
+    public String deleteById(@PathVariable Integer id) {
+        positionService.deleteById(id);
+        return "forward:/position/listPage.do?page=1";
+    }
 }
