@@ -12,6 +12,7 @@ import com.hospital_hr.uitl.MyTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -76,5 +77,42 @@ public class OvertimeController {
         overtime.setDay(MyTimeUtil.stringDateParse(date));
         overtimeService.insert(overtime);
         return "forward:/overtime/listPage.do?page=1";
+    }
+
+    /**
+     * 准备更新加班
+     *
+     * @param id
+     * @param model
+     * @return
+     */
+    @RequestMapping("/{id}/toUpdate.do")
+    public String toUpdate(@PathVariable Integer id, Model model) {
+        //查询出要修改的记录信息
+        Overtime overtime = overtimeService.selectById(id);
+        model.addAttribute("overtime", overtime);
+        //查询出所有的部门
+        List<Department> dList = departmentService.selectList(new EntityWrapper<>());
+        model.addAttribute("dList", dList);
+        //查询出所有的员工
+        List<Employee> eList = employeeService.selectList(new EntityWrapper<>());
+        model.addAttribute("eList", eList);
+        return "admin/overtime_update";
+    }
+
+    /**
+     * 更新加班
+     *
+     * @param id
+     * @param date
+     * @param overtime
+     * @return
+     */
+    @RequestMapping("/{id}/update.do")
+    public String updateById(@PathVariable Integer id, String date, Overtime overtime) {
+        overtime.setId(id);
+        overtime.setDay(MyTimeUtil.stringDateParse(date));
+        overtimeService.updateById(overtime);
+        return "forward:/overtime/listPage.do?pageNo=1";
     }
 }
