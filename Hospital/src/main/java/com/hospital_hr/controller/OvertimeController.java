@@ -8,6 +8,7 @@ import com.hospital_hr.entity.Overtime;
 import com.hospital_hr.service.DepartmentService;
 import com.hospital_hr.service.EmployeeService;
 import com.hospital_hr.service.OvertimeService;
+import com.hospital_hr.uitl.MyTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,6 +47,12 @@ public class OvertimeController {
         return "admin/overtime_list";
     }
 
+    /**
+     * 安排加班 [只查询,不操作]
+     *
+     * @param model
+     * @return
+     */
     @RequestMapping("/toAdd.do")
     public String toAdd(Model model) {
         //查询出所有的部门
@@ -55,5 +62,19 @@ public class OvertimeController {
         List<Employee> eList = employeeService.selectList(new EntityWrapper<Employee>());
         model.addAttribute("eList", eList);
         return "admin/overtime_add";
+    }
+
+    /**
+     * 安排加班 [操作]
+     *
+     * @param overtime
+     * @param date
+     * @return
+     */
+    @RequestMapping("/add.do")
+    public String add(Overtime overtime, String date) {
+        overtime.setDay(MyTimeUtil.stringDateParse(date));
+        overtimeService.insert(overtime);
+        return "forward:/overtime/listPage.do?page=1";
     }
 }
