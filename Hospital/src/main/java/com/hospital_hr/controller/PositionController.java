@@ -7,6 +7,7 @@ import com.hospital_hr.service.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -48,5 +49,32 @@ public class PositionController {
                 .orderBy("position_number", false));
         model.addAttribute("positionNumber", dList.get(0).getPositionNumber() + 1);
         return "admin/position_add";
+    }
+
+    /**
+     * 添加职称信息
+     *
+     * @param position
+     * @return
+     */
+    @RequestMapping("/add.do")
+    public String add(Position position) {
+        positionService.insert(position);
+        return "forward:/position/listPage.do?page=1";
+    }
+
+
+    @RequestMapping("/{id}/toUpdate.do")
+    public String toUpdate(@PathVariable Integer id, Model model) {
+        Position position = positionService.selectById(id);
+        model.addAttribute("position", position);
+        return "admin/position_update";
+    }
+
+    @RequestMapping("/{id}/update.do")
+    public String updateById(@PathVariable Integer id, Position position) {
+        position.setId(id);
+        positionService.updateById(position);
+        return "forward:/position/listPage.do?page=1";
     }
 }
