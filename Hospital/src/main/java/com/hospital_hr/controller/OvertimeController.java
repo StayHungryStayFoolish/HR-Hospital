@@ -113,6 +113,33 @@ public class OvertimeController {
         overtime.setId(id);
         overtime.setDay(MyTimeUtil.stringDateParse(date));
         overtimeService.updateById(overtime);
-        return "forward:/overtime/listPage.do?pageNo=1";
+        return "forward:/overtime/listPage.do?page=1";
+    }
+
+    /**
+     * 删除加班
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("/{id}/delete.do")
+    public String deleteById(@PathVariable Integer id) {
+        overtimeService.deleteById(id);
+        return "forward:/overtime/listPage.do?page=1";
+    }
+
+    /**
+     * 查询自己加班记录
+     *
+     * @param employeeNumber
+     * @param page
+     * @param model
+     * @return
+     */
+    @RequestMapping("/{employeeNumber}/oneself.do")
+    public String select(@PathVariable Integer employeeNumber, int page, Model model) {
+        Page<Overtime> pageInfo = overtimeService.selectByEmployee(page, employeeNumber);
+        model.addAttribute("page", pageInfo);
+        return "admin/oneself_overtime";
     }
 }
