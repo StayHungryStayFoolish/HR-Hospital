@@ -52,5 +52,63 @@ public class LeaveController {
         return "admin/leave_detail";
     }
 
+    /**
+     * 批准员工请假，然后继续返回未批转页面
+     * updateStatus(). service 层已设置为 批准状态
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("/{id}/update.do")
+    public String updateStatus(@PathVariable Integer id) {
+        leaveService.updateStatus(id);
+        return "forward:/leave/notlist.do";
+    }
+
+    /**
+     * 申请请假
+     *
+     * @return
+     */
+    @RequestMapping("/toAdd.do")
+    public String toAdd() {
+        return "admin/leave_add";
+    }
+
+    /**
+     * 填写请假表单
+     *
+     * @param employeeNumber
+     * @param leave
+     * @param start
+     * @param end
+     * @return
+     */
+    @RequestMapping("/add.do")
+    public String add(Integer employeeNumber, Leave leave, String start, String end) {
+        leave.setEmployeeNumber(employeeNumber);
+        leave.setStartTime(MyTimeUtil.stringDateParse(start));
+        leave.setEndTime(MyTimeUtil.stringDateParse(end));
+        leaveService.insert(leave);
+        return "forward:/employee/welcome.do";
+    }
+
+
+    /**
+     * 查询未准假记录
+     *
+     * @param model
+     * @param session
+     * @return
+     */
+    @RequestMapping("/notlist.do")
+    public String selectNotList(Model model, HttpSession session) {
+        //获取登录用户的信息
+        Employee employee = (Employee) session.getAttribute("logged");
+        List<Leave> list = leaveService.selectListByStatus(employee.getDepartmentNumber(), "未批准");
+        model.addAttribute("list", list);
+        return "admin/leave_notlist";
+    }
+
 
 }
