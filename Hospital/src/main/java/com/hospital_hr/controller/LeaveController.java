@@ -110,5 +110,35 @@ public class LeaveController {
         return "admin/leave_notlist";
     }
 
+    /**
+     * 查询已准假记录
+     *
+     * @param model
+     * @param session
+     * @return
+     */
+    @RequestMapping("/yeslist.do")
+    public String selectYesList(Model model, HttpSession session) {
+        //获取登录用户的信息
+        Employee employee = (Employee) session.getAttribute("loged");
+        List<Leave> list = leaveService.selectListByStatus(employee.getDepartmentNumber(), "已批准");
+        model.addAttribute("list", list);
+        return "admin/leave_yeslist";
+    }
 
+    /**
+     * 查询自己请假记录
+     *
+     * @param session
+     * @param page
+     * @param model
+     * @return
+     */
+    @RequestMapping("/oneself.do")
+    public String selectByEmployee(HttpSession session, int page, Model model) {
+        Employee employee = (Employee) session.getAttribute("logged");
+        Page<Leave> pageInfo = leaveService.selectByEmployee(employee.getEmployeeNumber(), page);
+        model.addAttribute("page", pageInfo);
+        return "admin/oneself_leave";
+    }
 }
