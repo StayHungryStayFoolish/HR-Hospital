@@ -63,7 +63,13 @@ public class PositionController {
         return "forward:/position/listPage.do?page=1";
     }
 
-
+    /**
+     * 准备更新职称信息
+     *
+     * @param id
+     * @param model
+     * @return
+     */
     @RequestMapping("/{id}/toUpdate.do")
     public String toUpdate(@PathVariable Integer id, Model model) {
         Position position = positionService.selectById(id);
@@ -71,6 +77,13 @@ public class PositionController {
         return "admin/position_update";
     }
 
+    /**
+     * 更新职称信息
+     *
+     * @param id
+     * @param position
+     * @return
+     */
     @RequestMapping("/{id}/update.do")
     public String updateById(@PathVariable Integer id, Position position) {
         position.setId(id);
