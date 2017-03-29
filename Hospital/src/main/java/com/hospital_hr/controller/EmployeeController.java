@@ -80,24 +80,37 @@ public class EmployeeController {
             String level = empInfo.getPosition().getLevel();
             if ("人事部主任".equals(level)) {
                 return "redirect:/employee/index1.do";
-//                return "redirect:admin/index1";
-//                return "admin/index1";
             } else if ("人事部员工".equals(level)) {
-                return "admin/index2";
+                return "redirect:/employee/index2.do";
             } else if ("部门主任".equals(level)) {
-                return "admin/index3";
+                return "redirect:/employee/index3.do";
             } else {
-                return "admin/index4";
+                return "redirect:/employee/index4.do";
             }
         } else {
             return "login";
         }
     }
+
     @RequestMapping("/index1.do")
-    public String index() {
+    public String index1() {
         return "admin/index1";
     }
 
+    @RequestMapping("/index2.do")
+    public String index2() {
+        return "admin/index2";
+    }
+
+    @RequestMapping("/index3.do")
+    public String index3() {
+        return "admin/index3";
+    }
+
+    @RequestMapping("/index4.do")
+    public String index4() {
+        return "admin/index4";
+    }
 
     /**
      * 注销
