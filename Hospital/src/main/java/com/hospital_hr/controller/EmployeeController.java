@@ -92,6 +92,11 @@ public class EmployeeController {
         }
     }
 
+    /**
+     * 对 jsp 进行 后缀包装
+     *
+     * @return
+     */
     @RequestMapping("/index1.do")
     public String index1() {
         return "admin/index1";
