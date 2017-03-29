@@ -134,7 +134,7 @@
 <script src="<%=path %>/js/content.js?v=1.0.0"></script>
 
 <!-- layer javascript -->
-<script src="js/plugins/layer/layer.min.js"></script>
+<script src="/js/plugins/layer/layer.min.js"></script>
 
 <script type="text/javascript">
 

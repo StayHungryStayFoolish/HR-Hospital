@@ -53,7 +53,27 @@
                                        value="<%=department.getTelephone() %>">
                             </div>
                         </div>
-
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">地址</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" placeholder="" name="address"
+                                       value="<%=department.getAddress() %>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">备注</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" placeholder="" name="notes"
+                                       value="<%=department.getNotes() %>">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-8">
+                                <button class="btn btn-success" type="submit">修&nbsp;&nbsp;改</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button class="btn btn-white" type="reset">取&nbsp;&nbsp;消</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -78,7 +98,7 @@
 <script src="<%=path %>/js/plugins/validate/messages_zh.min.js"></script>
 
 <!-- layer javascript -->
-<script src="js/plugins/layer/layer.min.js"></script>
+<script src="/js/plugins/layer/layer.min.js"></script>
 <script>
     $().ready(function () {
         $("#commentForm").validate();
