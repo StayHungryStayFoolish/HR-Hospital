@@ -39,6 +39,20 @@
                                        value="<%=department.getDepartmentNumber() %>" readonly="readonly">
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">部门名称</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" placeholder="" name="name"
+                                       value="<%=department.getName() %>" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">电话</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" placeholder="" name="telephone"
+                                       value="<%=department.getTelephone() %>">
+                            </div>
+                        </div>
 
                     </form>
                 </div>
