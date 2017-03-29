@@ -55,7 +55,7 @@ public class AttendanceController {
     public String selectList(Model model) {
         List<Attendance> attendanceList = attendanceService.selectList();
         model.addAttribute("aList", attendanceList);
-        return "admin/attendance_lsit";
+        return "admin/attendance_list";
     }
 
 
