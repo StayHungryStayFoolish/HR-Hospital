@@ -65,7 +65,18 @@
                                 String endTime = MyTimeUtil.timeFormat(attendance.getEndTime());
                                 if (endTime == null) endTime = "";
                             %>
-
+                            <td><%=day %>
+                            </td>
+                            <td><%=attendance.getTimeType() %>
+                            </td>
+                            <td><%=startTime %>
+                            </td>
+                            <td><%=attendance.getStartType() %>
+                            </td>
+                            <td><%=endTime %>
+                            </td>
+                            <td><%=attendance.getEndType() %>
+                            </td>
                         </tr>
                         <%
                             }
