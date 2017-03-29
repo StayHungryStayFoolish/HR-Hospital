@@ -79,8 +79,8 @@ public class EmployeeController {
             // 获取权限级别
             String level = empInfo.getPosition().getLevel();
             if ("人事部主任".equals(level)) {
-//                return "redirect:/jsp/admin/index1.jsp";
-                return "redirect:admin/index1";
+                return "redirect:/employee/index1.do";
+//                return "redirect:admin/index1";
 //                return "admin/index1";
             } else if ("人事部员工".equals(level)) {
                 return "admin/index2";
@@ -93,6 +93,11 @@ public class EmployeeController {
             return "login";
         }
     }
+    @RequestMapping("/index1.do")
+    public String index() {
+        return "admin/index1";
+    }
+
 
     /**
      * 注销

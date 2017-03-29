@@ -11,6 +11,7 @@ import com.hospital_hr.mapper.EmployeeMapper;
 import com.hospital_hr.mapper.OvertimeMapper;
 import com.hospital_hr.service.OvertimeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -18,6 +19,7 @@ import java.util.List;
  * Created by bonismo@hotmail.com
  * 下午10:35 on 17/3/4.
  */
+@Service
 public class OvertimeServiceImpl extends ServiceImpl<OvertimeMapper, Overtime> implements OvertimeService {
 
     @Autowired
