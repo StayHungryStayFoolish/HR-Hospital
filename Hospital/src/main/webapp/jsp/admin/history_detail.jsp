@@ -59,6 +59,62 @@
                                 </p>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4">
+                                <label class="col-sm-8 control-label">电话：</label>
+                                <p class="form-control-static"><%=history.getTelephone() %>
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="col-sm-5 control-label">邮箱：</label>
+                                <p class="form-control-static"><%=history.getEmail() %>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4">
+                                <label class="col-sm-8 control-label">籍贯：</label>
+                                <p class="form-control-static"><%=history.getAddress() %>
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="col-sm-5 control-label">学历：</label>
+                                <p class="form-control-static"><%=history.getEducation() %>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4">
+                                <label class="col-sm-8 control-label">部门：</label>
+                                <p class="form-control-static"><%=history.getDepartment().getName() %>
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="col-sm-5 control-label">职称：</label>
+                                <p class="form-control-static"><%=history.getPosition().getName() %>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4">
+                                <label class="col-sm-8 control-label">入职时间：</label>
+                                <% String intime = MyTimeUtil.dateFormat(history.getInTime()); %>
+                                <p class="form-control-static"><%=intime %>
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="col-sm-5 control-label">离休时间：</label>
+                                <% String outtime = MyTimeUtil.dateFormat(history.getOutTime());
+                                    if (outtime == null) outtime = "";
+                                %>
+                                <p class="form-control-static"><%=outtime %>
+                                </p>
+                            </div>
+                        </div>
 
                     </form>
                 </div>
