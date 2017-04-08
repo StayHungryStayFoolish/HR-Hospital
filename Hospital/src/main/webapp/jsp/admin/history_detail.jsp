@@ -115,7 +115,35 @@
                                 </p>
                             </div>
                         </div>
-
+                        <div class="form-group">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4">
+                                <label class="col-sm-8 control-label">状态：</label>
+                                <p class="form-control-static"><%=history.getStatus() %>
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="col-sm-5 control-label">家庭住址：</label>
+                                <p class="form-control-static"><%=history.getAddress() %>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4">
+                                <label class="col-sm-8 control-label">备注：</label>
+                                <p class="form-control-static"><%=history.getNotes() %>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-8">
+                                <a href="<%=path %>/history/<%=history.getId() %>/toUpdate.do" class="btn btn-primary">修&nbsp;&nbsp;改</a>&nbsp;&nbsp;
+                                <a href="<%=path %>/history/listPage.do?pageNo=1"
+                                   class="btn btn-info">返&nbsp;&nbsp;回</a>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
