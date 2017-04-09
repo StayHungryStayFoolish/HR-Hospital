@@ -57,11 +57,11 @@ public class OvertimeController {
     @RequestMapping("/toAdd.do")
     public String toAdd(Model model) {
         //查询出所有的部门
-        List<Department> dList = departmentService.selectList(new EntityWrapper<Department>());
-        model.addAttribute("dList", dList);
+        List<Department> departmentList = departmentService.selectList(new EntityWrapper<>());
+        model.addAttribute("dList", departmentList);
         //查询出所有的员工
-        List<Employee> eList = employeeService.selectList(new EntityWrapper<Employee>());
-        model.addAttribute("eList", eList);
+        List<Employee> employeeList = employeeService.selectList(new EntityWrapper<>());
+        model.addAttribute("eList", employeeList);
         return "admin/overtime_add";
     }
 
@@ -76,7 +76,7 @@ public class OvertimeController {
     public String add(Overtime overtime, String date) {
         overtime.setDay(MyTimeUtil.stringDateParse(date));
         overtimeService.insert(overtime);
-        return "forward:/overtime/listPage.do?page=1";
+        return "/overtime/listPage.do?page=1";
     }
 
     /**
@@ -92,11 +92,11 @@ public class OvertimeController {
         Overtime overtime = overtimeService.selectById(id);
         model.addAttribute("overtime", overtime);
         //查询出所有的部门
-        List<Department> dList = departmentService.selectList(new EntityWrapper<>());
-        model.addAttribute("dList", dList);
+        List<Department> departmentList = departmentService.selectList(new EntityWrapper<>());
+        model.addAttribute("dList", departmentList);
         //查询出所有的员工
-        List<Employee> eList = employeeService.selectList(new EntityWrapper<>());
-        model.addAttribute("eList", eList);
+        List<Employee> employeeList = employeeService.selectList(new EntityWrapper<>());
+        model.addAttribute("eList", employeeList);
         return "admin/overtime_update";
     }
 
@@ -113,7 +113,7 @@ public class OvertimeController {
         overtime.setId(id);
         overtime.setDay(MyTimeUtil.stringDateParse(date));
         overtimeService.updateById(overtime);
-        return "forward:/overtime/listPage.do?page=1";
+        return "/overtime/listPage.do?page=1";
     }
 
     /**
@@ -125,7 +125,7 @@ public class OvertimeController {
     @RequestMapping("/{id}/delete.do")
     public String deleteById(@PathVariable Integer id) {
         overtimeService.deleteById(id);
-        return "forward:/overtime/listPage.do?page=1";
+        return "/overtime/listPage.do?page=1";
     }
 
     /**

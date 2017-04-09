@@ -33,8 +33,8 @@ public class LeaveController {
      */
     @RequestMapping("/list.do")
     public String selectList(Model model) {
-        List<Leave> list = leaveService.selectList();
-        model.addAttribute("list", list);
+        List<Leave> leaveList = leaveService.selectList();
+        model.addAttribute("list", leaveList);
         return "admin/leave_list";
     }
 
@@ -105,8 +105,8 @@ public class LeaveController {
     public String selectNotList(Model model, HttpSession session) {
         //获取登录用户的信息
         Employee employee = (Employee) session.getAttribute("logged");
-        List<Leave> list = leaveService.selectListByStatus(employee.getDepartmentNumber(), "未批准");
-        model.addAttribute("list", list);
+        List<Leave> leaveList = leaveService.selectListByStatus(employee.getDepartmentNumber(), "未批准");
+        model.addAttribute("list", leaveList);
         return "admin/leave_notlist";
     }
 
@@ -121,8 +121,8 @@ public class LeaveController {
     public String selectYesList(Model model, HttpSession session) {
         //获取登录用户的信息
         Employee employee = (Employee) session.getAttribute("loged");
-        List<Leave> list = leaveService.selectListByStatus(employee.getDepartmentNumber(), "已批准");
-        model.addAttribute("list", list);
+        List<Leave> leaveList = leaveService.selectListByStatus(employee.getDepartmentNumber(), "已批准");
+        model.addAttribute("list", leaveList);
         return "admin/leave_yeslist";
     }
 

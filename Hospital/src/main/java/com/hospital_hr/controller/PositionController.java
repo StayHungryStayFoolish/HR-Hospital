@@ -45,9 +45,9 @@ public class PositionController {
      */
     @RequestMapping("/toAdd.do")
     public String toAdd(Model model) {
-        List<Position> dList = positionService.selectList(new EntityWrapper<Position>()
+        List<Position> positionList = positionService.selectList(new EntityWrapper<Position>()
                 .orderBy("position_number", false));
-        model.addAttribute("positionNumber", dList.get(0).getPositionNumber() + 1);
+        model.addAttribute("positionNumber", positionList.get(0).getPositionNumber() + 1);
         return "admin/position_add";
     }
 

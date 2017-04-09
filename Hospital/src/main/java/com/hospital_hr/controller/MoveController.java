@@ -22,8 +22,8 @@ public class MoveController {
 
     @RequestMapping("/list.do")
     public String selectList(Model model) {
-        List<Move> list = moveService.selectList();
-        model.addAttribute("mList", list);
+        List<Move> moveList = moveService.selectList();
+        model.addAttribute("mList", moveList);
         return "admin/move_list";
     }
 

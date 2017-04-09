@@ -141,7 +141,7 @@ public class EmployeeController {
      * @return
      */
     @RequestMapping("/listPage.do")
-    private String selectList(int page, Model model) {
+    public String selectList(int page, Model model) {
         Page<Employee> pageInfo = employeeService.selectListByPage(page);
         model.addAttribute("page", pageInfo);
         return "admin/employee_list";
