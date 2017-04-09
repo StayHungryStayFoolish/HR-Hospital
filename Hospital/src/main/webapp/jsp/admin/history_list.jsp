@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.*" %>
 <%@ page import="com.hospital_hr.entity.*" %>
+<%@ page import="com.hospital_hr.uitl.MyTimeUtil" %>
 <% String path = request.getContextPath();%>
 <html>
 <head>
@@ -45,11 +46,62 @@
                             <th>管理</th>
                         </tr>
                         </thead>
+                        <tbody>
+                        <%
+                            List<History> list = (List<History>) request.getAttribute("hList");
+                            int index = 1;
+                            for (History history : list) {
+                        %>
+                        <tr class="gradeA">
+                            <td><%=index++ %>
+                            </td>
+                            <td><%=history.getEmployeeNumber() %>
+                            </td>
+                            <td><%=history.getName() %>
+                            </td>
+                            <td><%=history.getGender() %>
+                            </td>
+                            <td><%=history.getTelephone() %>
+                            </td>
+                            <td><%=history.getDepartment().getName() %>
+                            </td>
+                            <td><%=history.getPosition().getName() %>
+                            </td>
+                            <%
+                                String intime = MyTimeUtil.dateFormat(history.getInTime());
+                                String outtime = MyTimeUtil.dateFormat(history.getOutTime());
+                                if (outtime == null) outtime = "";
+                            %>
+                            <td><%=intime %>
+                            </td>
+                            <td><%=outtime %>
+                            </td>
+                            <td><%=history.getStatus() %>
+                            </td>
+                            <td><a href="<%=path %>/history/<%=history.getId() %>/detail.do" class="btn btn-info">查看</a>&nbsp;&nbsp;
+                                <a href="<%=path %>/history/<%=history.getId() %>/toUpdate.do" class="btn btn-primary">修改</a>
+                        </tr>
+                        <%
+                            }
+                        %>
+                        </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- 全局js -->
+<script src="<%=path %>/js/jquery.min.js?v=2.1.4"></script>
+<script src="<%=path %>/js/bootstrap.min.js?v=3.3.6"></script>
+<script src="<%=path %>/js/plugins/jeditable/jquery.jeditable.js"></script>
+
+<!-- Data Tables -->
+<script src="<%=path %>/js/plugins/dataTables/jquery.dataTables.js"></script>
+<script src="<%=path %>/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+
+<!-- 自定义js -->
+<script src="<%=path %>/js/content.js?v=1.0.0"></script>
 </body>
 </html>
