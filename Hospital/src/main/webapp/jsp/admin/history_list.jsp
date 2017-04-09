@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>医院 - 退休员工列表</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
 
@@ -20,7 +20,36 @@
     <link href="<%=path %>/css/animate.css" rel="stylesheet">
     <link href="<%=path %>/css/style.css?v=4.1.0" rel="stylesheet">
 </head>
-<body>
-
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>退休员工列表</h5>
+                </div>
+                <div class="ibox-content">
+                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>工号</th>
+                            <th>姓名</th>
+                            <th>性别</th>
+                            <th>电话</th>
+                            <th>部门名称</th>
+                            <th>职称</th>
+                            <th>入职时间</th>
+                            <th>离休时间</th>
+                            <th width="60px">类别</th>
+                            <th>管理</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

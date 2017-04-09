@@ -186,7 +186,7 @@ public class EmployeeController {
     public String add(Employee employee, String date) {
         employee.setBirthday(MyTimeUtil.stringDateParse(date));
         employeeService.addEmployee(employee);
-        return "forward:/employee/listPage.do?page=1";
+        return "/employee/listPage.do?page=1";
     }
 
     /**
@@ -242,7 +242,7 @@ public class EmployeeController {
         employee.setBirthday(MyTimeUtil.stringDateParse(date));
         Employee manager = (Employee) session.getAttribute("logged");
         employeeService.updateEmployee(employee, status, manager.getName());
-        return "forward:/employee/listPage.do?page=1";
+        return "/employee/listPage.do?page=1";
     }
 
     /**
@@ -254,7 +254,7 @@ public class EmployeeController {
     @RequestMapping("/{id}/delete.do")
     public String deleteById(@PathVariable Integer id) {
         employeeService.deleteEmployee(id);
-        return "forward:/employee/listPage.do?page=1";
+        return "/employee/listPage.do?page=1";
     }
 
     /**
