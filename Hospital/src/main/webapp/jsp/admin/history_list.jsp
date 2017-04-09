@@ -103,5 +103,28 @@
 
 <!-- 自定义js -->
 <script src="<%=path %>/js/content.js?v=1.0.0"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.dataTables-example').dataTable();
+
+        var oTable = $('#editable').dataTable();
+
+        oTable.$('td').editable('../example_ajax.php', {
+            "callback": function (sValue, y) {
+                var aPos = oTable.fnGetPosition(this);
+                oTable.fnUpdate(sValue, aPos[0], aPos[1]);
+            },
+            "submitdata": function (value, settings) {
+                return {
+                    "row_id": this.parentNode.getAttribute('id'),
+                    "column": oTable.fnGetPosition(this)[2]
+                };
+            },
+            "width": "90%",
+            "height": "100%"
+        });
+    });
+</script>
 </body>
 </html>
