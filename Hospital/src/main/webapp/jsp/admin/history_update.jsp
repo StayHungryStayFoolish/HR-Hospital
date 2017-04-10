@@ -40,6 +40,37 @@
                                        value="<%=history.getEmployeeNumber() %>" readonly="readonly">
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">姓名</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" name="name" value="<%=history.getName() %>"
+                                       minlength="2" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">性别</label>
+                            <div class="col-sm-7">
+                                <div class="radio i-checks">
+                                    <label>
+                                        <input type="radio" value="男" name="gender"
+                                            <%
+												if(history.getGender().equals("男")){
+											%>
+                                               checked="checked"
+                                            <%  } %>
+                                        > <i></i>男</label>
+                                    <i style="margin-left: 25px"></i>
+                                    <label>
+                                        <input type="radio" value="女" name="gender"
+                                            <%
+												if(history.getGender().equals("女")){
+											%>
+                                               checked="checked"
+                                            <%  } %>
+                                        > <i></i>女</label>
+                                </div>
+                            </div>
+                        </div>
 
                     </form>
                 </div>
