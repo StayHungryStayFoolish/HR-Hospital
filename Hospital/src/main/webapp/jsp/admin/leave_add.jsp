@@ -45,7 +45,40 @@
                                 <input type="date" class="form-control" name="start" required>
                             </div>
                         </div>
-
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">结束时间</label>
+                            <div class="col-sm-7">
+                                <input type="date" class="form-control" name="end" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">天数</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" name="days" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">类型</label>
+                            <div class="col-sm-7">
+                                <select class="form-control m-b" name="type" size="1" required>
+                                    <option value="事假">事假</option>
+                                    <option value="病假">病假</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">请假原因</label>
+                            <div class="col-sm-7">
+                                <textarea class="form-control" rows="3" name="reason" required></textarea>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-8">
+                                <button class="btn btn-success" type="submit">申&nbsp;&nbsp;请</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button class="btn btn-white" type="reset">取&nbsp;&nbsp;消</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
