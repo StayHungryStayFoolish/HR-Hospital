@@ -71,6 +71,68 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">出生年月</label>
+                            <div class="col-sm-7">
+                                <% String birthday = MyTimeUtil.dateFormat(history.getBirthday()); %>
+                                <input type="date" class="form-control" name="date" value="<%=birthday %>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">联系方式</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" name="telephone"
+                                       value="<%=history.getTelephone() %>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">邮箱</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" placeholder="" name="email"
+                                       value="<%=history.getEmail() %>" email="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">籍贯</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" name="address"
+                                       value="<%=history.getAddress() %>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">学历</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" name="education"
+                                       value="<%=history.getEducation() %>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">部门</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" name=""
+                                       value="<%=history.getDepartment().getName() %>" readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">职称</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" name=""
+                                       value="<%=history.getPosition().getName() %>" readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">状态</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" name="" value="<%=history.getStatus() %>"
+                                       readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">家庭住址</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" name="home" value="<%=history.getHome() %>">
+                            </div>
+                        </div>
 
                     </form>
                 </div>
