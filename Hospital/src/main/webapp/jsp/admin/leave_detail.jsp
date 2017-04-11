@@ -31,7 +31,41 @@
                 </div>
                 <div class="ibox-content">
                     <% Leave leave = (Leave) request.getAttribute("leave");%>
+                    <form method="post" class="form-horizontal" action="">
+                        <div class="form-group">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-5">
+                                <label class="col-sm-8 control-label">工号：</label>
+                                <p class="form-control-static"><%=leave.getEmployeeNumber() %></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-5">
+                                <label class="col-sm-8 control-label">姓名：</label>
+                                <p class="form-control-static"><%=leave.getEmployee().getName() %></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-5">
+                                <label class="col-sm-8 control-label">起始时间：</label>
+                                <%
+                                    String starttime = MyTimeUtil.dateFormat(leave.getStartTime());
+                                    String endtime = MyTimeUtil.dateFormat(leave.getStartTime());
+                                %>
+                                <p class="form-control-static"><%=starttime %></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-5">
+                                <label class="col-sm-8 control-label">结束时间：</label>
+                                <p class="form-control-static"><%=endtime %></p>
+                            </div>
+                        </div>
 
+                    </form>
                 </div>
             </div>
         </div>
