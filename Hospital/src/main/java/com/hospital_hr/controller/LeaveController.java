@@ -62,7 +62,7 @@ public class LeaveController {
     @RequestMapping("/{id}/update.do")
     public String updateStatus(@PathVariable Integer id) {
         leaveService.updateStatus(id);
-        return "forward:/leave/notlist.do";
+        return "/leave/notlist.do";
     }
 
     /**
@@ -90,7 +90,7 @@ public class LeaveController {
         leave.setStartTime(MyTimeUtil.stringDateParse(start));
         leave.setEndTime(MyTimeUtil.stringDateParse(end));
         leaveService.insert(leave);
-        return "forward:/employee/welcome.do";
+        return "/employee/welcome.do";
     }
 
 

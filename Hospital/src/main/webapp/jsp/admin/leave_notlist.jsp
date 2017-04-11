@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.*" %>
 <%@ page import="com.hospital_hr.entity.*" %>
+<%@ page import="com.hospital_hr.uitl.MyTimeUtil" %>
 <% String path = request.getContextPath();%>
 <html>
 <head>
@@ -22,7 +23,41 @@
 
     <link rel="stylesheet" type="text/css" href="<%=path %>/dist/sweetalert.css">
 </head>
-<body>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>未批准请假列表</h5>
+                </div>
+                <div class="ibox-content">
+                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>姓名</th>
+                            <th>开始日期</th>
+                            <th>结束日期</th>
+                            <th>天数</th>
+                            <th>审批状态</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <%
+                            List<Leave> list = (List<Leave>) request.getAttribute("list");
+                            int index = 1;
+                            for (Leave leave : list) {
+                        %>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
