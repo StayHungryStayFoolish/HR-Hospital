@@ -21,6 +21,7 @@
     <link href="<%=path %>/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
     <link href="<%=path %>/css/animate.css" rel="stylesheet">
     <link href="<%=path %>/css/style.css?v=4.1.0" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="<%=path %>/dist/sweetalert.css">
 </head>
 <body class="gray-bg">
