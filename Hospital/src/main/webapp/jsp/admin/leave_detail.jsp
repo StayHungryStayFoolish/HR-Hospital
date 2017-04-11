@@ -53,10 +53,10 @@
                             <div class="col-md-5">
                                 <label class="col-sm-8 control-label">起始时间：</label>
                                 <%
-                                    String starttime = MyTimeUtil.dateFormat(leave.getStartTime());
-                                    String endtime = MyTimeUtil.dateFormat(leave.getStartTime());
+                                    String startTime = MyTimeUtil.dateFormat(leave.getStartTime());
+                                    String endTime = MyTimeUtil.dateFormat(leave.getStartTime());
                                 %>
-                                <p class="form-control-static"><%=starttime %>
+                                <p class="form-control-static"><%=startTime %>
                                 </p>
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                             <div class="col-md-2"></div>
                             <div class="col-md-5">
                                 <label class="col-sm-8 control-label">结束时间：</label>
-                                <p class="form-control-static"><%=endtime %>
+                                <p class="form-control-static"><%=endTime %>
                                 </p>
                             </div>
                         </div>
