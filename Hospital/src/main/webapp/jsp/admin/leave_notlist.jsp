@@ -50,7 +50,30 @@
                             int index = 1;
                             for (Leave leave : list) {
                         %>
-
+                        <tr class="gradeA">
+                            <td><%=index++ %>
+                            </td>
+                            <td><%=leave.getEmployee().getName() %>
+                            </td>
+                            <%
+                                String startTime = MyTimeUtil.dateFormat(leave.getStartTime());
+                                String endTime = MyTimeUtil.dateFormat(leave.getStartTime());
+                            %>
+                            <td><%=startTime %>
+                            </td>
+                            <td><%=endTime %>
+                            </td>
+                            <td><%=leave.getDays() %>
+                            </td>
+                            <td><%=leave.getStatus() %>
+                            </td>
+                            <td><a href="<%=path %>/leave/<%=leave.getId() %>/detail.do" class="btn btn-info">查看</a>&nbsp;&nbsp;
+                                <a href="<%=path %>/leave/<%=leave.getId() %>/update.do" class="btn btn-primary">批准</a>
+                            </td>
+                        </tr>
+                        <%
+                            }
+                        %>
                         </tbody>
                     </table>
                 </div>
