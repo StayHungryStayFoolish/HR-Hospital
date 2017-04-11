@@ -36,14 +36,16 @@
                             <div class="col-md-2"></div>
                             <div class="col-md-5">
                                 <label class="col-sm-8 control-label">工号：</label>
-                                <p class="form-control-static"><%=leave.getEmployeeNumber() %></p>
+                                <p class="form-control-static"><%=leave.getEmployeeNumber() %>
+                                </p>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-2"></div>
                             <div class="col-md-5">
                                 <label class="col-sm-8 control-label">姓名：</label>
-                                <p class="form-control-static"><%=leave.getEmployee().getName() %></p>
+                                <p class="form-control-static"><%=leave.getEmployee().getName() %>
+                                </p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -54,42 +56,47 @@
                                     String starttime = MyTimeUtil.dateFormat(leave.getStartTime());
                                     String endtime = MyTimeUtil.dateFormat(leave.getStartTime());
                                 %>
-                                <p class="form-control-static"><%=starttime %></p>
+                                <p class="form-control-static"><%=starttime %>
+                                </p>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-2"></div>
                             <div class="col-md-5">
                                 <label class="col-sm-8 control-label">结束时间：</label>
-                                <p class="form-control-static"><%=endtime %></p>
+                                <p class="form-control-static"><%=endtime %>
+                                </p>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-2"></div>
                             <div class="col-md-5">
                                 <label class="col-sm-8 control-label">天数：</label>
-                                <p class="form-control-static"><%=leave.getDays() %></p>
+                                <p class="form-control-static"><%=leave.getDays() %>
+                                </p>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-2"></div>
                             <div class="col-md-5">
                                 <label class="col-sm-8 control-label">类型：</label>
-                                <p class="form-control-static"><%=leave.getType() %></p>
+                                <p class="form-control-static"><%=leave.getType() %>
+                                </p>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-2"></div>
                             <div class="col-md-5">
                                 <label class="col-sm-8 control-label">请假原因：</label>
-                                <p class="form-control-static"><%=leave.getReason() %></p>
+                                <p class="form-control-static"><%=leave.getReason() %>
+                                </p>
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-8">
                                 <a href="<%=path %>/leave/<%=leave.getId() %>/update.do" class="btn btn-primary">批&nbsp;&nbsp;准</a>&nbsp;&nbsp;
-                                <a href="<%=path %>/leave/listPage.do?page=1" class="btn btn-info">返&nbsp;&nbsp;回</a>
+                                <a href="<%=path %>/leave/list.do" class="btn btn-info">返&nbsp;&nbsp;回</a>
                             </div>
                         </div>
                     </form>
