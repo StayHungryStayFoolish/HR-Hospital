@@ -77,7 +77,36 @@
                                 <p class="form-control-static"><%=employee.getEducation() %></p>
                             </div>
                         </div>
-
+                        <div class="form-group">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4">
+                                <label class="col-sm-8 control-label">部门：</label>
+                                <p class="form-control-static"><%=employee.getDepartment().getName() %></p>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="col-sm-5 control-label">职称：</label>
+                                <p class="form-control-static"><%=employee.getPosition().getName() %></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4">
+                                <label class="col-sm-8 control-label">入职时间：</label>
+                                <% String intTime = MyTimeUtil.dateFormat(employee.getInTime()); 	%>
+                                <p class="form-control-static"><%=intTime %></p>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="col-sm-5 control-label">备注：</label>
+                                <p class="form-control-static"><%=employee.getNotes() %></p>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-8">
+                                <a href="<%=path %>/employee/oneself/<%=employee.getId() %>/toUpdate.do" class="btn btn-primary">修&nbsp;&nbsp;改</a>&nbsp;&nbsp;
+                                <a href="<%=path %>/employee/welcome.do" class="btn btn-info">返&nbsp;&nbsp;回</a>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
