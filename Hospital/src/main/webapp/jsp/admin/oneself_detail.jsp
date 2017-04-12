@@ -43,6 +43,40 @@
                                 <p class="form-control-static"><%=employee.getName() %></p>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4">
+                                <label class="col-sm-8 control-label">性别：</label>
+                                <p class="form-control-static"><%=employee.getGender() %></p>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="col-sm-5 control-label">出生日期：</label>
+                                <% String birthday = MyTimeUtil.dateFormat(employee.getBirthday()); 	%>
+                                <p class="form-control-static"><%=birthday %></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4">
+                                <label class="col-sm-8 control-label">电话：</label>
+                                <p class="form-control-static"><%=employee.getTelephone() %></p>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="col-sm-5 control-label">邮箱：</label>
+                                <p class="form-control-static"><%=employee.getEmail() %></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4">
+                                <label class="col-sm-8 control-label">籍贯：</label>
+                                <p class="form-control-static"><%=employee.getAddress() %></p>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="col-sm-5 control-label">学历：</label>
+                                <p class="form-control-static"><%=employee.getEducation() %></p>
+                            </div>
+                        </div>
 
                     </form>
                 </div>
