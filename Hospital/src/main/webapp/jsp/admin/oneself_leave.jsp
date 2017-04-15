@@ -83,10 +83,11 @@
                         </tbody>
                     </table>
                     <div>
-							<span style="float: left; padding: 5px">
+                        <span style="float: left; padding: 5px">
 								当前&nbsp;<span
-                                    style="color: red;"><%=pageInfo.getCurrent() %></span>&nbsp;/&nbsp;<b><%=pageInfo.getPages() %></b>&nbsp;页&nbsp;&nbsp;
-								总共&nbsp;<b><%=pageInfo.getTotal() %></b>&nbsp;条</span>
+                                style="color: red;"><%=pageInfo.getCurrent() %></span>&nbsp;/&nbsp;<b><%=pageInfo.getPages() %></b>&nbsp;页&nbsp;&nbsp;
+								总共&nbsp;<b><%=pageInfo.getTotal() %></b>&nbsp;条
+                        </span>
                         <nav aria-label="Page navigation" style="margin: 0 auto; width: 200px">
                             <ul class="pagination" style="margin: 0;">
                                 <li>
@@ -98,14 +99,16 @@
                                     for (int i = 1; i <= pageInfo.getPages(); i++) {
                                 %>
                                 <li><a href="<%=path %>/leave/oneself.do?page=<%=i%>"><%=i %>
-                                </a></li>
+                                </a>
+                                </li>
                                 <%
                                     }
                                 %>
                                 <li>
                                     <a href="<%=path %>/leave/oneself.do?page=<%=pageInfo.getCurrent()+1<pageInfo.getPages()?pageInfo.getCurrent()+1:pageInfo.getPages() %>"
                                        aria-label="Next"> <span aria-hidden="true">后一页</span>
-                                    </a></li>
+                                    </a>
+                                </li>
                             </ul>
                         </nav>
                     </div>
