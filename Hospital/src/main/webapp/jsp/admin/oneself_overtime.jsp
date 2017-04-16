@@ -45,7 +45,32 @@
                             <th>日期</th>
                         </tr>
                         </thead>
-
+                        <tbody>
+                        <%
+                            Page<Overtime> pageInfo = (Page<Overtime>) request.getAttribute("page");
+                            if (null != pageInfo && null != pageInfo.getRecords() && pageInfo.getRecords().size() > 0) {
+                                List<Overtime> list = pageInfo.getRecords();
+                                int index = 1;
+                                for (Overtime overtime : list) {
+                        %>
+                        <tr class="gradeA">
+                            <td><%=index++ %>
+                            </td>
+                            <td><%=overtime.getDepartment().getName() %>
+                            </td>
+                            <td><%=overtime.getEmployee().getName() %>
+                            </td>
+                            <%
+                                String day = MyTimeUtil.dateFormat(overtime.getDay());
+                            %>
+                            <td><%=day %>
+                            </td>
+                        </tr>
+                        <%
+                                }
+                            }
+                        %>
+                        </tbody>
                     </table>
 
                 </div>
