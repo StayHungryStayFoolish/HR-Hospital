@@ -107,5 +107,32 @@
     </div>
 </div>
 
+
+<!-- 全局js -->
+<script src="<%=path %>/js/jquery.min.js?v=2.1.4"></script>
+<script src="<%=path %>/js/bootstrap.min.js?v=3.3.6"></script>
+<script src="<%=path %>/js/plugins/jeditable/jquery.jeditable.js"></script>
+
+<!-- Data Tables -->
+<script src="<%=path %>/js/plugins/dataTables/jquery.dataTables.js"></script>
+<script src="<%=path %>/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+
+<!-- 自定义js -->
+<script src="<%=path %>/js/content.js?v=1.0.0"></script>
+
+<!-- layer javascript -->
+<script src="/js/plugins/layer/layer.min.js"></script>
+
+<script>
+    function del(id) {
+        parent.layer.confirm('确认删除？', {
+            btn: ['确认', '取消'], //按钮
+            shade: false //不显示遮罩
+        }, function () {
+            parent.layer.msg('删除成功！', {icon: 1});
+            location.href = "./" + id + "/delete.do";
+        });
+    }
+</script>
 </body>
 </html>

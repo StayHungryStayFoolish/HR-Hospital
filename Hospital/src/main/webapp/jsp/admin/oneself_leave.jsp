@@ -133,7 +133,7 @@
 <!-- layer javascript -->
 <script src="/js/plugins/layer/layer.min.js"></script>
 
-<script type="text/javascript">
+<script>
     $(document).ready(function () {
         $("#update").click(function () {
             parent.layer.alert('已批准！', {icon: 1})
