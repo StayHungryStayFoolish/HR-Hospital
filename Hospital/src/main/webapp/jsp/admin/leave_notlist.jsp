@@ -119,5 +119,17 @@
         });
     });
 </script>
+<script>
+    $().ready(function() {
+        $("#commentForm").validate();
+    });
+    $.validator.setDefaults({
+        submitHandler: function() {
+            parent.layer.alert('已批准！',{icon: 1}),
+                form.submit();
+        }
+    });
+</script>
+
 </body>
 </html>
