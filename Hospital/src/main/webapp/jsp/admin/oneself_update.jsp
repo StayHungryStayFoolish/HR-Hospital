@@ -33,6 +33,51 @@
                     <% Employee employee = (Employee) request.getAttribute("employee"); %>
                     <form method="post" class="form-horizontal" id="commentForm"
                           action="<%=path %>/employee/<%=employee.getId() %>/update.do">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">工号</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" name="employeeNumber"
+                                       value="<%=employee.getEmployeeNumber() %>" readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">姓名</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" name="name" value="<%=employee.getName() %>"
+                                       minlength="2" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">密码</label>
+                            <div class="col-sm-7">
+                                <input type="password" class="form-control" name="password"
+                                       value="<%=employee.getPassword() %>" minlength="4" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">性别</label>
+                            <div class="col-sm-7">
+                                <div class="radio i-checks">
+                                    <label>
+                                        <input type="radio" value="男" name="gender"
+                                            <%
+												if(employee.getGender().equals("男")){
+											%>
+                                               checked="checked"
+                                            <%  } %>
+                                        > <i></i>男</label>
+                                    <i style="margin-left: 25px"></i>
+                                    <label>
+                                        <input type="radio" value="女" name="gender"
+                                            <%
+												if(employee.getGender().equals("女")){
+											%>
+                                               checked="checked"
+                                            <%  } %>
+                                        > <i></i>女</label>
+                                </div>
+                            </div>
+                        </div>
 
                     </form>
                 </div>
