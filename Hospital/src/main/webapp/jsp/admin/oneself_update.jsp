@@ -106,7 +106,26 @@
                                        value="<%=employee.getAddress() %>">
                             </div>
                         </div>
-
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">学历</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" name="education"
+                                       value="<%=employee.getEducation() %>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">备注</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" name="notes" value="<%=employee.getNotes() %>">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-8">
+                                <button class="btn btn-primary" type="submit">修&nbsp;&nbsp;改</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button class="btn btn-white" type="reset">取&nbsp;&nbsp;消</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
