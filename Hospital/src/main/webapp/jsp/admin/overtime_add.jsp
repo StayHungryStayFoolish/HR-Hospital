@@ -107,5 +107,28 @@
 
 <!-- layer javascript -->
 <script src="js/plugins/layer/layer.min.js"></script>
+
+<script>
+    $(function(){
+        $("#department").unbind("change", corpChange ).bind("change", corpChange);
+        $("#employee").unbind("change", deptChange).bind("change",deptChange);
+        <span style="color:#FF0000"></span>
+            $("#department").change();
+    });
+    function corpChange (){
+        var selectedValue = $("#department").val();
+        $("#employee").children("span").each(function(){
+            $(this).children().clone().replaceAll($(this));
+        });
+        if($.trim(selectedValue) != ""){
+            $("#employee").children("option[parentid!='" + selectedValue + "'][value!='']").each(function(){
+                $(this).wrap("<span style='display:none'></span>");
+            });
+        }
+    }
+    function deptChange(){
+        $("#department").val($(this).children("option:selected").attr("parentid"));
+    }
+</script>
 </body>
 </html>
