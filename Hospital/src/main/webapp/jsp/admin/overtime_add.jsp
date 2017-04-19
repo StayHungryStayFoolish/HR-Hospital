@@ -50,6 +50,25 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">员工</label>
+                            <div class="col-sm-7">
+                                <select class="form-control m-b" id="employee" name="employeeNumber" size="1" required>
+                                    <option value="">--请选择员工--</option>
+                                    <%
+                                        List<Employee> eList = (List<Employee>) request.getAttribute("eList");
+                                        for (Employee employee : eList) {
+
+                                    %>
+                                    <option value="<%=employee.getEmployeeNumber() %>">
+                                        <%=employee.getName() %>
+                                    </option>
+                                    <%
+                                        }
+                                    %>
+                                </select>
+                            </div>
+                        </div>
 
                     </form>
                 </div>
