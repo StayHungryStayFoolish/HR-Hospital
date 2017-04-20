@@ -48,9 +48,9 @@
                         </thead>
                         <tbody>
                         <%
-                            Page<Overtime> pe = (Page<Overtime>) request.getAttribute("page");
-                            if (null != pe && null != pe.getRecords() && pe.getRecords().size() > 0) {
-                                List<Overtime> list = pe.getRecords();
+                            Page<Overtime> pageInfo = (Page<Overtime>) request.getAttribute("page");
+                            if (null != pageInfo && null != pageInfo.getRecords() && pageInfo.getRecords().size() > 0) {
+                                List<Overtime> list = pageInfo.getRecords();
                                 int index = 1;
                                 for (Overtime overtime : list) {
                         %>
@@ -76,7 +76,33 @@
                         %>
                         </tbody>
                     </table>
-
+                    <div>
+							<span style="float: left; padding: 5px">
+								当前&nbsp;<span
+                                    style="color: red;"><%=pageInfo.getCurrent() %></span>&nbsp;/&nbsp;<b><%=pageInfo.getPages() %></b>&nbsp;页&nbsp;&nbsp;
+								总共&nbsp;<b><%=pageInfo.getTotal() %></b>&nbsp;条</span>
+                        <nav aria-label="Page navigation" style="margin: 0 auto; width: 240px">
+                            <ul class="pagination" style="margin: 0;">
+                                <li>
+                                    <a href="<%=path %>/overtime/listPage.do?page=<%=pageInfo.getCurrent()-1>1?pageInfo.getCurrent()-1:1 %>"
+                                       aria-label="Previous"> <span aria-hidden="true">前一页</span>
+                                    </a>
+                                </li>
+                                <%
+                                    for (int i = 1; i <= pageInfo.getPages(); i++) {
+                                %>
+                                <li><a href="<%=path %>/overtime/listPage.do?page=<%=i%>"><%=i %>
+                                </a></li>
+                                <%
+                                    }
+                                %>
+                                <li>
+                                    <a href="<%=path %>/overtime/listPage.do?page=<%=pageInfo.getCurrent()+1<pageInfo.getPages()?pageInfo.getCurrent()+1:pageInfo.getPages() %>"
+                                       aria-label="Next"> <span aria-hidden="true">后一页</span>
+                                    </a></li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
