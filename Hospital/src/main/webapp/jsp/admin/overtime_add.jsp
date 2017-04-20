@@ -106,7 +106,7 @@
 <script src="<%=path %>/js/plugins/validate/messages_zh.min.js"></script>
 
 <!-- layer javascript -->
-<script src="js/plugins/layer/layer.min.js"></script>
+<script src="/js/plugins/layer/layer.min.js"></script>
 
 <script>
     $(function () {
@@ -114,7 +114,7 @@
         $("#employee").unbind("change", deptChange).bind("change", deptChange);
         <
         span
-        style = "color:#FF0000" > < / span >
+        style = "color:#FF0000" > </span >
             $("#department").change();
     });
     function corpChange() {
