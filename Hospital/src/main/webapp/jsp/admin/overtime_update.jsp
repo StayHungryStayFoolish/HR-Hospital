@@ -21,7 +21,49 @@
     <link href="<%=path %>/css/animate.css" rel="stylesheet">
     <link href="<%=path %>/css/style.css?v=4.1.0" rel="stylesheet">
 </head>
-<body>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>修改加班安排</h5>
+                </div>
+                <div class="ibox-content">
+                    <% Overtime overtime = (Overtime)request.getAttribute("overtime"); %>
+                    <form method="post" class="form-horizontal" id="commentForm" action="<%=path %>/overtime/<%=overtime.getId() %>/update.do">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">部门</label>
+                            <div class="col-sm-7">
+                                <select class="form-control m-b" id="department" name="departmentNumber" size="1" required>
+                                    <option value="">--请选择部门--</option>
+                                    <%
+                                        List<Department> dList = (List<Department>) request.getAttribute("dList");
+                                        for(Department department : dList){
+
+                                    %>
+                                    <option value="<%=department.getDepartmentNumber() %>"
+                                            <%
+                                                if(overtime.getDepartmentNumber().equals(department.getDepartmentNumber())){
+                                            %>
+                                            selected="selected"
+                                            <%  }  %>
+                                    >
+                                        <%=department.getName() %>
+                                    </option>
+                                    <%
+                                        }
+                                    %>
+                                </select>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
