@@ -30,24 +30,26 @@
                     <h5>修改加班安排</h5>
                 </div>
                 <div class="ibox-content">
-                    <% Overtime overtime = (Overtime)request.getAttribute("overtime"); %>
-                    <form method="post" class="form-horizontal" id="commentForm" action="<%=path %>/overtime/<%=overtime.getId() %>/update.do">
+                    <% Overtime overtime = (Overtime) request.getAttribute("overtime"); %>
+                    <form method="post" class="form-horizontal" id="commentForm"
+                          action="<%=path %>/overtime/<%=overtime.getId() %>/update.do">
                         <div class="form-group">
                             <label class="col-sm-3 control-label">部门</label>
                             <div class="col-sm-7">
-                                <select class="form-control m-b" id="department" name="departmentNumber" size="1" required>
+                                <select class="form-control m-b" id="department" name="departmentNumber" size="1"
+                                        required>
                                     <option value="">--请选择部门--</option>
                                     <%
                                         List<Department> dList = (List<Department>) request.getAttribute("dList");
-                                        for(Department department : dList){
+                                        for (Department department : dList) {
 
                                     %>
                                     <option value="<%=department.getDepartmentNumber() %>"
                                             <%
-                                                if(overtime.getDepartmentNumber().equals(department.getDepartmentNumber())){
+                                                if (overtime.getDepartmentNumber().equals(department.getDepartmentNumber())) {
                                             %>
                                             selected="selected"
-                                            <%  }  %>
+                                            <% } %>
                                     >
                                         <%=department.getName() %>
                                     </option>
@@ -64,15 +66,15 @@
                                     <option value="">--请选择员工--</option>
                                     <%
                                         List<Employee> eList = (List<Employee>) request.getAttribute("eList");
-                                        for(Employee employee : eList){
+                                        for (Employee employee : eList) {
 
                                     %>
                                     <option value="<%=employee.getEmployeeNumber() %>"
                                             <%
-                                                if(overtime.getEmployeeNumber().equals(employee.getEmployeeNumber())){
+                                                if (overtime.getEmployeeNumber().equals(employee.getEmployeeNumber())) {
                                             %>
                                             selected="selected"
-                                            <%  }  %>
+                                            <% } %>
                                     >
                                         <%=employee.getName() %>
                                     </option>
@@ -82,7 +84,20 @@
                                 </select>
                             </div>
                         </div>
-
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">加班日期</label>
+                            <div class="col-sm-7">
+                                <% String day = MyTimeUtil.dateFormat(overtime.getDay()); %>
+                                <input type="date" class="form-control" size="1" name="date" value="<%=day %>">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-8">
+                                <button class="btn btn-primary" type="submit">修&nbsp;&nbsp;改</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button class="btn btn-white" type="reset">取&nbsp;&nbsp;消</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
