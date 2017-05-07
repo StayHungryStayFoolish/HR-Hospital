@@ -76,10 +76,11 @@
                         </tbody>
                     </table>
                     <div>
-							<span style="float: left; padding: 5px">
+                        <span style="float: left; padding: 5px">
 								当前&nbsp;<span
-                                    style="color: red;"><%=pageInfo.getCurrent() %></span>&nbsp;/&nbsp;<b><%=pageInfo.getPages() %></b>&nbsp;页&nbsp;&nbsp;
-								总共&nbsp;<b><%=pageInfo.getTotal() %></b>&nbsp;条</span>
+                                style="color: red;"><%=pageInfo.getCurrent() %></span>&nbsp;/&nbsp;<b><%=pageInfo.getPages() %></b>&nbsp;页&nbsp;&nbsp;
+								总共&nbsp;<b><%=pageInfo.getTotal() %></b>&nbsp;条
+                        </span>
                         <nav aria-label="Page navigation" style="margin: 0 auto; width: 240px">
                             <ul class="pagination" style="margin: 0;">
                                 <li>
