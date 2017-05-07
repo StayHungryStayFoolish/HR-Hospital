@@ -45,7 +45,33 @@
                         </tr>
                         </thead>
                         <tbody>
-
+                        <%
+                            Page<Position> pageInfo = (Page<Position>) request.getAttribute("page");
+                            if (null != pageInfo && null != pageInfo.getRecords() && pageInfo.getRecords().size() > 0) {
+                                List<Position> list = pageInfo.getRecords();
+                                int index = 1;
+                                for (Position position : list) {
+                        %>
+                        <tr class="gradeA">
+                            <td><%=index++ %>
+                            </td>
+                            <td><%=position.getPositionNumber() %>
+                            </td>
+                            <td><%=position.getName() %>
+                            </td>
+                            <td><%=position.getLevel() %>
+                            </td>
+                            <td><%=position.getNotes() %>
+                            </td>
+                            <td><a href="<%=path %>/position/<%=position.getId() %>/toUpdate.do"
+                                   class="btn btn-primary">修改</a>&nbsp;&nbsp;
+                                <a href="<%=path %>/position/<%=position.getId() %>/delete.do"
+                                   class="btn btn-danger">删除</a></td>
+                        </tr>
+                        <%
+                                }
+                            }
+                        %>
                         </tbody>
                     </table>
 
