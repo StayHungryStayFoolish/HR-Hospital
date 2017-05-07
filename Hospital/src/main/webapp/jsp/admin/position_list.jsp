@@ -66,7 +66,8 @@
                             <td><a href="<%=path %>/position/<%=position.getId() %>/toUpdate.do"
                                    class="btn btn-primary">修改</a>&nbsp;&nbsp;
                                 <a href="<%=path %>/position/<%=position.getId() %>/delete.do"
-                                   class="btn btn-danger">删除</a></td>
+                                   class="btn btn-danger">删除</a>
+                            </td>
                         </tr>
                         <%
                                 }
@@ -74,7 +75,22 @@
                         %>
                         </tbody>
                     </table>
+                    <div>
+							<span style="float: left; padding: 5px">
+								当前&nbsp;<span
+                                    style="color: red;"><%=pageInfo.getCurrent() %></span>&nbsp;/&nbsp;<b><%=pageInfo.getPages() %></b>&nbsp;页&nbsp;&nbsp;
+								总共&nbsp;<b><%=pageInfo.getTotal() %></b>&nbsp;条</span>
+                        <nav aria-label="Page navigation" style="margin: 0 auto; width: 240px">
+                            <ul class="pagination" style="margin: 0;">
+                                <li>
+                                    <a href="<%=path %>/position/listPage.do?page=<%=pageInfo.getCurrent()-1>1?pageInfo.getCurrent()-1:1 %>"
+                                       aria-label="Previous"> <span aria-hidden="true">前一页</span>
+                                    </a>
+                                </li>
 
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
