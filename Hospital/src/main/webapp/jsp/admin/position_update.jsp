@@ -93,5 +93,19 @@
 <!-- 表单验证 -->
 <script src="<%=path %>/js/plugins/validate/jquery.validate.min.js"></script>
 <script src="<%=path %>/js/plugins/validate/messages_zh.min.js"></script>
+
+<!-- layer javascript -->
+<script src="js/plugins/layer/layer.min.js"></script>
+<script>
+    $().ready(function () {
+        $("#commentForm").validate();
+    });
+    $.validator.setDefaults({
+        submitHandler: function () {
+            parent.layer.alert('修改成功！', {icon: 1}),
+                form.submit();
+        }
+    });
+</script>
 </body>
 </html>
