@@ -29,21 +29,48 @@
                     <h5>修改职称信息</h5>
                 </div>
                 <div class="ibox-content">
-                    <% Position position = (Position)request.getAttribute("position"); %>
-                    <form method="post" class="form-horizontal" id="commentForm" action="<%=path %>/position/<%=position.getId() %>/update.do">
+                    <% Position position = (Position) request.getAttribute("position"); %>
+                    <form method="post" class="form-horizontal" id="commentForm"
+                          action="<%=path %>/position/<%=position.getId() %>/update.do">
                         <div class="form-group">
                             <label class="col-sm-3 control-label">职称号</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" name="positionNumber" value="<%=position.getPositionNumber() %>" readonly="readonly">
+                                <input type="text" class="form-control" name="positionNumber"
+                                       value="<%=position.getPositionNumber() %>" readonly="readonly">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">名称</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" placeholder="" name="name" value="<%=position.getName() %>" required>
+                                <input type="text" class="form-control" placeholder="" name="name"
+                                       value="<%=position.getName() %>" required>
                             </div>
                         </div>
-
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">权限级别</label>
+                            <div class="col-sm-7">
+                                <select class="form-control m-b" name="level" size="1" required>
+                                    <option value="部门主任">部门主任</option>
+                                    <option value="部门员工">部门员工</option>
+                                    <option value="人事部主任">人事部主任</option>
+                                    <option value="人事部员工">人事部员工</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">备注</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" placeholder="" name="notes"
+                                       value="<%=position.getNotes() %>">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-8">
+                                <button class="btn btn-success" type="submit">修&nbsp;&nbsp;改</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button class="btn btn-white" type="reset">取&nbsp;&nbsp;消</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
