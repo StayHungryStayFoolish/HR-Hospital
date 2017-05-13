@@ -96,6 +96,7 @@ public class LeaveServiceImpl extends ServiceImpl<LeaveMapper, Leave> implements
      */
     @Override
     public List<Leave> selectListByStatus(Integer departmentNumber, String status) {
+        System.out.println("部门编号"+departmentNumber);
         List<Leave> leaveList = baseMapper.selectList(new EntityWrapper<Leave>().
                 eq("department_number", departmentNumber)
                 .eq("status", status)
