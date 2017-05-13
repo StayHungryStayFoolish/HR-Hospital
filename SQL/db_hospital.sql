@@ -125,8 +125,8 @@ CREATE TABLE db_hospital.history (
 )
   COMMENT '档案表';
 
-DROP TABLE IF EXISTS db_hospital.leave;
-CREATE TABLE db_hospital.leave (
+DROP TABLE IF EXISTS `db_hospital.leave`;
+CREATE TABLE `db_hospital.leave` (
   id                INT(10)             AUTO_INCREMENT PRIMARY KEY
   COMMENT 'PK ID',
   employee_number   INT(10)             DEFAULT NULL
@@ -143,7 +143,7 @@ CREATE TABLE db_hospital.leave (
   COMMENT '请假理由',
   type              ENUM ('事假', '病假')   DEFAULT NULL
   COMMENT '请假类型',
-  manager            VARCHAR(10)         DEFAULT NULL
+  manager           VARCHAR(10)         DEFAULT NULL
   COMMENT '经理',
   status            ENUM ('已批准', '未批准') DEFAULT '未批准'
   COMMENT '批准状态',
@@ -326,15 +326,15 @@ INSERT INTO `history` VALUES
    '2009', '3004', '在职', '', '');
 
 SELECT *
-FROM db_hospital.leave;
+FROM `db_hospital.leave`;
 
-INSERT INTO `leave` VALUES ('1', '1007', '2007', '2017-07-11', '2017-07-12', '1', '家中有事', '事假', NULL, '未批准', NULL);
-INSERT INTO `leave` VALUES ('2', '1008', '2007', '2017-07-10', '2017-07-12', '2', '偶感风寒', '病假', NULL, '已批准', NULL);
-INSERT INTO `leave` VALUES ('3', '1011', '2007', '2017-07-11', '2017-07-11', '1', '回家看看', '事假', NULL, '已批准', NULL);
-INSERT INTO `leave` VALUES ('7', '1008', '2007', '2017-07-14', '2017-07-17', '3', '真的有点事', '事假', NULL, '已批准', NULL);
-INSERT INTO `leave` VALUES ('8', '1009', '2013', '2017-07-05', '2017-07-06', '1', '回家看看', '事假', NULL, '已批准', NULL);
-INSERT INTO `leave` VALUES ('9', '1012', '2013', '2017-07-08', '2017-07-08', '1', '摊上事了', '事假', NULL, '未批准', NULL);
-INSERT INTO `leave` VALUES ('10', '1012', '2013', '2017-07-13', '2017-07-14', '1', '真的有点事', '事假', NULL, '已批准', NULL);
+INSERT INTO `db_hospital.leave` VALUES ('1', '1007', '2007', '2017-07-11', '2017-07-12', '1', '家中有事', '事假', NULL, '未批准', NULL);
+INSERT INTO `db_hospital.leave` VALUES ('2', '1008', '2007', '2017-07-10', '2017-07-12', '2', '偶感风寒', '病假', NULL, '已批准', NULL);
+INSERT INTO `db_hospital.leave` VALUES ('3', '1011', '2007', '2017-07-11', '2017-07-11', '1', '回家看看', '事假', NULL, '已批准', NULL);
+INSERT INTO `db_hospital.leave` VALUES ('7', '1008', '2007', '2017-07-14', '2017-07-17', '3', '真的有点事', '事假', NULL, '已批准', NULL);
+INSERT INTO `db_hospital.leave` VALUES ('8', '1009', '2013', '2017-07-05', '2017-07-06', '1', '回家看看', '事假', NULL, '已批准', NULL);
+INSERT INTO `db_hospital.leave` VALUES ('9', '1012', '2013', '2017-07-08', '2017-07-08', '1', '摊上事了', '事假', NULL, '未批准', NULL);
+INSERT INTO `db_hospital.leave` VALUES ('10', '1012', '2013', '2017-07-13', '2017-07-14', '1', '真的有点事', '事假', NULL, '已批准', NULL);
 
 
 SELECT *
@@ -370,8 +370,17 @@ SELECT *
 FROM attendance
 WHERE employee_number = '1001';
 
-SELECT  id AS id,employee_number
-           AS employeeNumber,department_number
-           AS departmentNumber,start_time AS
-              startTime,end_time
-           AS endTime,`days`,reason,`type`,manager,`status`,notes  FROM db_hospital.leave   WHERE  (leave.employee_number = '1001');
+SELECT
+  id                AS id,
+  employee_number   AS employeeNumber,
+  department_number AS departmentNumber,
+  start_time        AS startTime,
+  end_time          AS endTime,
+  `days`,
+  reason,
+  `type`,
+  manager,
+  `status`,
+  notes
+FROM `db_hospital.leave`
+WHERE (employee_number = '1001')
