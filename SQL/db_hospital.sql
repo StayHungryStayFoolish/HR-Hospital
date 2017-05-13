@@ -120,7 +120,7 @@ CREATE TABLE `history` (
   COMMENT '状态',
   home              VARCHAR(100)            DEFAULT ''
   COMMENT '现居地址',
-  note              VARCHAR(255)            DEFAULT ''
+  notes              VARCHAR(255)            DEFAULT ''
   COMMENT '备注'
 )
   COMMENT '档案表';
