@@ -143,7 +143,7 @@ CREATE TABLE db_hospital.leave (
   COMMENT '请假理由',
   type              ENUM ('事假', '病假')   DEFAULT NULL
   COMMENT '请假类型',
-  manger            VARCHAR(10)         DEFAULT NULL
+  manager            VARCHAR(10)         DEFAULT NULL
   COMMENT '经理',
   status            ENUM ('已批准', '未批准') DEFAULT '未批准'
   COMMENT '批准状态',
@@ -369,3 +369,9 @@ INSERT INTO `position` VALUES ('11', '1001', '人事部主任', '人事部主任
 SELECT *
 FROM attendance
 WHERE employee_number = '1001';
+
+SELECT  id AS id,employee_number
+           AS employeeNumber,department_number
+           AS departmentNumber,start_time AS
+              startTime,end_time
+           AS endTime,`days`,reason,`type`,manager,`status`,notes  FROM db_hospital.leave   WHERE  (leave.employee_number = '1001');

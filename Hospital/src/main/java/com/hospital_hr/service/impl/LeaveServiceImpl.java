@@ -78,7 +78,8 @@ public class LeaveServiceImpl extends ServiceImpl<LeaveMapper, Leave> implements
     public Page<Leave> selectByEmployee(Integer employeeNumber, int page) {
         Page<Leave> pageInfo = new Page<>(page, 2, "status");
         pageInfo.setAsc(false);
-        List<Leave> leaveList = baseMapper.selectPage(pageInfo, new EntityWrapper<Leave>().eq("employee_number", employeeNumber));
+        List<Leave> leaveList = baseMapper.selectPage(pageInfo, new EntityWrapper<Leave>()
+                .eq("employee_number", employeeNumber));
         for (Leave leave : leaveList) {
             setObject(leave);
         }
