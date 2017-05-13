@@ -96,7 +96,7 @@ public class LeaveServiceImpl extends ServiceImpl<LeaveMapper, Leave> implements
     @Override
     public List<Leave> selectListByStatus(Integer departmentNumber, String status) {
         List<Leave> leaveList = baseMapper.selectList(new EntityWrapper<Leave>().
-                eq("employee_number", employeeMapper)
+                eq("department_number", departmentNumber)
                 .eq("status", status)
                 .orderBy("id", false));
         for (Leave leave : leaveList) {
@@ -107,6 +107,7 @@ public class LeaveServiceImpl extends ServiceImpl<LeaveMapper, Leave> implements
 
     /**
      * 请假表补全 员工信息/部门信息
+     *
      * @param leave
      * @return
      */
