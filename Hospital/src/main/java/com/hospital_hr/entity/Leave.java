@@ -14,7 +14,7 @@ import java.util.Date;
  * <p>
  * 请假表
  */
-@TableName("leave")
+@TableName("lea")
 public class Leave extends Model<Leave> implements Serializable {
 
     @TableId

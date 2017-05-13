@@ -4,8 +4,8 @@ USE db_hospital;
 
 SHOW DATABASES;
 
-DROP TABLE IF EXISTS db_hospital.attendance;
-CREATE TABLE db_hospital.attendance (
+DROP TABLE IF EXISTS `attendance`;
+CREATE TABLE `attendance` (
   id              INT(10)                  AUTO_INCREMENT PRIMARY KEY
   COMMENT 'PK ID',
   employee_number INT(10)                  DEFAULT NULL
@@ -29,8 +29,8 @@ CREATE TABLE db_hospital.attendance (
 )
   COMMENT '员工考勤表';
 
-DROP TABLE IF EXISTS db_hospital.department;
-CREATE TABLE db_hospital.department (
+DROP TABLE IF EXISTS `department`;
+CREATE TABLE `department` (
   id                INT(10)      AUTO_INCREMENT PRIMARY KEY
   COMMENT 'PK ID',
   department_number INT(10)      DEFAULT NULL
@@ -48,8 +48,8 @@ CREATE TABLE db_hospital.department (
 )
   COMMENT '部门';
 
-DROP TABLE IF EXISTS db_hospital.employee;
-CREATE TABLE db_hospital.employee (
+DROP TABLE IF EXISTS `employee`;
+CREATE TABLE `employee` (
   id                INT(10)         AUTO_INCREMENT PRIMARY KEY
   COMMENT 'PK ID',
   employee_number   INT(10)         DEFAULT NULL
@@ -86,8 +86,8 @@ CREATE TABLE db_hospital.employee (
 )
   COMMENT '员工表';
 
-DROP TABLE IF EXISTS db_hospital.history;
-CREATE TABLE db_hospital.history (
+DROP TABLE IF EXISTS `history`;
+CREATE TABLE `history` (
   id                INT(10)                 AUTO_INCREMENT PRIMARY KEY
   COMMENT 'PK ID',
   employee_number   INT(10)                 DEFAULT NULL
@@ -125,8 +125,8 @@ CREATE TABLE db_hospital.history (
 )
   COMMENT '档案表';
 
-DROP TABLE IF EXISTS `db_hospital.leave`;
-CREATE TABLE `db_hospital.leave` (
+DROP TABLE IF EXISTS `lea`;
+CREATE TABLE `lea` (
   id                INT(10)             AUTO_INCREMENT PRIMARY KEY
   COMMENT 'PK ID',
   employee_number   INT(10)             DEFAULT NULL
@@ -152,8 +152,8 @@ CREATE TABLE `db_hospital.leave` (
 )
   COMMENT '请假表';
 
-DROP TABLE IF EXISTS db_hospital.move;
-CREATE TABLE db_hospital.move (
+DROP TABLE IF EXISTS `move`;
+CREATE TABLE `move` (
   id              INT(10)      AUTO_INCREMENT PRIMARY KEY
   COMMENT 'PK ID',
   employee_number INT(10)      DEFAULT NULL
@@ -171,8 +171,8 @@ CREATE TABLE db_hospital.move (
 )
   COMMENT '员工调动记录表';
 
-DROP TABLE IF EXISTS db_hospital.overtime;
-CREATE TABLE db_hospital.overtime (
+DROP TABLE IF EXISTS `overtime`;
+CREATE TABLE `overtime` (
   id                INT(10)      AUTO_INCREMENT PRIMARY KEY
   COMMENT 'PK ID',
   department_number INT(10)      DEFAULT NULL
@@ -190,8 +190,8 @@ CREATE TABLE db_hospital.overtime (
 )
   COMMENT '加班表';
 
-DROP TABLE IF EXISTS db_hospital.position;
-CREATE TABLE db_hospital.position (
+DROP TABLE IF EXISTS `position`;
+CREATE TABLE `position` (
   id              INT(10)                                 AUTO_INCREMENT PRIMARY KEY
   COMMENT 'PK ID',
   position_number INT(10)                                 DEFAULT NULL
@@ -206,8 +206,8 @@ CREATE TABLE db_hospital.position (
 )
   COMMENT '职称表';
 
-DROP TABLE IF EXISTS db_hospital.rewards_punishment;
-CREATE TABLE db_hospital.rewards_punishment (
+DROP TABLE IF EXISTS `rewards_punishment`;
+CREATE TABLE `rewards_punishment` (
   id              INT(10)      AUTO_INCREMENT PRIMARY KEY
   COMMENT 'PK ID',
   employee_number INT(10)      DEFAULT NULL
@@ -224,8 +224,8 @@ CREATE TABLE db_hospital.rewards_punishment (
   COMMENT '经理',
   notes           VARCHAR(200) DEFAULT NULL
   COMMENT '备注',
-  KEY employee_number (employee_number),
-  CONSTRAINT rewards_punishment_ibfk_1 FOREIGN KEY (employee_number) REFERENCES employee (employee_number)
+  KEY `employee_number` (`employee_number`),
+  CONSTRAINT `rewards_punishment_ibfk_1` FOREIGN KEY (`employee_number`) REFERENCES `employee` (`employee_number`)
 )
   COMMENT '奖罚记录表';
 
@@ -326,15 +326,15 @@ INSERT INTO `history` VALUES
    '2009', '3004', '在职', '', '');
 
 SELECT *
-FROM `db_hospital.leave`;
+FROM `lea`;
 
-INSERT INTO `db_hospital.leave` VALUES ('1', '1007', '2007', '2017-07-11', '2017-07-12', '1', '家中有事', '事假', NULL, '未批准', NULL);
-INSERT INTO `db_hospital.leave` VALUES ('2', '1008', '2007', '2017-07-10', '2017-07-12', '2', '偶感风寒', '病假', NULL, '已批准', NULL);
-INSERT INTO `db_hospital.leave` VALUES ('3', '1011', '2007', '2017-07-11', '2017-07-11', '1', '回家看看', '事假', NULL, '已批准', NULL);
-INSERT INTO `db_hospital.leave` VALUES ('7', '1008', '2007', '2017-07-14', '2017-07-17', '3', '真的有点事', '事假', NULL, '已批准', NULL);
-INSERT INTO `db_hospital.leave` VALUES ('8', '1009', '2013', '2017-07-05', '2017-07-06', '1', '回家看看', '事假', NULL, '已批准', NULL);
-INSERT INTO `db_hospital.leave` VALUES ('9', '1012', '2013', '2017-07-08', '2017-07-08', '1', '摊上事了', '事假', NULL, '未批准', NULL);
-INSERT INTO `db_hospital.leave` VALUES ('10', '1012', '2013', '2017-07-13', '2017-07-14', '1', '真的有点事', '事假', NULL, '已批准', NULL);
+INSERT INTO `lea` VALUES ('1', '1007', '2007', '2017-07-11', '2017-07-12', '1', '家中有事', '事假', NULL, '未批准', NULL);
+INSERT INTO `lea` VALUES ('2', '1008', '2007', '2017-07-10', '2017-07-12', '2', '偶感风寒', '病假', NULL, '已批准', NULL);
+INSERT INTO `lea` VALUES ('3', '1011', '2007', '2017-07-11', '2017-07-11', '1', '回家看看', '事假', NULL, '已批准', NULL);
+INSERT INTO `lea` VALUES ('7', '1008', '2007', '2017-07-14', '2017-07-17', '3', '真的有点事', '事假', NULL, '已批准', NULL);
+INSERT INTO `lea` VALUES ('8', '1009', '2013', '2017-07-05', '2017-07-06', '1', '回家看看', '事假', NULL, '已批准', NULL);
+INSERT INTO `lea` VALUES ('9', '1012', '2013', '2017-07-08', '2017-07-08', '1', '摊上事了', '事假', NULL, '未批准', NULL);
+INSERT INTO `lea` VALUES ('10', '1012', '2013', '2017-07-13', '2017-07-14', '1', '真的有点事', '事假', NULL, '已批准', NULL);
 
 
 SELECT *
@@ -382,5 +382,5 @@ SELECT
   manager,
   `status`,
   notes
-FROM `db_hospital.leave`
+FROM `leave`
 WHERE (employee_number = '1001')
