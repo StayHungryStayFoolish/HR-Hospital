@@ -47,7 +47,47 @@
                             <th>管理</th>
                         </tr>
                         </thead>
-
+                        <tbody>
+                        <%
+                            Page<History> pageInfo = (Page<History>) request.getAttribute("page");
+                            if (null != pageInfo && null != pageInfo.getRecords() && pageInfo.getRecords().size() > 0) {
+                                List<History> list = pageInfo.getRecords();
+                                int index = 1;
+                                for (History history : list) {
+                        %>
+                        <tr class="gradeA">
+                            <td><%=index++ %>
+                            </td>
+                            <td><%=history.getEmployeeNumber() %>
+                            </td>
+                            <td><%=history.getName() %>
+                            </td>
+                            <td><%=history.getGender() %>
+                            </td>
+                            <td><%=history.getTelephone() %>
+                            </td>
+                            <td><%=history.getDepartment().getName() %>
+                            </td>
+                            <td><%=history.getPosition().getName() %>
+                            </td>
+                            <%
+                                String inTime = MyTimeUtil.dateFormat(history.getInTime());
+                                String outTime = MyTimeUtil.dateFormat(history.getOutTime());
+                            %>
+                            <td><%=inTime %>
+                            </td>
+                            <td><%=outTime %>
+                            </td>
+                            <td><%=history.getStatus() %>
+                            </td>
+                            <td><a href="<%=path %>/history/<%=history.getId() %>/detail.do" class="btn btn-info">查看</a>&nbsp;&nbsp;
+                                <a href="<%=path %>/history/<%=history.getId() %>/toUpdate.do" class="btn btn-primary">修改</a>&nbsp;&nbsp;
+                        </tr>
+                        <%
+                                }
+                            }
+                        %>
+                        </tbody>
                     </table>
 
                 </div>
