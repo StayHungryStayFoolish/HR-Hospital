@@ -382,5 +382,5 @@ SELECT
   manager,
   `status`,
   notes
-FROM `leave`
+FROM `lea`
 WHERE (employee_number = '1001')
