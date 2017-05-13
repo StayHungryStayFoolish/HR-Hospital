@@ -96,7 +96,7 @@ CREATE TABLE `history` (
   COMMENT '姓名',
   gender            ENUM ('男', '女')         DEFAULT NULL
   COMMENT '性别',
-  brithday          DATE                    DEFAULT NULL
+  birthday          DATE                    DEFAULT NULL
   COMMENT '出生日期',
   telephone         VARCHAR(20)             DEFAULT ''
   COMMENT '电话',
@@ -114,7 +114,7 @@ CREATE TABLE `history` (
   COMMENT '离职时间',
   department_number INT(10)                 DEFAULT NULL
   COMMENT '部门编号',
-  postion_number    INT(10)                 DEFAULT NULL
+  position_number   INT(10)                 DEFAULT NULL
   COMMENT '职称编号',
   status            ENUM ('离职', '在职', '退休') DEFAULT NULL
   COMMENT '状态',
