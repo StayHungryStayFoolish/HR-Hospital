@@ -120,7 +120,7 @@ public class LeaveController {
     @RequestMapping("/yeslist.do")
     public String selectYesList(Model model, HttpSession session) {
         //获取登录用户的信息
-        Employee employee = (Employee) session.getAttribute("loged");
+        Employee employee = (Employee) session.getAttribute("logged");
         List<Leave> leaveList = leaveService.selectListByStatus(employee.getDepartmentNumber(), "已批准");
         model.addAttribute("list", leaveList);
         return "admin/leave_yeslist";
