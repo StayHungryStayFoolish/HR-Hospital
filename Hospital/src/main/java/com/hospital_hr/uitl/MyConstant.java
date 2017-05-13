@@ -1,7 +1,5 @@
 package com.hospital_hr.uitl;
 
-import org.springframework.beans.factory.annotation.Value;
-
 /**
  * Created by bonismo@hotmail.com
  * 下午10:52 on 17/2/9.
@@ -22,4 +20,6 @@ public class MyConstant {
     public static String AMTime = "8:00:00";
     public static String PMTime = "14:00:00";
     public static String OVTime = "19:00:00";
+
+
 }

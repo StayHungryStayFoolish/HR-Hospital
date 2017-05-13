@@ -70,7 +70,7 @@ public class EmployeeController {
      */
     @RequestMapping("/checkLogin.do")
     public String checkLogin(HttpSession session, Employee employee) {
-        System.out.println("进入方法");
+        System.out.println("进入校验方法");
         Employee empInfo = employeeService.checkLogin(employee.getEmployeeNumber(), employee.getPassword());
         // 如果员工信息不为空,通过员工信息获取职称表信息,然后获得职称级别,进而做权限判定
         if (null != empInfo) {

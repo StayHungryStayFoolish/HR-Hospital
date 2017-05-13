@@ -95,7 +95,7 @@ public class HistoryServiceImps extends ServiceImpl<HistoryMapper, History> impl
      */
     @Override
     public List<History> selectList() {
-        List<History> historyList = baseMapper.selectList(new EntityWrapper<History>());
+        List<History> historyList = baseMapper.selectList(new EntityWrapper<>());
         for (History history : historyList) {
             setObject(history);
         }

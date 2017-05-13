@@ -116,7 +116,7 @@ public class AttendanceServiceImpl extends ServiceImpl<AttendanceMapper, Attenda
         Date nowTime = MyTimeUtil.nowTime();
         // 获取当前日期
         Date nowDate = MyTimeUtil.nowData();
-        if (nowTime.after(amStartTime) && nowTime.before(pmEndTime)) {
+        if (nowTime.after(amStartTime) && nowTime.before(pmStartTime)) {
             Attendance attInfo = baseMapper.selectByNumber(employeeNumber, nowDate, "上午");
             if (null == attInfo.getEndTime()) {
                 attInfo.setDay(nowTime);
@@ -125,7 +125,7 @@ public class AttendanceServiceImpl extends ServiceImpl<AttendanceMapper, Attenda
                 } else {
                     attInfo.setEndType("早退");
                 }
-                baseMapper.insert(attInfo);
+                baseMapper.updateById(attInfo);
             }
         } else if (nowTime.after(pmStartTime) && nowTime.before(ovStartTime)) {
             Attendance attInfo = baseMapper.selectByNumber(employeeNumber, nowDate, "下午");
@@ -142,6 +142,7 @@ public class AttendanceServiceImpl extends ServiceImpl<AttendanceMapper, Attenda
             Attendance attInfo = baseMapper.selectByNumber(employeeNumber, nowDate, "加班");
             if (null == attInfo.getEndTime()) {
                 attInfo.setEndTime(nowTime);
+                System.out.println("员工信息" + attInfo);
                 if (nowTime.after(ovEndTime)) {
                     attInfo.setEndType("正常");
                 } else {
@@ -176,7 +177,7 @@ public class AttendanceServiceImpl extends ServiceImpl<AttendanceMapper, Attenda
         // 根据 ID 查询员工的考勤记录,并倒序排列
         List<Attendance> list = baseMapper.selectList(
                 new EntityWrapper<Attendance>()
-                        .eq("employeeNumber", employeeNumber)
+                        .eq("employee_number", employeeNumber)
                         .orderBy("id", false));
         // 遍历考勤表,获取员工信息,将员工 放入考勤表中
         for (Attendance attendance : list) {

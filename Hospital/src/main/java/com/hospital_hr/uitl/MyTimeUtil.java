@@ -115,7 +115,7 @@ public class MyTimeUtil {
      * @return
      */
     public static Date stringTimeParse(String stringTime) {
-        if (null != stringTime && "".equals(stringTime)) {
+        if (null != stringTime && !"".equals(stringTime)) {
             SimpleDateFormat format = new SimpleDateFormat("hh:mm:ss");
             Date date = null;
             try {

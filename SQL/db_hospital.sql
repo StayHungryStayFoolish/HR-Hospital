@@ -4,7 +4,7 @@ USE db_hospital;
 
 SHOW DATABASES;
 
-DROP TABLE IF EXISTS db_hospital.attendanca;
+DROP TABLE IF EXISTS db_hospital.attendance;
 CREATE TABLE db_hospital.attendance (
   id              INT(10)                  AUTO_INCREMENT PRIMARY KEY
   COMMENT 'PK ID',
@@ -16,7 +16,7 @@ CREATE TABLE db_hospital.attendance (
   COMMENT '上班状态',
   start_time      TIME                     DEFAULT NULL
   COMMENT '上班时间',
-  srart_type      ENUM ('正常', '迟到', '未签到') DEFAULT '未签到'
+  start_type      ENUM ('正常', '迟到', '未签到') DEFAULT '未签到'
   COMMENT '上班出勤状态',
   end_time        TIME                     DEFAULT NULL
   COMMENT '下班时间',
@@ -39,7 +39,7 @@ CREATE TABLE db_hospital.department (
   COMMENT '部门名称',
   manager           VARCHAR(10)  DEFAULT NULL
   COMMENT '部门经理',
-  telephone          VARCHAR(20)  DEFAULT NULL
+  telephone         VARCHAR(20)  DEFAULT NULL
   COMMENT '电话',
   address           VARCHAR(50)  DEFAULT NULL
   COMMENT '部门地址',
@@ -60,7 +60,7 @@ CREATE TABLE db_hospital.employee (
   COMMENT '性别',
   birthday          DATE            DEFAULT NULL
   COMMENT '出生日期',
-  telephone          VARCHAR(20)     DEFAULT ''
+  telephone         VARCHAR(20)     DEFAULT ''
   COMMENT '电话',
   email             VARCHAR(30)     DEFAULT ''
   COMMENT '邮箱',
@@ -139,7 +139,7 @@ CREATE TABLE db_hospital.leave (
   COMMENT '结束日期',
   days              VARCHAR(10)         DEFAULT NULL
   COMMENT '天数',
-  reason             VARCHAR(100)        DEFAULT NULL
+  reason            VARCHAR(100)        DEFAULT NULL
   COMMENT '请假理由',
   type              ENUM ('事假', '病假')   DEFAULT NULL
   COMMENT '请假类型',
@@ -269,7 +269,8 @@ INSERT INTO `department` VALUES ('13', '2013', '人事部', '李烨', '0923-2456
 SELECT *
 FROM employee;
 INSERT INTO `employee` VALUES
-  ('1', '1001', 'admin', '男', '1995-10-18', '15678015439', '123@qq.com', '北京朝阳', '照片', '本科', '2013', '3009', '2017-02-22', 'admin', '');
+  ('1', '1001', 'admin', '男', '1995-10-18', '15678015439', '123@qq.com', '北京朝阳', '照片', '本科', '2013', '3009',
+   '2017-02-22', 'admin', '');
 INSERT INTO `employee` VALUES
   ('2', '1007', '李烨', '女', '1996-03-04', '18907327612', '', NULL, '', '', '2001', '3003', '2017-01-10', '1007', '');
 INSERT INTO `employee`
@@ -327,29 +328,29 @@ INSERT INTO `history` VALUES
 SELECT *
 FROM db_hospital.leave;
 
-INSERT INTO `leave` VALUES ('1', '1007', '2007', '2017-07-11', '2017-07-12', '1', '家中有事', '事假', null, '未批准', null);
-INSERT INTO `leave` VALUES ('2', '1008', '2007', '2017-07-10', '2017-07-12', '2', '偶感风寒', '病假', null, '已批准', null);
-INSERT INTO `leave` VALUES ('3', '1011', '2007', '2017-07-11', '2017-07-11', '1', '回家看看', '事假', null, '已批准', null);
-INSERT INTO `leave` VALUES ('7', '1008', '2007', '2017-07-14', '2017-07-17', '3', '真的有点事', '事假', null, '已批准', null);
-INSERT INTO `leave` VALUES ('8', '1009', '2013', '2017-07-05', '2017-07-06', '1', '回家看看', '事假', null, '已批准', null);
-INSERT INTO `leave` VALUES ('9', '1012', '2013', '2017-07-08', '2017-07-08', '1', '摊上事了', '事假', null, '未批准', null);
-INSERT INTO `leave` VALUES ('10', '1012', '2013', '2017-07-13', '2017-07-14', '1', '真的有点事', '事假', null, '已批准', null);
+INSERT INTO `leave` VALUES ('1', '1007', '2007', '2017-07-11', '2017-07-12', '1', '家中有事', '事假', NULL, '未批准', NULL);
+INSERT INTO `leave` VALUES ('2', '1008', '2007', '2017-07-10', '2017-07-12', '2', '偶感风寒', '病假', NULL, '已批准', NULL);
+INSERT INTO `leave` VALUES ('3', '1011', '2007', '2017-07-11', '2017-07-11', '1', '回家看看', '事假', NULL, '已批准', NULL);
+INSERT INTO `leave` VALUES ('7', '1008', '2007', '2017-07-14', '2017-07-17', '3', '真的有点事', '事假', NULL, '已批准', NULL);
+INSERT INTO `leave` VALUES ('8', '1009', '2013', '2017-07-05', '2017-07-06', '1', '回家看看', '事假', NULL, '已批准', NULL);
+INSERT INTO `leave` VALUES ('9', '1012', '2013', '2017-07-08', '2017-07-08', '1', '摊上事了', '事假', NULL, '未批准', NULL);
+INSERT INTO `leave` VALUES ('10', '1012', '2013', '2017-07-13', '2017-07-14', '1', '真的有点事', '事假', NULL, '已批准', NULL);
 
 
 SELECT *
 FROM move;
 
-INSERT INTO `move` VALUES ('1', '1011', '2010', '2011', '2017-07-10 20:40:20', '张彤', null);
-INSERT INTO `move` VALUES ('3', '1007', '2001', '2007', '2017-07-11 09:53:34', '张彤', null);
+INSERT INTO `move` VALUES ('1', '1011', '2010', '2011', '2017-07-10 20:40:20', '张彤', NULL);
+INSERT INTO `move` VALUES ('3', '1007', '2001', '2007', '2017-07-11 09:53:34', '张彤', NULL);
 
 SELECT *
 FROM overtime;
 
-INSERT INTO `overtime` VALUES ('1', '2007', '1007', '2017-07-12', null, null, null);
-INSERT INTO `overtime` VALUES ('2', '2001', '1008', '2017-07-12', null, null, null);
-INSERT INTO `overtime` VALUES ('3', '2013', '1012', '2017-07-12', null, null, null);
-INSERT INTO `overtime` VALUES ('4', '2003', '1010', '2017-07-12', null, null, null);
-INSERT INTO `overtime` VALUES ('8', '2011', '1011', '2017-07-14', null, null, null);
+INSERT INTO `overtime` VALUES ('1', '2007', '1007', '2017-07-12', NULL, NULL, NULL);
+INSERT INTO `overtime` VALUES ('2', '2001', '1008', '2017-07-12', NULL, NULL, NULL);
+INSERT INTO `overtime` VALUES ('3', '2013', '1012', '2017-07-12', NULL, NULL, NULL);
+INSERT INTO `overtime` VALUES ('4', '2003', '1010', '2017-07-12', NULL, NULL, NULL);
+INSERT INTO `overtime` VALUES ('8', '2011', '1011', '2017-07-14', NULL, NULL, NULL);
 
 SELECT *
 FROM position;
@@ -364,3 +365,7 @@ INSERT INTO `position` VALUES ('8', '3008', '护士', '部门员工', '');
 INSERT INTO `position` VALUES ('9', '3009', '人事部主任', '人事部主任', '');
 INSERT INTO `position` VALUES ('10', '3010', '人事部员工', '人事部员工', '');
 INSERT INTO `position` VALUES ('11', '1001', '人事部主任', '人事部主任', '');
+
+SELECT *
+FROM attendance
+WHERE employee_number = '1001';

@@ -12,6 +12,6 @@
         <include refid="Base_Column_List"/>
         FROM db_hospital.attendance
         WHERE attendance.employee_number = #{employeeNumber}
-        and day = #{day} and timeType = #{timeType}
+        and day = #{day} and time_type = #{timeType}
     </select>
 </mapper>

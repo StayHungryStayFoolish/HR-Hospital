@@ -29,6 +29,7 @@ public class AttendanceController {
      */
     @RequestMapping("/addStart.do")
     public String addStart(Integer employeeNumber) {
+        System.out.println("进入签到");
         attendanceService.addStart(employeeNumber);
         return "welcome";
     }
