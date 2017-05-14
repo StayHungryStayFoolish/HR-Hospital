@@ -91,7 +91,7 @@ public class DepartmentController {
     public String updateById(@PathVariable Integer id, Department department) {
         department.setId(id);
         departmentService.updateById(department);
-        return "/department/listPage.do?page=1";
+        return "forward:/department/listPage.do?page=1";
     }
 
     /**
@@ -103,6 +103,6 @@ public class DepartmentController {
     @RequestMapping("/{id}/delete.do")
     public String deleteById(@PathVariable Integer id) {
         departmentService.deleteById(id);
-        return "/department/listPage.do?page=1";
+        return "forward:/department/listPage.do?page=1";
     }
 }
