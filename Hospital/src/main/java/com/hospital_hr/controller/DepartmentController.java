@@ -67,7 +67,7 @@ public class DepartmentController {
     }
 
     /**
-     * 更改部门信息
+     * 更改部门信息 [只获取信息,不操作]
      *
      * @param id
      * @param model
@@ -78,5 +78,31 @@ public class DepartmentController {
         Department department = departmentService.selectById(id);
         model.addAttribute("department", department);
         return "admin/department_update";
+    }
+
+    /**
+     * 更改部门信息, 并返回分页查询页面
+     *
+     * @param id
+     * @param department
+     * @return
+     */
+    @RequestMapping("/{id}/update.do")
+    public String updateById(@PathVariable Integer id, Department department) {
+        department.setId(id);
+        departmentService.updateById(department);
+        return "/department/listPage.do?page=1";
+    }
+
+    /**
+     * 删除部门信息
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("/{id}/delete.do")
+    public String deleteById(@PathVariable Integer id) {
+        departmentService.deleteById(id);
+        return "/department/listPage.do?page=1";
     }
 }
