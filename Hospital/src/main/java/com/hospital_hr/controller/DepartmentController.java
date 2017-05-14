@@ -7,6 +7,7 @@ import com.hospital_hr.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -63,5 +64,12 @@ public class DepartmentController {
         Page<Department> pageInfo = departmentService.selectListPage(page);
         model.addAttribute("page", pageInfo);
         return "admin/department_list";
+    }
+
+    @RequestMapping("/{id}/toUpdate.do")
+    public String toUpdate(@PathVariable Integer id, Model model) {
+        Department department = departmentService.selectById(id);
+        model.addAttribute("department", department);
+        return "admin/department_update";
     }
 }
