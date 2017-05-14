@@ -136,7 +136,7 @@
                             <i class="fa fa-user"></i> <!-- <span class="label label-primary">8</span> -->
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="<%=path %>/employee/oneself/<%=employee.getId() %>/detial.do"
+                            <li><a href="<%=path %>/employee/oneself/<%=employee.getId() %>/detail.do"
                                    target="J_iframe">我的账户</a>
                             </li>
                             <li class="divider"></li>
