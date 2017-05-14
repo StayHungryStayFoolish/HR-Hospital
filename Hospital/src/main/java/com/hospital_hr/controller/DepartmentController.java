@@ -66,6 +66,13 @@ public class DepartmentController {
         return "admin/department_list";
     }
 
+    /**
+     * 更改部门信息
+     *
+     * @param id
+     * @param model
+     * @return
+     */
     @RequestMapping("/{id}/toUpdate.do")
     public String toUpdate(@PathVariable Integer id, Model model) {
         Department department = departmentService.selectById(id);
