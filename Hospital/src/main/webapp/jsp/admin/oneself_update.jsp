@@ -30,7 +30,7 @@
                     <h5>修改在职员工信息</h5>
                 </div>
                 <div class="ibox-content">
-                    <% Employee employee = (Employee) request.getAttribute("employee"); %>
+                    <% Employee employee = (Employee) session.getAttribute("employee"); %>
                     <form method="post" class="form-horizontal" id="commentForm"
                           action="<%=path %>/employee/<%=employee.getId() %>/update.do">
                         <div class="form-group">

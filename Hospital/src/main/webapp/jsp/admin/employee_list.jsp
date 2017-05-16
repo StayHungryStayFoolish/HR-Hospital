@@ -52,7 +52,7 @@
                         </thead>
                         <tbody>
                         <%
-                            Page<Employee> pageInfo = (Page<Employee>) request.getAttribute("page");
+                            Page<Employee> pageInfo = (Page<Employee>) session.getAttribute("page");
                             if (null != pageInfo && null != pageInfo.getRecords() && pageInfo.getRecords().size() > 0) {
                                 List<Employee> list = pageInfo.getRecords();
                                 int index = 1;

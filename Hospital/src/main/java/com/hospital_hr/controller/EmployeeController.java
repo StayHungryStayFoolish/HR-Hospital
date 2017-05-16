@@ -12,11 +12,13 @@ import com.hospital_hr.service.HistoryService;
 import com.hospital_hr.service.PositionService;
 import com.hospital_hr.uitl.MyTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -57,7 +59,6 @@ public class EmployeeController {
      */
     @RequestMapping("/login.do")
     public String login() {
-        System.out.println("进入  login 方法");
         return "login";
     }
 
@@ -79,43 +80,43 @@ public class EmployeeController {
             // 获取权限级别
             String level = empInfo.getPosition().getLevel();
             if ("人事部主任".equals(level)) {
-                return "admin/index1";
+                return "redirect:/employee/index1.do";
             } else if ("人事部员工".equals(level)) {
-                return "admin/index2";
+                return "redirect:/employee/index2.do";
             } else if ("部门主任".equals(level)) {
-                return "admin/index3";
+                return "redirect:/employee/index3.do";
             } else {
-                return "admin/index4";
+                return "redirect:/employee/index4.do";
             }
         } else {
             return "login";
         }
     }
-//
-//    /**
-//     * 对 jsp 进行 后缀包装
-//     *
-//     * @return
-//     */
-//    @RequestMapping("/index1.do")
-//    public String index1() {
-//        return "admin/index1";
-//    }
-//
-//    @RequestMapping("/index2.do")
-//    public String index2() {
-//        return "admin/index2";
-//    }
-//
-//    @RequestMapping("/index3.do")
-//    public String index3() {
-//        return "admin/index3";
-//    }
-//
-//    @RequestMapping("/index4.do")
-//    public String index4() {
-//        return "admin/index4";
-//    }
+
+    /**
+     * 对 jsp 进行 后缀包装
+     *
+     * @return
+     */
+    @RequestMapping("/index1.do")
+    public String index1() {
+        return "admin/index1";
+    }
+
+    @RequestMapping("/index2.do")
+    public String index2() {
+        return "admin/index2";
+    }
+
+    @RequestMapping("/index3.do")
+    public String index3() {
+        return "admin/index3";
+    }
+
+    @RequestMapping("/index4.do")
+    public String index4() {
+        return "admin/index4";
+    }
 
     /**
      * 注销
@@ -125,7 +126,7 @@ public class EmployeeController {
      */
     @RequestMapping("/logout.do")
     public String logout(HttpSession session) {
-        session.removeAttribute("logged");
+        session.invalidate();
         return "login";
     }
 
@@ -141,9 +142,11 @@ public class EmployeeController {
      * @return
      */
     @RequestMapping("/listPage.do")
-    public String selectList(int page, Model model) {
+    public String selectList(int page, HttpServletRequest request) {
+        System.out.println("页码 :" + page);
         Page<Employee> pageInfo = employeeService.selectListByPage(page);
-        model.addAttribute("page", pageInfo);
+        request.setAttribute("page", pageInfo);
+        System.out.println("分页信息 " + pageInfo.toString());
         return "admin/employee_list";
     }
 
@@ -265,10 +268,10 @@ public class EmployeeController {
      * @return
      */
     @RequestMapping("/oneself/{id}/detail.do")
-    public String selectEmployeeOneself(@PathVariable Integer id, Model model) {
+    public String selectEmployeeOneself(@PathVariable Integer id, HttpSession session) {
         System.out.println("员工 ID" + id);
         Employee employee = employeeService.selectEmployee(id);
-        model.addAttribute("employee", employee);
+        session.setAttribute("employee", employee);
         return "admin/oneself_detail";
     }
 
@@ -277,13 +280,13 @@ public class EmployeeController {
      * index*.jsp 功能
      *
      * @param id
-     * @param model
+     * @param
      * @return
      */
     @RequestMapping("/oneself/{id}/toUpdate.do")
-    public String toUpdateOneself(@PathVariable Integer id, Model model) {
+    public String toUpdateOneself(@PathVariable Integer id, HttpSession session) {
         Employee employee = employeeService.selectById(id);
-        model.addAttribute("employee", employee);
+        session.setAttribute("employee", employee);
         return "admin/oneself_update";
     }
 
