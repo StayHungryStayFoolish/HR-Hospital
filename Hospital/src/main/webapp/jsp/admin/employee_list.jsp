@@ -74,9 +74,9 @@
                             <td><%=employee.getPosition().getName() %>
                             </td>
                             <%
-                                String intime = MyTimeUtil.dateFormat(employee.getInTime());
+                                String inTime = MyTimeUtil.dateFormat(employee.getInTime());
                             %>
-                            <td><%=intime %>
+                            <td><%=inTime %>
                             </td>
                             <td><a href="<%=path %>/employee/<%=employee.getId() %>/detail.do"
                                    class="btn btn-info">查看</a>&nbsp;&nbsp;

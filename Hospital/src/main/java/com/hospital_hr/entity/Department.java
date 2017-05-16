@@ -32,7 +32,7 @@ public class Department extends Model<Department> implements Serializable {
 
     @Override
     protected Serializable pkVal() {
-        return null;
+        return this.id;
     }
 
     public Integer getId() {

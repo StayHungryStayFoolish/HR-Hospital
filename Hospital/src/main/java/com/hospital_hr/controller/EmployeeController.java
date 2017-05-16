@@ -79,43 +79,43 @@ public class EmployeeController {
             // 获取权限级别
             String level = empInfo.getPosition().getLevel();
             if ("人事部主任".equals(level)) {
-                return "redirect:/employee/index1.do";
+                return "admin/index1";
             } else if ("人事部员工".equals(level)) {
-                return "redirect:/employee/index2.do";
+                return "admin/index2";
             } else if ("部门主任".equals(level)) {
-                return "redirect:/employee/index3.do";
+                return "admin/index3";
             } else {
-                return "redirect:/employee/index4.do";
+                return "admin/index4";
             }
         } else {
             return "login";
         }
     }
-
-    /**
-     * 对 jsp 进行 后缀包装
-     *
-     * @return
-     */
-    @RequestMapping("/index1.do")
-    public String index1() {
-        return "admin/index1";
-    }
-
-    @RequestMapping("/index2.do")
-    public String index2() {
-        return "admin/index2";
-    }
-
-    @RequestMapping("/index3.do")
-    public String index3() {
-        return "admin/index3";
-    }
-
-    @RequestMapping("/index4.do")
-    public String index4() {
-        return "admin/index4";
-    }
+//
+//    /**
+//     * 对 jsp 进行 后缀包装
+//     *
+//     * @return
+//     */
+//    @RequestMapping("/index1.do")
+//    public String index1() {
+//        return "admin/index1";
+//    }
+//
+//    @RequestMapping("/index2.do")
+//    public String index2() {
+//        return "admin/index2";
+//    }
+//
+//    @RequestMapping("/index3.do")
+//    public String index3() {
+//        return "admin/index3";
+//    }
+//
+//    @RequestMapping("/index4.do")
+//    public String index4() {
+//        return "admin/index4";
+//    }
 
     /**
      * 注销
@@ -200,6 +200,7 @@ public class EmployeeController {
     @RequestMapping("/{id}/detail.do")
     public String selectEmployee(@PathVariable Integer id, Model model) {
         Employee employee = employeeService.selectEmployee(id);
+        System.out.println("个人信息" + employee);
         model.addAttribute("employee", employee);
         return "admin/employee_detail";
     }
