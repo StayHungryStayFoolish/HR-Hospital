@@ -118,7 +118,7 @@ public class HistoryController {
         history.setId(id);
         history.setBirthday(MyTimeUtil.stringDateParse(date));
         historyService.updateById(history);
-        return "/history/listPage.do?page=1";
+        return "forward:/history/listPage.do?page=1";
     }
 
     /**

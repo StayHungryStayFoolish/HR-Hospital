@@ -76,7 +76,7 @@ public class OvertimeController {
     public String add(Overtime overtime, String date) {
         overtime.setDay(MyTimeUtil.stringDateParse(date));
         overtimeService.insert(overtime);
-        return "/overtime/listPage.do?page=1";
+        return "forward:/overtime/listPage.do?page=1";
     }
 
     /**
@@ -113,7 +113,7 @@ public class OvertimeController {
         overtime.setId(id);
         overtime.setDay(MyTimeUtil.stringDateParse(date));
         overtimeService.updateById(overtime);
-        return "/overtime/listPage.do?page=1";
+        return "forward:/overtime/listPage.do?page=1";
     }
 
     /**
@@ -125,7 +125,7 @@ public class OvertimeController {
     @RequestMapping("/{id}/delete.do")
     public String deleteById(@PathVariable Integer id) {
         overtimeService.deleteById(id);
-        return "/overtime/listPage.do?page=1";
+        return "forward:/overtime/listPage.do?page=1";
     }
 
     /**
