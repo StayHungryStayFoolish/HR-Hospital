@@ -266,6 +266,7 @@ public class EmployeeController {
      */
     @RequestMapping("/oneself/{id}/detail.do")
     public String selectEmployeeOneself(@PathVariable Integer id, Model model) {
+        System.out.println("员工 ID" + id);
         Employee employee = employeeService.selectEmployee(id);
         model.addAttribute("employee", employee);
         return "admin/oneself_detail";

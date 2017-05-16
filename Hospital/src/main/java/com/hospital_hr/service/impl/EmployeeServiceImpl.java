@@ -113,6 +113,7 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
      */
     @Override
     public Employee selectEmployee(Integer id) {
+        System.out.println("serviceImpl 层 ID" + id);
         Employee employee = baseMapper.selectById(id);
         setObject(employee);
         return employee;
