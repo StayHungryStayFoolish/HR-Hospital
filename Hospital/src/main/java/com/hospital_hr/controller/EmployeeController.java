@@ -138,14 +138,14 @@ public class EmployeeController {
      * 删除按妞，也需要重新查询，返回
      *
      * @param page
-     * @param model
+     * @param
      * @return
      */
     @RequestMapping("/listPage.do")
-    public String selectList(int page, HttpServletRequest request) {
+    public String selectList(int page, HttpSession session) {
         System.out.println("页码 :" + page);
         Page<Employee> pageInfo = employeeService.selectListByPage(page);
-        request.setAttribute("page", pageInfo);
+        session.setAttribute("page", pageInfo);
         System.out.println("分页信息 " + pageInfo.toString());
         return "admin/employee_list";
     }
