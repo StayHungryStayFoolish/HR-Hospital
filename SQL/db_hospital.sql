@@ -120,7 +120,7 @@ CREATE TABLE `history` (
   COMMENT '状态',
   home              VARCHAR(100)            DEFAULT ''
   COMMENT '现居地址',
-  notes              VARCHAR(255)            DEFAULT ''
+  notes             VARCHAR(255)            DEFAULT ''
   COMMENT '备注'
 )
   COMMENT '档案表';
@@ -267,7 +267,8 @@ INSERT INTO `department` VALUES ('12', '2012', '药剂科', '王缘', '0923-3456
 INSERT INTO `department` VALUES ('13', '2013', '人事部', '李烨', '0923-2456123', '办公楼108', '');
 
 SELECT *
-FROM employee WHERE employee_number = 1001;
+FROM employee
+WHERE employee_number = 1001;
 INSERT INTO `employee` VALUES
   ('1', '1001', 'admin', '男', '1995-10-18', '15678015439', '123@qq.com', '北京朝阳', '照片', '本科', '2013', '3009',
    '2017-02-22', 'admin', '');
