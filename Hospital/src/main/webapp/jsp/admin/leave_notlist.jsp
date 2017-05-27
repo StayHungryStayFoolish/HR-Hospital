@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.util.*" %>
-<%@ page import="com.hospital_hr.entity.*" %>
+<%@ page import="com.hospital_hr.entity.Leave" %>
 <%@ page import="com.hospital_hr.uitl.MyTimeUtil" %>
+<%@ page import="java.util.List" %>
 <% String path = request.getContextPath();%>
 <html>
 <head>

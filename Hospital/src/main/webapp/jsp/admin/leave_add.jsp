@@ -76,7 +76,7 @@
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-8">
                                 <button class="btn btn-success" type="submit">申&nbsp;&nbsp;请</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button class="btn btn-white" type="reset">取&nbsp;&nbsp;消</button>
+                                <a href="<%=path %>/employee/welcome.do" class="btn btn-info">返&nbsp;&nbsp;回</a>
                             </div>
                         </div>
                     </form>
