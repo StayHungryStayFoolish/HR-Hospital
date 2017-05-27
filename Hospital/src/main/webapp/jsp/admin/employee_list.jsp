@@ -32,11 +32,11 @@
                 <div class="ibox-title">
                     <h5>在职员工列表</h5>
                 </div>
-                <div class="ibox-heading">
+                <div class="ibox-content">
                     <div style="margin-bottom: 8px">
                         <a href="<%=path %>/employee/toAdd.do" class="btn btn-success">添加员工</a>
                     </div>
-                    <table class="table table-striped table-bordered table-hover dataTable-example">
+                    <table class="table table-striped table-bordered table-hover dataTables-example">
                         <thead>
                         <tr>
                             <th>序号</th>
@@ -52,36 +52,26 @@
                         </thead>
                         <tbody>
                         <%
-                            Page<Employee> pageInfo = (Page<Employee>) request.getAttribute("page");
-                            if (null != pageInfo && null != pageInfo.getRecords() && pageInfo.getRecords().size() > 0) {
-                                List<Employee> list = pageInfo.getRecords();
-                                int index = 1;
-                                for (Employee employee : list) {
+                            Page<Employee> pe=(Page<Employee>)request.getAttribute("page");
+                            if(null != pe && null != pe.getRecords() && pe.getRecords().size()>0){
+                                List<Employee> list = pe.getRecords();
+                                int index=1;
+                                for(Employee employee : list){
                         %>
                         <tr class="gradeA">
-                            <td><%=index++ %>
-                            </td>
-                            <td><%=employee.getEmployeeNumber() %>
-                            </td>
-                            <td><%=employee.getName() %>
-                            </td>
-                            <td><%=employee.getGender() %>
-                            </td>
-                            <td><%=employee.getTelephone() %>
-                            </td>
-                            <td><%=employee.getDepartment().getName() %>
-                            </td>
-                            <td><%=employee.getPosition().getName() %>
-                            </td>
+                            <td><%=index++ %></td>
+                            <td><%=employee.getEmployeeNumber() %></td>
+                            <td><%=employee.getName() %></td>
+                            <td><%=employee.getGender() %></td>
+                            <td><%=employee.getTelephone() %></td>
+                            <td><%=employee.getDepartment().getName() %></td>
+                            <td><%=employee.getPosition().getName() %></td>
                             <%
-                                String inTime = MyTimeUtil.dateFormat(employee.getInTime());
+                                String intime = MyTimeUtil.dateFormat(employee.getInTime());
                             %>
-                            <td><%=inTime %>
-                            </td>
-                            <td><a href="<%=path %>/employee/<%=employee.getId() %>/detail.do"
-                                   class="btn btn-info">查看</a>&nbsp;&nbsp;
-                                <a href="<%=path %>/employee/<%=employee.getId() %>/toUpdate.do"
-                                   class="btn btn-primary">修改</a>&nbsp;&nbsp;
+                            <td><%=intime %></td>
+                            <td><a href="<%=path %>/employee/<%=employee.getId() %>/detail.do" class="btn btn-info">查看</a>&nbsp;&nbsp;
+                                <a href="<%=path %>/employee/<%=employee.getId() %>/toUpdate.do" class="btn btn-primary">修改</a>&nbsp;&nbsp;
                                 <a onclick="del(<%=employee.getId() %>)" class="btn btn-danger delete">删除</a></td>
                         </tr>
                         <%
@@ -91,31 +81,26 @@
                         </tbody>
                     </table>
                     <div>
-                        <span style="float: left; padding: 5px">
-								当前&nbsp;<span style="color: red;"><%=pageInfo %>.getCurrent() %>
-                        </span>&nbsp;/&nbsp;<b><%=pageInfo.getPages() %></b>&nbsp;页&nbsp;&nbsp;
-								总共&nbsp;<b><%=pageInfo.getTotal() %></b>&nbsp;条</span>
+							<span style="float: left; padding: 5px">
+								当前&nbsp;<span style="color: red;"><%=pe.getCurrent() %></span>&nbsp;/&nbsp;<b><%=pe.getPages() %></b>&nbsp;页&nbsp;&nbsp;
+								总共&nbsp;<b><%=pe.getTotal() %></b>&nbsp;条</span>
                         <nav aria-label="Page navigation" style="margin: 0 auto; width: 240px">
                             <ul class="pagination" style="margin: 0;">
                                 <li>
-                                    <a href="<%=path %>/employee/listPage.do?page=<%=pageInfo.getCurrent()-1>1?pageInfo.getCurrent()-1:1 %>"
+                                    <a href="<%=path %>/employee/listPage.do?pageNo=<%=pe.getCurrent()-1>1?pe.getCurrent()-1:1 %>"
                                        aria-label="Previous"> <span aria-hidden="true">前一页</span>
                                     </a>
                                 </li>
                                 <%
-                                    for (int i = 1; i <= pageInfo.getPages(); i++) {
+                                    for(int i=1;i<=pe.getPages();i++){
                                 %>
-                                <li><a href="<%=path %>/employee/listPage.do?page=<%=i%>"><%=i %>
-                                </a>
-                                </li>
+                                <li><a href="<%=path %>/employee/listPage.do?pageNo=<%=i%>"><%=i %></a></li>
                                 <%
                                     }
                                 %>
-                                <li>
-                                    <a href="<%=path %>/employee/listPage.do?page=<%=pageInfo.getCurrent()+1<pageInfo.getPages()?pageInfo.getCurrent()+1:pageInfo.getPages() %>"
+                                <li><a href="<%=path %>/employee/listPage.do?pageNo=<%=pe.getCurrent()+1<pe.getPages()?pe.getCurrent()+1:pe.getPages() %>"
                                        aria-label="Next"> <span aria-hidden="true">后一页</span>
-                                    </a>
-                                </li>
+                                </a></li>
                             </ul>
                         </nav>
                     </div>
@@ -124,6 +109,7 @@
         </div>
     </div>
 </div>
+
 <!-- 全局js -->
 <script src="<%=path %>/js/jquery.min.js?v=2.1.4"></script>
 <script src="<%=path %>/js/bootstrap.min.js?v=3.3.6"></script>
@@ -137,17 +123,17 @@
 <script src="<%=path %>/js/content.js?v=1.0.0"></script>
 
 <!-- layer javascript -->
-<script src="/js/plugins/layer/layer.min.js"></script>
+<script src="js/plugins/layer/layer.min.js"></script>
 
 <script type="text/javascript">
 
-    function del(id) {
+    function del(id){
         parent.layer.confirm('确认删除？', {
-            btn: ['确认', '取消'], //按钮
+            btn: ['确认','取消'], //按钮
             shade: false //不显示遮罩
-        }, function () {
+        }, function(){
             parent.layer.msg('删除成功！', {icon: 1});
-            location.href = "./" + id + "/delete.do";
+            location.href="./"+ id +"/delete.do";
         });
     }
 </script>
