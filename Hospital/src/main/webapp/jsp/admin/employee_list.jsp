@@ -52,26 +52,36 @@
                         </thead>
                         <tbody>
                         <%
-                            Page<Employee> pageInfo=(Page<Employee>)request.getAttribute("page");
-                            if(null != pageInfo && null != pageInfo.getRecords() && pageInfo.getRecords().size()>0){
+                            Page<Employee> pageInfo = (Page<Employee>) request.getAttribute("page");
+                            if (null != pageInfo && null != pageInfo.getRecords() && pageInfo.getRecords().size() > 0) {
                                 List<Employee> list = pageInfo.getRecords();
-                                int index=1;
-                                for(Employee employee : list){
+                                int index = 1;
+                                for (Employee employee : list) {
                         %>
                         <tr class="gradeA">
-                            <td><%=index++ %></td>
-                            <td><%=employee.getEmployeeNumber() %></td>
-                            <td><%=employee.getName() %></td>
-                            <td><%=employee.getGender() %></td>
-                            <td><%=employee.getTelephone() %></td>
-                            <td><%=employee.getDepartment().getName() %></td>
-                            <td><%=employee.getPosition().getName() %></td>
+                            <td><%=index++ %>
+                            </td>
+                            <td><%=employee.getEmployeeNumber() %>
+                            </td>
+                            <td><%=employee.getName() %>
+                            </td>
+                            <td><%=employee.getGender() %>
+                            </td>
+                            <td><%=employee.getTelephone() %>
+                            </td>
+                            <td><%=employee.getDepartment().getName() %>
+                            </td>
+                            <td><%=employee.getPosition().getName() %>
+                            </td>
                             <%
                                 String inTime = MyTimeUtil.dateFormat(employee.getInTime());
                             %>
-                            <td><%=inTime %></td>
-                            <td><a href="<%=path %>/employee/<%=employee.getId() %>/detail.do" class="btn btn-info">查看</a>&nbsp;&nbsp;
-                                <a href="<%=path %>/employee/<%=employee.getId() %>/toUpdate.do" class="btn btn-primary">修改</a>&nbsp;&nbsp;
+                            <td><%=inTime %>
+                            </td>
+                            <td><a href="<%=path %>/employee/<%=employee.getId() %>/detail.do"
+                                   class="btn btn-info">查看</a>&nbsp;&nbsp;
+                                <a href="<%=path %>/employee/<%=employee.getId() %>/toUpdate.do"
+                                   class="btn btn-primary">修改</a>&nbsp;&nbsp;
                                 <a onclick="del(<%=employee.getId() %>)" class="btn btn-danger delete">删除</a></td>
                         </tr>
                         <%
@@ -82,7 +92,8 @@
                     </table>
                     <div>
 							<span style="float: left; padding: 5px">
-								当前&nbsp;<span style="color: red;"><%=pageInfo.getCurrent() %></span>&nbsp;/&nbsp;<b><%=pageInfo.getPages() %></b>&nbsp;页&nbsp;&nbsp;
+								当前&nbsp;<span
+                                    style="color: red;"><%=pageInfo.getCurrent() %></span>&nbsp;/&nbsp;<b><%=pageInfo.getPages() %></b>&nbsp;页&nbsp;&nbsp;
 								总共&nbsp;<b><%=pageInfo.getTotal() %></b>&nbsp;条</span>
                         <nav aria-label="Page navigation" style="margin: 0 auto; width: 240px">
                             <ul class="pagination" style="margin: 0;">
@@ -92,15 +103,17 @@
                                     </a>
                                 </li>
                                 <%
-                                    for(int i=1;i<=pageInfo.getPages();i++){
+                                    for (int i = 1; i <= pageInfo.getPages(); i++) {
                                 %>
-                                <li><a href="<%=path %>/employee/listPage.do?page=<%=i%>"><%=i %></a></li>
+                                <li><a href="<%=path %>/employee/listPage.do?page=<%=i%>"><%=i %>
+                                </a></li>
                                 <%
                                     }
                                 %>
-                                <li><a href="<%=path %>/employee/listPage.do?page=<%=pageInfo.getCurrent()+1<pageInfo.getPages()?pageInfo.getCurrent()+1:pageInfo.getPages() %>"
+                                <li>
+                                    <a href="<%=path %>/employee/listPage.do?page=<%=pageInfo.getCurrent()+1<pageInfo.getPages()?pageInfo.getCurrent()+1:pageInfo.getPages() %>"
                                        aria-label="Next"> <span aria-hidden="true">后一页</span>
-                                </a></li>
+                                    </a></li>
                             </ul>
                         </nav>
                     </div>
@@ -127,13 +140,13 @@
 
 <script type="text/javascript">
 
-    function del(id){
+    function del(id) {
         parent.layer.confirm('确认删除？', {
-            btn: ['确认','取消'], //按钮
+            btn: ['确认', '取消'], //按钮
             shade: false //不显示遮罩
-        }, function(){
+        }, function () {
             parent.layer.msg('删除成功！', {icon: 1});
-            location.href="./"+ id +"/delete.do";
+            location.href = "./" + id + "/delete.do";
         });
     }
 </script>
