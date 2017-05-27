@@ -87,18 +87,18 @@
                         <nav aria-label="Page navigation" style="margin: 0 auto; width: 240px">
                             <ul class="pagination" style="margin: 0;">
                                 <li>
-                                    <a href="<%=path %>/employee/listPage.do?pageNo=<%=pageInfo.getCurrent()-1>1?pageInfo.getCurrent()-1:1 %>"
+                                    <a href="<%=path %>/employee/listPage.do?page=<%=pageInfo.getCurrent()-1>1?pageInfo.getCurrent()-1:1 %>"
                                        aria-label="Previous"> <span aria-hidden="true">前一页</span>
                                     </a>
                                 </li>
                                 <%
                                     for(int i=1;i<=pageInfo.getPages();i++){
                                 %>
-                                <li><a href="<%=path %>/employee/listPage.do?pageNo=<%=i%>"><%=i %></a></li>
+                                <li><a href="<%=path %>/employee/listPage.do?page=<%=i%>"><%=i %></a></li>
                                 <%
                                     }
                                 %>
-                                <li><a href="<%=path %>/employee/listPage.do?pageNo=<%=pageInfo.getCurrent()+1<pageInfo.getPages()?pageInfo.getCurrent()+1:pageInfo.getPages() %>"
+                                <li><a href="<%=path %>/employee/listPage.do?page=<%=pageInfo.getCurrent()+1<pageInfo.getPages()?pageInfo.getCurrent()+1:pageInfo.getPages() %>"
                                        aria-label="Next"> <span aria-hidden="true">后一页</span>
                                 </a></li>
                             </ul>
