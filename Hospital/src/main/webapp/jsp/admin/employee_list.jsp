@@ -125,17 +125,17 @@
 <!-- layer javascript -->
 <script src="/js/plugins/layer/layer.min.js"></script>
 
-<script type="text/javascript">
+<%--<script type="text/javascript">--%>
 
-    function del(id){
-        parent.layer.confirm('确认删除？', {
-            btn: ['确认','取消'], //按钮
-            shade: false //不显示遮罩
-        }, function(){
-            parent.layer.msg('删除成功！', {icon: 1});
-            location.href="./"+ id +"/delete.do";
-        });
-    }
-</script>
+    <%--function del(id){--%>
+        <%--parent.layer.confirm('确认删除？', {--%>
+            <%--btn: ['确认','取消'], //按钮--%>
+            <%--shade: false //不显示遮罩--%>
+        <%--}, function(){--%>
+            <%--parent.layer.msg('删除成功！', {icon: 1});--%>
+            <%--location.href="./"+ id +"/delete.do";--%>
+        <%--});--%>
+    <%--}--%>
+<%--</script>--%>
 </body>
 </html>
