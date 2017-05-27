@@ -62,6 +62,7 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
         List<Employee> employeeList = baseMapper.selectPage(pageInfo, null);
         for (Employee employee : employeeList) {
             setObject(employee);
+            System.out.println("部门名字" + employee.getDepartment().getName());
         }
         // 将查询到的分页信息存储到记录里
         pageInfo.setRecords(employeeList);

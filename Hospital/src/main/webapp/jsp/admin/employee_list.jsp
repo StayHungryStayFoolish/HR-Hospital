@@ -44,7 +44,7 @@
                             <th>姓名</th>
                             <th>性别</th>
                             <th>电话</th>
-                            <th>部门名称</th>
+                            <%--<th>部门名称</th>--%>
                             <th>职称</th>
                             <th>入职时间</th>
                             <th>管理</th>
@@ -64,7 +64,7 @@
                             <td><%=employee.getName() %></td>
                             <td><%=employee.getGender() %></td>
                             <td><%=employee.getTelephone() %></td>
-                            <td><%=employee.getDepartment().getName() %></td>
+                            <%--<td><%=employee.getDepartment().getName() %></td>--%>
                             <td><%=employee.getPosition().getName() %></td>
                             <%
                                 String inTime = MyTimeUtil.dateFormat(employee.getInTime());
@@ -125,17 +125,17 @@
 <!-- layer javascript -->
 <script src="/js/plugins/layer/layer.min.js"></script>
 
-<%--<script type="text/javascript">--%>
+<script type="text/javascript">
 
-    <%--function del(id){--%>
-        <%--parent.layer.confirm('确认删除？', {--%>
-            <%--btn: ['确认','取消'], //按钮--%>
-            <%--shade: false //不显示遮罩--%>
-        <%--}, function(){--%>
-            <%--parent.layer.msg('删除成功！', {icon: 1});--%>
-            <%--location.href="./"+ id +"/delete.do";--%>
-        <%--});--%>
-    <%--}--%>
-<%--</script>--%>
+    function del(id){
+        parent.layer.confirm('确认删除？', {
+            btn: ['确认','取消'], //按钮
+            shade: false //不显示遮罩
+        }, function(){
+            parent.layer.msg('删除成功！', {icon: 1});
+            location.href="./"+ id +"/delete.do";
+        });
+    }
+</script>
 </body>
 </html>

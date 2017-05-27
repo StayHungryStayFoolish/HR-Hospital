@@ -142,6 +142,7 @@ public class EmployeeController {
     @RequestMapping("/listPage.do")
     public String selectList(int page, Model model) {
         Page<Employee> pageInfo = employeeService.selectListByPage(page);
+        System.out.println(pageInfo.toString());
         model.addAttribute("page", pageInfo);
         return "admin/employee_list";
     }
@@ -199,7 +200,6 @@ public class EmployeeController {
     @RequestMapping("/{id}/detail.do")
     public String selectEmployee(@PathVariable Integer id, Model model) {
         Employee employee = employeeService.selectEmployee(id);
-        System.out.println("个人信息" + employee);
         model.addAttribute("employee", employee);
         return "admin/employee_detail";
     }
