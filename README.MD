@@ -7,6 +7,10 @@
     
 ### 注:
 
+    使用 MyBatis-Plugins 的 Page<>  在个别页面无法获取 Deapartment 属性.
+    serviceImpl 调试有输出信息
+
+
     SQL 语法错误.
     
     Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; 

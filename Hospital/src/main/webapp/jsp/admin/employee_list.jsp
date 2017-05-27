@@ -44,7 +44,7 @@
                             <th>姓名</th>
                             <th>性别</th>
                             <th>电话</th>
-                            <%--<th>部门名称</th>--%>
+                            <th>部门名称</th>
                             <th>职称</th>
                             <th>入职时间</th>
                             <th>管理</th>
@@ -64,7 +64,7 @@
                             <td><%=employee.getName() %></td>
                             <td><%=employee.getGender() %></td>
                             <td><%=employee.getTelephone() %></td>
-                            <%--<td><%=employee.getDepartment().getName() %></td>--%>
+                            <td><%=employee.getDepartment().getName() %></td>
                             <td><%=employee.getPosition().getName() %></td>
                             <%
                                 String inTime = MyTimeUtil.dateFormat(employee.getInTime());

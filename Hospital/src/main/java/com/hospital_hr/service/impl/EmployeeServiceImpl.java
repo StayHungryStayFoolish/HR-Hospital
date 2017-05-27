@@ -56,13 +56,12 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
      */
     @Override
     public Page<Employee> selectListByPage(int page) {
-        Page<Employee> pageInfo = new Page<>(page, 5, "id");
+        Page<Employee> pageInfo = new Page<>(page, 4, "id");
         // 是否为升序排列,默认 true
         pageInfo.setAsc(false);
         List<Employee> employeeList = baseMapper.selectPage(pageInfo, null);
         for (Employee employee : employeeList) {
             setObject(employee);
-            System.out.println("部门名字" + employee.getDepartment().getName());
         }
         // 将查询到的分页信息存储到记录里
         pageInfo.setRecords(employeeList);

@@ -165,10 +165,10 @@ public class EmployeeController {
         // 获取最后一个员工信息(get(0),因为是倒序)的员工编号 +1 ,即添加的员工编号
         model.addAttribute("employeeNumber", historyList.get(0).getEmployeeNumber() + 1);
         // 获取所有部门信息
-        List<Department> departmentList = departmentService.selectList(new EntityWrapper<Department>());
+        List<Department> departmentList = departmentService.selectList(new EntityWrapper<>());
         model.addAttribute("dList", departmentList);
         // 获取所有职称信息
-        List<Position> positionList = positionService.selectList(new EntityWrapper<Position>());
+        List<Position> positionList = positionService.selectList(new EntityWrapper<>());
         model.addAttribute("pList", positionList);
         return "admin/employee_add";
     }
