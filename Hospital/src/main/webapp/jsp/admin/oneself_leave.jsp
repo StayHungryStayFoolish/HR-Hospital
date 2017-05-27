@@ -38,6 +38,9 @@
                         <tr>
                             <th>序号</th>
                             <th>姓名</th>
+                            <th>员号</th>
+                            <th>部门</th>
+                            <th>部门编号</th>
                             <th>开始时间</th>
                             <th>结束时间</th>
                             <th>天数</th>
@@ -58,6 +61,9 @@
                             <td><%=index++ %>
                             </td>
                             <td><%=leave.getEmployee().getName() %>
+                            <td><%=leave.getEmployee().getEmployeeNumber() %>
+                            <td><%=leave.getEmployee().getDepartment() %>
+                            <td><%=leave.getEmployee().getDepartmentNumber() %>
                             </td>
                             <%
                                 String startTime = MyTimeUtil.dateFormat(leave.getStartTime());
