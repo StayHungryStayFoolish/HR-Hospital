@@ -8,7 +8,9 @@
 ### 注:
 
     使用 MyBatis-Plugins 的 Page<>  在个别页面无法获取 Deapartment 属性.
-    serviceImpl 调试有输出信息
+    serviceImpl 调试有输出信息.
+    原因排查: setObject(); 方法有的，页面返回的 Page 信息都取不出来 department .
+    官方没有解释原因. 
 
 
     SQL 语法错误.
