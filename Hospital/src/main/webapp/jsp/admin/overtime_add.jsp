@@ -79,7 +79,7 @@
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-8">
                                 <button class="btn btn-success" type="submit">添&nbsp;&nbsp;加</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button class="btn btn-white" type="reset">取&nbsp;&nbsp;消</button>
+                                <a href="<%=path %>/overtime/listPage.do?page=1" class="btn btn-info">返&nbsp;&nbsp;回</a>
                             </div>
                         </div>
                     </form>

@@ -52,9 +52,9 @@
                         </thead>
                         <tbody>
                         <%
-                            Page<Employee> pe=(Page<Employee>)request.getAttribute("page");
-                            if(null != pe && null != pe.getRecords() && pe.getRecords().size()>0){
-                                List<Employee> list = pe.getRecords();
+                            Page<Employee> pageInfo=(Page<Employee>)request.getAttribute("page");
+                            if(null != pageInfo && null != pageInfo.getRecords() && pageInfo.getRecords().size()>0){
+                                List<Employee> list = pageInfo.getRecords();
                                 int index=1;
                                 for(Employee employee : list){
                         %>
@@ -67,9 +67,9 @@
                             <td><%=employee.getDepartment().getName() %></td>
                             <td><%=employee.getPosition().getName() %></td>
                             <%
-                                String intime = MyTimeUtil.dateFormat(employee.getInTime());
+                                String inTime = MyTimeUtil.dateFormat(employee.getInTime());
                             %>
-                            <td><%=intime %></td>
+                            <td><%=inTime %></td>
                             <td><a href="<%=path %>/employee/<%=employee.getId() %>/detail.do" class="btn btn-info">查看</a>&nbsp;&nbsp;
                                 <a href="<%=path %>/employee/<%=employee.getId() %>/toUpdate.do" class="btn btn-primary">修改</a>&nbsp;&nbsp;
                                 <a onclick="del(<%=employee.getId() %>)" class="btn btn-danger delete">删除</a></td>
@@ -82,23 +82,23 @@
                     </table>
                     <div>
 							<span style="float: left; padding: 5px">
-								当前&nbsp;<span style="color: red;"><%=pe.getCurrent() %></span>&nbsp;/&nbsp;<b><%=pe.getPages() %></b>&nbsp;页&nbsp;&nbsp;
-								总共&nbsp;<b><%=pe.getTotal() %></b>&nbsp;条</span>
+								当前&nbsp;<span style="color: red;"><%=pageInfo.getCurrent() %></span>&nbsp;/&nbsp;<b><%=pageInfo.getPages() %></b>&nbsp;页&nbsp;&nbsp;
+								总共&nbsp;<b><%=pageInfo.getTotal() %></b>&nbsp;条</span>
                         <nav aria-label="Page navigation" style="margin: 0 auto; width: 240px">
                             <ul class="pagination" style="margin: 0;">
                                 <li>
-                                    <a href="<%=path %>/employee/listPage.do?pageNo=<%=pe.getCurrent()-1>1?pe.getCurrent()-1:1 %>"
+                                    <a href="<%=path %>/employee/listPage.do?pageNo=<%=pageInfo.getCurrent()-1>1?pageInfo.getCurrent()-1:1 %>"
                                        aria-label="Previous"> <span aria-hidden="true">前一页</span>
                                     </a>
                                 </li>
                                 <%
-                                    for(int i=1;i<=pe.getPages();i++){
+                                    for(int i=1;i<=pageInfo.getPages();i++){
                                 %>
                                 <li><a href="<%=path %>/employee/listPage.do?pageNo=<%=i%>"><%=i %></a></li>
                                 <%
                                     }
                                 %>
-                                <li><a href="<%=path %>/employee/listPage.do?pageNo=<%=pe.getCurrent()+1<pe.getPages()?pe.getCurrent()+1:pe.getPages() %>"
+                                <li><a href="<%=path %>/employee/listPage.do?pageNo=<%=pageInfo.getCurrent()+1<pageInfo.getPages()?pageInfo.getCurrent()+1:pageInfo.getPages() %>"
                                        aria-label="Next"> <span aria-hidden="true">后一页</span>
                                 </a></li>
                             </ul>
