@@ -242,6 +242,9 @@ public class EmployeeController {
      */
     @RequestMapping("/{id}/update.do")
     public String updateById(@PathVariable Integer id, Employee employee, String date, String status, HttpSession session) {
+        System.out.println(id);
+        System.out.println(employee.toString());
+        System.out.println(date);
         employee.setId(id);
         employee.setBirthday(MyTimeUtil.stringDateParse(date));
         Employee manager = (Employee) session.getAttribute("logged");
