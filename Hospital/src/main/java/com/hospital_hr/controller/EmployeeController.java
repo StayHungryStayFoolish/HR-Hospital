@@ -142,10 +142,10 @@ public class EmployeeController {
      * @return
      */
     @RequestMapping("/listPage.do")
-    public String selectList(int page, HttpSession session) {
+    public String selectList(int page, Model model) {
         System.out.println("页码 :" + page);
         Page<Employee> pageInfo = employeeService.selectListByPage(page);
-        session.setAttribute("page", pageInfo);
+        model.addAttribute("page", pageInfo);
         System.out.println("分页信息 " + pageInfo.toString());
         return "admin/employee_list";
     }

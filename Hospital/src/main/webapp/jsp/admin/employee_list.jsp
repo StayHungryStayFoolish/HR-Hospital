@@ -52,7 +52,7 @@
                         </thead>
                         <tbody>
                         <%
-                            Page<Employee> pageInfo = (Page<Employee>) session.getAttribute("page");
+                            Page<Employee> pageInfo = (Page<Employee>) request.getAttribute("page");
                             if (null != pageInfo && null != pageInfo.getRecords() && pageInfo.getRecords().size() > 0) {
                                 List<Employee> list = pageInfo.getRecords();
                                 int index = 1;
@@ -106,14 +106,16 @@
                                     for (int i = 1; i <= pageInfo.getPages(); i++) {
                                 %>
                                 <li><a href="<%=path %>/employee/listPage.do?page=<%=i%>"><%=i %>
-                                </a></li>
+                                </a>
+                                </li>
                                 <%
                                     }
                                 %>
                                 <li>
                                     <a href="<%=path %>/employee/listPage.do?page=<%=pageInfo.getCurrent()+1<pageInfo.getPages()?pageInfo.getCurrent()+1:pageInfo.getPages() %>"
                                        aria-label="Next"> <span aria-hidden="true">后一页</span>
-                                    </a></li>
+                                    </a>
+                                </li>
                             </ul>
                         </nav>
                     </div>
