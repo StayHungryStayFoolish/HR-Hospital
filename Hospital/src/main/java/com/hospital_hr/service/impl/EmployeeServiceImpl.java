@@ -113,7 +113,6 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
      */
     @Override
     public Employee selectEmployee(Integer id) {
-        System.out.println("serviceImpl 层 ID" + id);
         Employee employee = baseMapper.selectById(id);
         setObject(employee);
         return employee;
@@ -247,6 +246,8 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
         // 根据部门编号查询获得部门信息
         Department department = departmentMapper.selectByNumber(departmentNumber);
         employee.setDepartment(department);
+        System.out.println("部门编号"+departmentNumber);
+        System.out.println("部门"+department);
         System.out.println("部门名称 ---- "+department.getName());
         System.out.println("部门信息 ---- "+department.toString());
 

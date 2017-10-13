@@ -10,6 +10,6 @@
         SELECT
         <include refid="Base_Column_List"/>
         FROM db_hospital.department
-        WHERE department_number = #{departmentNumber}
+        WHERE department_number= #{departmentNumber}
     </select>
 </mapper>

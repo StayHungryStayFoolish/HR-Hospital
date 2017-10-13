@@ -233,17 +233,14 @@ public class EmployeeController {
      * @param employee
      * @param date
      * @param status
-     * @param session
+     * @param model
      * @return
      */
     @RequestMapping("/{id}/update.do")
-    public String updateById(@PathVariable Integer id, Employee employee, String date, String status, HttpSession session) {
-        System.out.println(id);
-        System.out.println(employee.toString());
-        System.out.println(date);
+    public String updateById(@PathVariable Integer id, Employee employee, String date, String status, Model model) {
         employee.setId(id);
         employee.setBirthday(MyTimeUtil.stringDateParse(date));
-        Employee manager = (Employee) session.getAttribute("logged");
+        Employee manager = (Employee) model.addAttribute("logged");
         employeeService.updateEmployee(employee, status, manager.getName());
         return "forward:/employee/listPage.do?page=1";
     }
