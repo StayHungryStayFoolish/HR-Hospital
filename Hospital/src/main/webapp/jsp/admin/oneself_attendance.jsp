@@ -46,27 +46,36 @@
                         </thead>
                         <tbody>
                         <%
-                            List<Attendance> list = (List<Attendance>)request.getAttribute("aList");
-                            int index=1;
-                            for(Attendance attendance : list){
+                            List<Attendance> list = (List<Attendance>) request.getAttribute("aList");
+                            int index = 1;
+                            for (Attendance attendance : list) {
                         %>
                         <tr class="gradeA">
-                            <td><%=index++ %></td>
-                            <td><%=attendance.getEmployeeNumber() %></td>
-                            <td><%=attendance.getEmployee().getName() %></td>
+                            <td><%=index++ %>
+                            </td>
+                            <td><%=attendance.getEmployeeNumber() %>
+                            </td>
+                            <td><%=attendance.getEmployee().getName() %>
+                            </td>
                             <%
                                 String day = MyTimeUtil.dateFormat(attendance.getDay());
                                 String startTime = MyTimeUtil.timeFormat(attendance.getStartTime());
-                                if(startTime == null) startTime="";
+                                if (startTime == null) startTime = "";
                                 String endTime = MyTimeUtil.timeFormat(attendance.getEndTime());
-                                if(endTime == null) endTime="";
+                                if (endTime == null) endTime = "";
                             %>
-                            <td><%=day %></td>
-                            <td><%=attendance.getTimeType() %></td>
-                            <td><%=startTime %></td>
-                            <td><%=attendance.getStartType() %></td>
-                            <td><%=endTime %></td>
-                            <td><%=attendance.getEndType() %></td>
+                            <td><%=day %>
+                            </td>
+                            <td><%=attendance.getTimeType() %>
+                            </td>
+                            <td><%=startTime %>
+                            </td>
+                            <td><%=attendance.getStartType() %>
+                            </td>
+                            <td><%=endTime %>
+                            </td>
+                            <td><%=attendance.getEndType() %>
+                            </td>
                         </tr>
                         <%
                             }

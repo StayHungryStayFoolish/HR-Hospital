@@ -29,7 +29,7 @@
                     <h5>申请请假</h5>
                 </div>
                 <div class="ibox-content">
-                    <% Employee employee = (Employee)request.getAttribute("logged");%>
+                    <% Employee employee = (Employee)session.getAttribute("logged");%>
                     <form method="post" class="form-horizontal" id="commentForm"
                           action="<%=path %>/leave/add.do?employeeNumber=<%=employee.getEmployeeNumber() %>">
                         <div class="form-group">

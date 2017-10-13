@@ -241,15 +241,13 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
      * @return
      */
     private Employee setObject(Employee employee) {
+        System.out.println("员工" + employee);
         // 从 Employee 中获取部们编号
         Integer departmentNumber = employee.getDepartmentNumber();
+        System.out.println("部门编号" + departmentNumber);
         // 根据部门编号查询获得部门信息
         Department department = departmentMapper.selectByNumber(departmentNumber);
         employee.setDepartment(department);
-        System.out.println("部门编号"+departmentNumber);
-        System.out.println("部门"+department);
-        System.out.println("部门名称 ---- "+department.getName());
-        System.out.println("部门信息 ---- "+department.toString());
 
         // 从 Employee 中获取职称编号
         Integer positionNumber = employee.getPositionNumber();
