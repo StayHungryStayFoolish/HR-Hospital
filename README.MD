@@ -3,14 +3,23 @@
 ### 开发环境
 
     OS + IDEA + MySQL + Gradle
-    
-    
-### 注:
 
-    使用 MyBatis-Plugins 的 Page<>  在个别页面无法获取 Deapartment 属性.
-    serviceImpl 调试有输出信息.
-    原因排查: setObject(); 方法有的，页面返回的 Page 信息都取不出来 department .
-    官方没有解释原因. 
+### 框架
+
+    Spring + SpringMVC + MyBatis
+
+    MyBatis-Plugins 插件 高效、简洁的 CRUD 操作
+
+    Drurid 数据库缓存
+
+### 推荐插件 MyBatis-Plugins
+    
+  [baomidou GitHub 链接](https://github.com/baomidou/mybatis-plus)
+
+
+  [中文 API 文档](http://baomidou.oschina.io/mybatis-plus-doc/#/)
+
+### 注:
 
 
     SQL 语法错误.
