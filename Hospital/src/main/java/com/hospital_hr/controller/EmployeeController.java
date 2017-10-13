@@ -68,12 +68,12 @@ public class EmployeeController {
      * @return
      */
     @RequestMapping("/checkLogin.do")
-    public String checkLogin(Model model, Employee employee) {
+    public String checkLogin(HttpSession session, Employee employee) {
         Employee empInfo = employeeService.checkLogin(employee.getEmployeeNumber(), employee.getPassword());
         // 如果员工信息不为空,通过员工信息获取职称表信息,然后获得职称级别,进而做权限判定
         if (null != empInfo) {
             // 将员工信息存入 session
-            model.addAttribute("logged", empInfo);
+            session.setAttribute("logged", empInfo);
             // 获取权限级别
             String level = empInfo.getPosition().getLevel();
             if ("人事部主任".equals(level)) {
