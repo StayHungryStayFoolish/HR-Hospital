@@ -30,7 +30,7 @@
                     <h5>查看个人信息</h5>
                 </div>
                 <div class="ibox-content">
-                    <% Employee employee = (Employee) session.getAttribute("employee"); %>
+                    <% Employee employee = (Employee) request.getAttribute("employee"); %>
                     <form method="post" class="form-horizontal" action="">
                         <div class="form-group">
                             <div class="col-md-1"></div>

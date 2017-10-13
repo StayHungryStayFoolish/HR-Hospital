@@ -11,6 +11,7 @@ import com.hospital_hr.service.EmployeeService;
 import com.hospital_hr.service.HistoryService;
 import com.hospital_hr.service.PositionService;
 import com.hospital_hr.uitl.MyTimeUtil;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -68,13 +69,12 @@ public class EmployeeController {
      * @return
      */
     @RequestMapping("/checkLogin.do")
-    public String checkLogin(HttpSession session, Employee employee) {
-        System.out.println("进入校验方法");
+    public String checkLogin(Model model, Employee employee) {
         Employee empInfo = employeeService.checkLogin(employee.getEmployeeNumber(), employee.getPassword());
         // 如果员工信息不为空,通过员工信息获取职称表信息,然后获得职称级别,进而做权限判定
         if (null != empInfo) {
             // 将员工信息存入 session
-            session.setAttribute("logged", empInfo);
+            model.addAttribute("logged", empInfo);
             // 获取权限级别
             String level = empInfo.getPosition().getLevel();
             if ("人事部主任".equals(level)) {
