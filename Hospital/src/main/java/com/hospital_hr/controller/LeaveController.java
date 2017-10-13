@@ -98,7 +98,6 @@ public class LeaveController {
      * 查询未准假记录
      *
      * @param model
-     * @param session
      * @return
      */
     @RequestMapping("/notlist.do")

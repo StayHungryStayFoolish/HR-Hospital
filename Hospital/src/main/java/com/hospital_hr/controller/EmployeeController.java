@@ -11,7 +11,6 @@ import com.hospital_hr.service.EmployeeService;
 import com.hospital_hr.service.HistoryService;
 import com.hospital_hr.service.PositionService;
 import com.hospital_hr.uitl.MyTimeUtil;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -264,10 +263,10 @@ public class EmployeeController {
      * @return
      */
     @RequestMapping("/oneself/{id}/detail.do")
-    public String selectEmployeeOneself(@PathVariable Integer id, HttpSession session) {
+    public String selectEmployeeOneself(@PathVariable Integer id, Model model) {
         System.out.println("员工 ID" + id);
         Employee employee = employeeService.selectEmployee(id);
-        session.setAttribute("employee", employee);
+        model.addAttribute("employee", employee);
         return "admin/oneself_detail";
     }
 
@@ -280,9 +279,9 @@ public class EmployeeController {
      * @return
      */
     @RequestMapping("/oneself/{id}/toUpdate.do")
-    public String toUpdateOneself(@PathVariable Integer id, HttpSession session) {
+    public String toUpdateOneself(@PathVariable Integer id, Model model) {
         Employee employee = employeeService.selectById(id);
-        session.setAttribute("employee", employee);
+        model.addAttribute("employee", employee);
         return "admin/oneself_update";
     }
 
